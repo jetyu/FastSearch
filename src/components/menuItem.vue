@@ -29,6 +29,7 @@
            @click.ctrl.exact="handleClick(child, true)"
            @click.middle.exact="handleClick(child, true)">
           <favicon
+            :key="`${child.url}-${child.icon || ''}`"
             class="as-url-icon"
             :url="child.url"
             :icon="child.icon"
@@ -111,12 +112,12 @@ export default {
       if (isTap) {
         return
       }
-      const urlItem = cate.list
-        .filter(item => item.data.visible)
-        .find(item => item.url.indexOf(window.location.hostname) === -1)
+      const visibleItems = cate.list.filter(item => item.data.visible)
+      const urlItem = visibleItems.find(item => new URL(item.url).hostname !== window.location.hostname) || visibleItems[0]
       return handleClick(urlItem, newWin)
     }
     const handleClick = (item, newWin) => {
+      if (!item) return
       const keyword = defaultKeyword()
       if (newWin || openInNewTab.value) {
         window.open(item.url.replace('%s', keyword))

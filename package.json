@@ -1,6 +1,6 @@
 {
   "name": "all-search",
-  "version": "1.5.11",
+  "version": "1.5.16",
   "keywords": [
     "tamperMonkey",
     "user-script",
@@ -26,6 +26,8 @@
   "jsdelivr": "output/index.user.js",
   "packageManager": "pnpm@8.15.1",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "cross-env PLAYWRIGHT_BROWSERS_PATH=./node_modules/.cache/ms-playwright node node_modules/@playwright/test/cli.js test",
     "lint": "vue-cli-service lint",
     "prepare": "husky install",
     "dev:script": "vite --mode script",
@@ -45,6 +47,7 @@
     "vue-router": "^4.0.5"
   },
   "devDependencies": {
+    "@playwright/test": "1.55.1",
     "@babel/eslint-parser": "^7.19.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",

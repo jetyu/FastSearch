@@ -21,6 +21,7 @@
       v-model:visible="dialogVisible"/>
   </template>
   <iconfont v-if="!disabled || toolbarVisible === 1"/>
+  <site-manager v-if="managerVisible"/>
 </template>
 
 <script>
@@ -39,6 +40,8 @@ import iconfont from '../components/iconfont'
 import selectionBar from '../components/selection-bar'
 import searchDialog from '../components/search-dialog'
 import useToolbar from '../components/useToolbar'
+import siteManager from '../components/site-manager.vue'
+import useSiteManager from '../components/useSiteManager'
 
 export default {
   name: 'all-search',
@@ -49,13 +52,15 @@ export default {
     hoverBtn,
     iconfont,
     selectionBar,
-    searchDialog
+    searchDialog,
+    siteManager
   },
   setup() {
     const { isFullScreen } = useFullScreen()
     const { value: mode } = useMode()
     const { show } = useSwitchShow()
     const { visible: toolbarVisible } = useToolbar('tm')
+    const { managerVisible } = useSiteManager()
 
     const classList = computed(() => ([
       `as-${toValue(mode)}`,
@@ -107,7 +112,8 @@ export default {
       dialogVisible,
       openDialog,
       keyword,
-      toolbarVisible
+      toolbarVisible,
+      managerVisible
     }
   }
 }

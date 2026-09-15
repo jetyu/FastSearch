@@ -8,8 +8,9 @@
     <favicon
       class="tool-bar-item"
       v-for="(item, i) in list"
-      :key="i"
+      :key="`${i}-${item.url}-${item.icon || ''}`"
       :url="item.url"
+      :icon="item.icon"
       :title="item.nameZh"
       @click.exact="handleClick(item, true)"
       @click.ctrl.exact="handleClick(item, false)"

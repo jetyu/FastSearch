@@ -21,6 +21,7 @@
         <transition name="drawer" appear>
           <div
             v-show="visible"
+            :aria-hidden="!visible"
             aria-modal="true"
             role="dialog"
             class="as-side-bar"
@@ -109,27 +110,16 @@
                   清除
                 </as-button>
               </form-item>
-              <form-item label="重置网址">
+              <form-item label="网址管理">
                 <as-button
                   type="text"
-                  @click="resetSites">
-                  重置
+                  @click="manage('sites')">
+                  打开
                 </as-button>
               </form-item>
+              <config-backup/>
             </section>
             <footer>
-              <a class="link"
-                 title="菜单设置页"
-                 href="https://all-search.github.io/all-search/config/sites"
-                 target="_blank">
-                菜单设置
-              </a>
-              <a class="link"
-                 title="划词工具栏设置页"
-                 href="https://all-search.github.io/all-search/config/toolbar"
-                 target="_blank">
-                划词工具栏设置
-              </a>
               <a class="link"
                  title="github"
                  href="https://github.com/all-search/all-search/issues"
@@ -153,12 +143,13 @@ import useColor from './useColor'
 import useFavicon from './useFavicon'
 import useToolbar from './useToolbar'
 import useOpenInNewTab from './useOpenInNewTab'
-import useSites from './useSites'
+import useSiteManager from './useSiteManager'
 import overlay from '../components/overlay'
 import radio from '../components/radio'
 import formItem from '../components/form-item'
 import color from '../components/color'
 import button from '../components/button'
+import configBackup from './config-backup.vue'
 
 export default {
   name: 'side-bar',
@@ -167,7 +158,8 @@ export default {
     asRadio: radio,
     formItem,
     color,
-    asButton: button
+    asButton: button,
+    configBackup
   },
   setup () {
     const visible = ref(false)
@@ -185,7 +177,11 @@ export default {
     const { favicon, clearIconCache } = useFavicon()
     const { visible: toolbarVisible } = useToolbar()
     const { openInNewTab } = useOpenInNewTab()
-    const { resetSites } = useSites('tm')
+    const { openManager } = useSiteManager()
+    function manage (tab) {
+      visible.value = false
+      openManager(tab)
+    }
 
     const hide = () => {
       show.value = 2
@@ -215,7 +211,7 @@ export default {
       options,
       scrollHide,
       clearIconCache,
-      resetSites,
+      manage,
       hide,
       changeScrollHide
     }
@@ -278,6 +274,8 @@ export default {
   }
 
   > section {
+    overflow-y: auto;
+    min-height: 0;
     padding: 10px 24px;
     margin: 0 12px;
     height: 100%;
@@ -288,9 +286,17 @@ export default {
   }
 
   > footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
     padding: 10px 24px 30px;
 
     .link {
+      cursor: pointer;
+      color: var(--as-primary-text-color);
+      background: none;
+      border: 0;
+      padding: 0;
       font-size: 14px;
       text-decoration: none;
 
@@ -299,9 +305,6 @@ export default {
       }
     }
 
-    .link + .link {
-      margin-left: 20px;
-    }
   }
 }
 

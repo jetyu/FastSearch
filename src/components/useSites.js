@@ -1,48 +1,24 @@
-import { computed, ref } from 'vue'
-import sites from '../config/sites'
-import { getStorage, delStorage } from '../util/storage'
+import { computed } from 'vue'
+import defaults from '../config/sites'
+import { normalizeSites } from '../util/site-data.mjs'
+import useStoredList from './useStoredList'
 
-const sitesData = ref([])
-
-function getSites (val) {
-  if (Array.isArray(val) && val.length > 0) {
-    return val
-  } else {
-    return sites
-  }
+const store = useStoredList('sites', defaults, normalizeSites)
+async function resetSites () {
+  if (!window.confirm('确认要重置所有网址吗？')) return
+  try { await store.save(defaults) } catch (err) { window.alert(err.message || String(err)) }
 }
-
-function initSites (sites, type) {
-  if (type === 'tm') {
-    return sites
-      .filter(item =>
-        Array.isArray(item.list) &&
-        item.list.length > 0 &&
-        item.data &&
-        item.data.visible)
-      .map(item => ({
-        ...item,
-        show: false
-      }))
-  }
-  return sites
-}
-
-getStorage('sites').then(val => {
-  sitesData.value = getSites(val)
-}).catch(() => {
-  sitesData.value = sites
-})
-
-function resetSites () {
-  if (window.confirm('确认要重置所有网址吗')) {
-    delStorage('sites')
-  }
-}
-
 export default function useSites (type) {
   return {
-    sites: computed(() => initSites(sitesData.value, type)),
+    sites: computed(() => type === 'tm'
+      ? store.list.value.filter(item => item.data.visible).map(item => ({
+        ...item, show: false, list: item.list.filter(child => child.data.visible)
+      })).filter(item => item.list.length)
+      : store.list.value),
+    error: store.error,
+    reloadSites: store.reload,
+    saveSites: store.save,
+    clearSites: store.clear,
     resetSites
   }
 }

@@ -2,43 +2,27 @@ import { GM_getValue, GM_setValue, GM_deleteValue } from '$'
 import { getName, parseJson, version } from './index'
 import store from './store'
 
-function getStorageFn (name) {
-  const formatName = getName(name)
-  return new Promise((resolve,reject) => {
-    if(!GM_getValue) {
-      return reject(Error('没有找到GM_getValue'))
-    }
-    const item = GM_getValue(formatName)
-    if (item === void 0) {
-      return reject(`GM_getValue没有获取到key:${name}的变量`)
-    }
-    return resolve(parseJson(item))
-  })
+async function getStorageFn (name, fallback) {
+  if (!GM_getValue) throw Error('没有找到 GM_getValue')
+  const item = await GM_getValue(getName(name))
+  if (item === undefined) {
+    if (arguments.length > 1) return fallback
+    throw Error('没有已保存的配置：' + name)
+  }
+  return parseJson(item)
 }
 
-function setStorageFn (name, value) {
-  const formatName = getName(name)
-  return new Promise((resolve,reject) => {
-    if(value === void 0) {
-      reject(Error('setStorage'))
-    } else if (!GM_setValue) {
-      reject(Error('没有找到GM_setValue'))
-    } else {
-      GM_setValue(formatName, value)
-      resolve(value)
-    }
-  })
+async function setStorageFn (name, value) {
+  if (value === undefined) throw Error('缺少要保存的配置')
+  if (!GM_setValue) throw Error('没有找到 GM_setValue')
+  await GM_setValue(getName(name), value)
+  return value
 }
 
-function delStorageFn (name) {
-  const formatName = getName(name)
-  return new Promise((resolve,reject) => {
-    if(!GM_deleteValue) {
-      return reject(Error('没有找到GM_deleteValue'))
-    }
-    GM_deleteValue(formatName)
-    return resolve(true)
-  })
+async function delStorageFn (name) {
+  if (!GM_deleteValue) throw Error('没有找到 GM_deleteValue')
+  await GM_deleteValue(getName(name))
+  return true
 }
 
 export let getStorage = getStorageFn

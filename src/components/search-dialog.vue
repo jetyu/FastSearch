@@ -40,6 +40,7 @@
                  @click.ctrl.exact="handleClick(child, true)"
                  @click.middle.exact="handleClick(child, true)">
                 <favicon
+                  :key="`${child.url}-${child.icon || ''}`"
                   class="as-url-icon"
                   :url="child.url"
                   :icon="child.icon"

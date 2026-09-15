@@ -17,10 +17,10 @@ import parseUrl from '../util/parseUrl'
 import useFavicon from './useFavicon'
 import { getStorage, setStorage } from '../util/storage'
 
-let iconCache = reactive({})
-getStorage('iconCache').then(iconData => {
-  iconCache = iconData
-})
+const iconCache = reactive({})
+getStorage('iconCache', {}).then(iconData => {
+  Object.assign(iconCache, iconData)
+}).catch(() => {})
 
 export default {
   name: 'favicon',
@@ -39,7 +39,9 @@ export default {
 
     const { hostname, origin } = parseUrl(props.url)
     const img = computed(() => {
-      if (iconCache[hostname]) {
+      if (props.icon && i.value === 0 && !isError.value) {
+        return props.icon
+      } else if (iconCache[hostname]) {
         return iconCache[hostname]
       } else if (!isError.value) {
         return faviconApi.value
@@ -71,12 +73,17 @@ export default {
       return canvas.toDataURL('image/png', 1)
     }
 
-    function handleLoad (e) {
-      if (!isError.value && !img.value.startsWith('data:image')) {
-        const base64 = getBase64Image(e.target)
-        if (base64) {
-          iconCache[hostname] = base64
-          setStorage('iconCache', iconCache)
+    async function handleLoad (e) {
+      if (props.icon) return
+      if (!isError.value && img.value && !img.value.startsWith('data:image')) {
+        try {
+          const base64 = getBase64Image(e.target)
+          if (base64) {
+            iconCache[hostname] = base64
+            await setStorage('iconCache', iconCache)
+          }
+        } catch {
+          // Some cross-origin images cannot be read by canvas.
         }
       }
     }
@@ -84,7 +91,7 @@ export default {
     function handleError (e) {
       const src = e.currentTarget.src
       if (src === faviconApi.value) {
-        if (i.value === faviconApis.value.length - 1) {
+        if (i.value === faviconApis.value.filter(Boolean).length - 1) {
           isError.value = true
         }
         i.value++
