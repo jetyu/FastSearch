@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)
 // @namespace    all-search-plus
-// @version      1.5.19
+// @version      1.5.20
 // @author       endday > jetyu
 // @description  全搜增强版，搜索引擎快捷跳转，支持任意网站展示
 // @license      GPL-3.0-only
