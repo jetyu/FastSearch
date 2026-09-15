@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name         All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)
+// @name:zh-CN   全搜增强版
 // @namespace    all-search-plus
 // @version      1.5.20
 // @author       endday > jetyu
@@ -34,7 +35,7 @@
   var _GM_setValue = /* @__PURE__ */ (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
   const name = "all-search-plus";
   const displayName = "All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)";
-  const version$2 = "1.5.19";
+  const version$2 = "1.5.20";
   const keywords = [
     "tamperMonkey",
     "user-script",

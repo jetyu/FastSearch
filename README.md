@@ -53,7 +53,7 @@ Open **设置 → 网址管理 → 打开** in the search menu. The dialog conta
 
 Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 → 编辑 → 清除网址管理配置** to restore the built-in menu after confirmation. If the menu is unavailable, open **全搜：网址管理** from your userscript manager's menu. Everyday settings work inside the script without a separate configuration website.
 
-### Built-in sites in 1.5.19
+### Built-in sites in 1.5.20
 
 This version removes the requested legacy sites and the default empty Personal category, adds Douyin, Xianyu and SOV2EX, and adds an AI category after Search. The catalog contains 13 categories and 93 entries.
 
