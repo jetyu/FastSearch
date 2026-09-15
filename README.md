@@ -72,9 +72,9 @@ tmDev uses watch and will automatically rebuild every time it is modified. There
 #### build scripts
 The version number of the script references the version number in package.json, remember to modify
 ```
-npm run tmBuild
+corepack pnpm build:script
 ```
-will package out the index.user.js used by Tampermonkey
+Generates [`output/index.user.js`](./output/index.user.js) for Tampermonkey, replacing it on each build. The configuration website builds to `dist/` with `corepack pnpm build:site`, so the two outputs stay separate.
 
 #### Feedback and communication
 [Tencent Channel](https://pd.qq.com/s/2bmefcl98)

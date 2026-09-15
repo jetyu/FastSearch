@@ -28,7 +28,9 @@ export default defineConfig(({ mode }) => {
     }
   } else if (mode === 'script') {
     return {
-      outputDir: 'dist/',
+      build: {
+        outDir: 'output'
+      },
       resolve: {
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
       },

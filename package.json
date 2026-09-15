@@ -1,6 +1,6 @@
 {
   "name": "all-search",
-  "version": "1.5.10",
+  "version": "1.5.11",
   "keywords": [
     "tamperMonkey",
     "user-script",
@@ -19,10 +19,11 @@
   },
   "files": [
     "dist",
+    "output",
     "lib"
   ],
-  "unpkg": "dist/index.user.js",
-  "jsdelivr": "dist/index.user.js",
+  "unpkg": "output/index.user.js",
+  "jsdelivr": "output/index.user.js",
   "packageManager": "pnpm@8.15.1",
   "scripts": {
     "lint": "vue-cli-service lint",

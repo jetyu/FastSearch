@@ -88,14 +88,14 @@ corepack pnpm dev:script
 corepack pnpm build:script
 ```
 
-生成可安装的脚本：[`dist/index.user.js`](./dist/index.user.js)。脚本版本号来自 `package.json`；正式发布新版本时需要更新版本号。
+生成可安装的脚本：[`output/index.user.js`](./output/index.user.js)。每次构建都会更新这个文件。脚本版本号来自 `package.json`；正式发布新版本时需要更新版本号。
 
-独立配置网站的构建命令为 `corepack pnpm build:site`。两种构建默认都输出到 `dist/`，如需安装油猴脚本，请最后执行 `build:script`。
+独立配置网站的构建命令为 `corepack pnpm build:site`，输出到 `dist/`。油猴脚本单独输出到 `output/`，两种构建互不覆盖。
 
 #### 浏览器手动测试
 
 1. 在油猴或脚本猫的脚本编辑器中打开已有的全搜脚本；首次安装时新建一个脚本。
-2. 将 `dist/index.user.js` 的完整内容（包含开头的 `// ==UserScript==` 元信息）复制到编辑器，替换原内容并保存、启用。同一时间只启用一个全搜版本。
+2. 将 `output/index.user.js` 的完整内容（包含开头的 `// ==UserScript==` 元信息）复制到编辑器，替换原内容并保存、启用。同一时间只启用一个全搜版本。
 3. 打开或刷新百度、必应等搜索结果页面，在全搜菜单右侧点击“设置”。
 4. 找到“新标签页打开”，切换“开启 / 关闭”。此设置自动保存，无需额外点击保存。
 5. 按下表验证。打开搜索弹窗的方法是：选中页面文字，在划词工具栏中点击“更多”图标。
