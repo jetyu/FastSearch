@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name         All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)
-// @name:zh-CN   全搜增强版
 // @namespace    all-search-plus
 // @version      1.5.19
 // @author       endday > jetyu
@@ -10,8 +9,8 @@
 // @homepageURL  https://github.com/jetyu/all-search_plus
 // @source       https://github.com/jetyu/all-search_plus.git
 // @supportURL   https://github.com/jetyu/all-search_plus/issues
-// @downloadURL  https://raw.githubusercontent.com/jetyu/all-search_mod/master/output/index.user.js
-// @updateURL    https://raw.githubusercontent.com/jetyu/all-search_mod/master/output/index.user.js
+// @downloadURL  https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/index.user.js
+// @updateURL    https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/index.user.js
 // @match        *://*/*
 // @require      https://registry.npmmirror.com/vue/3.4.15/files/dist/vue.global.prod.js
 // @require      https://registry.npmmirror.com/@popperjs/core/2.11.8/files/dist/umd/popper-lite.min.js

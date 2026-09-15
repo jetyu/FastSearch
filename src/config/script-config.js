@@ -1,7 +1,7 @@
 import pkg from '../../package.json'
 
 const fileName = 'index.user.js'
-const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_mod/master/output/${fileName}`
+const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/${fileName}`
 
 export default {
   name: {

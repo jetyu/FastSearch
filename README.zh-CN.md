@@ -225,4 +225,4 @@ corepack pnpm test:browser
 
 ## 来源与许可
 
-本版基于 [all-search/all-search](https://github.com/all-search/all-search) 二次修改，保留上游归属说明，并沿用 **GPL-3.0-only** 许可证，完整条款见 [LICENSE](./LICENSE)。本版问题请提交到 [jetyu/all-search_mod Issues](https://github.com/jetyu/all-search_plus/issues)。
+本版基于 [all-search/all-search](https://github.com/all-search/all-search) 二次修改，保留上游归属说明，并沿用 **GPL-3.0-only** 许可证，完整条款见 [LICENSE](./LICENSE)。本版问题请提交到 [jetyu/all-search_plus Issues](https://github.com/jetyu/all-search_plus/issues)。

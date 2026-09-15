@@ -4,7 +4,7 @@ import pkg from '../../package.json'
 const fileName = 'index.user.js'
 export const localFileName = 'index.local.js'
 export const devFileName = 'index.dev.js'
-const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_mod/master/output/${fileName}`
+const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/${fileName}`
 
 const meta = `// @name         ${pkg.displayName}
 // @namespace    ${pkg.name}

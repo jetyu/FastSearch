@@ -109,7 +109,7 @@ Generates [`output/index.user.js`](./output/index.user.js) for Tampermonkey, rep
 
 ## Attribution and license
 
-This fork is based on [all-search/all-search](https://github.com/all-search/all-search) and retains its attribution and **GPL-3.0-only** license. See [LICENSE](./LICENSE) for the full terms. Report issues with this version in [jetyu/all-search_mod Issues](https://github.com/jetyu/all-search_plus/issues).
+This fork is based on [all-search/all-search](https://github.com/all-search/all-search) and retains its attribution and **GPL-3.0-only** license. See [LICENSE](./LICENSE) for the full terms. Report issues with this version in [jetyu/all-search_plus Issues](https://github.com/jetyu/all-search_plus/issues).
 
 #### Upstream feedback and communication
 [Tencent Channel](https://pd.qq.com/s/2bmefcl98)
