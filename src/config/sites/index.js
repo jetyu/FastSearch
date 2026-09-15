@@ -1,4 +1,5 @@
 import search from './search'
+import ai from './ai'
 import translate from './translate'
 import developer from './developer'
 import video from './video'
@@ -16,6 +17,11 @@ const list = [
     nameZh: '搜索',
     name: 'search',
     list: search
+  },
+  {
+    nameZh: 'AI',
+    name: 'ai',
+    list: ai
   },
   {
     nameZh: '翻译',
@@ -71,11 +77,6 @@ const list = [
     nameZh: '学术',
     name: 'scholar',
     list: scholar
-  },
-  {
-    nameZh: '常用',
-    name: 'personal',
-    list: []
   }
 ].map(item => ({
   ...item,

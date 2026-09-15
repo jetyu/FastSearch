@@ -1,6 +1,6 @@
 export default [
   {
-    nameZh: 'bilibili',
+    nameZh: '哔哩哔哩',
     url: 'http://search.bilibili.com/all?keyword=%s'
   },
   {
@@ -13,7 +13,7 @@ export default [
     icon: 'https://www.iqiyi.com/favicon.ico'
   },
   {
-    nameZh: 'youtube',
+    nameZh: 'YouTube',
     url: 'https://www.youtube.com/results?search_query=%s'
   },
   {
@@ -22,15 +22,11 @@ export default [
     icon: 'https://img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png'
   },
   {
-    nameZh: 'AcFun',
-    url: 'https://www.acfun.cn/search?keyword=%s'
-  },
-  {
     nameZh: '搜狐',
     url: 'http://so.tv.sohu.com/mts?wd=%s'
   },
   {
-    nameZh: 'niconico',
-    url: 'http://www.nicovideo.jp/search/%s'
+    nameZh: '抖音',
+    url: 'https://www.douyin.com/search/%s?type=video'
   }
 ]

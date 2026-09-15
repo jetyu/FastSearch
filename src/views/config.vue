@@ -8,7 +8,7 @@
         :underline="false"
         type="primary"
         href="/all-search">
-        全搜 All-Search
+        All Search Plus
       </el-link>
       <div class="header-bd">
         <el-menu
@@ -33,7 +33,7 @@
         </el-menu>
       </div>
       <a class="gh-btn"
-         href="https://github.com/all-search/all-search">
+         href="https://github.com/jetyu/all-search_plus">
         <span class="gh-icon"/>
       </a>
     </el-header>

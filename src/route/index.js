@@ -8,7 +8,7 @@ export default createRouter({
           name: 'index',
           component: () => import('../views/index.vue'),
           meta: {
-            nameZh: '全搜'
+            nameZh: 'All Search Plus'
           }
         },*/
     {

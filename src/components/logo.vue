@@ -2,11 +2,11 @@
   <a
     v-if="!isMobile"
     class="as-title"
-    href="https://github.com/all-search/all-search"
+    href="https://github.com/jetyu/all-search_plus"
     target="_blank"
     :class="`as-title-${mode}`">
     <p class="as-title-inner">
-      All Search
+      All Search Plus
     </p>
   </a>
 </template>
@@ -43,10 +43,17 @@ export default {
 .as-title-horizontal {
   min-width: 90px;
   margin: 0 10px;
+  white-space: nowrap;
 }
 
 .as-title-vertical {
   width: 100%;
+
+  .as-title-inner {
+    height: auto;
+    line-height: 1.4;
+    padding: 6px 0;
+  }
 }
 
 .as-title {

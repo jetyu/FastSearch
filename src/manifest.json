@@ -1,10 +1,10 @@
 {
-  "name": "all-search 全搜",
-  "description": "all-search 全搜，搜索引擎快捷跳转，支持任意网站展示",
+  "name": "All Search Plus",
+  "description": "全搜增强版，搜索引擎快捷跳转，支持任意网站展示",
   "version": "1.0.0",
   "icons": {},
   "action": {
-    "default_title": "all-search"
+    "default_title": "All Search Plus"
   },
   "content_scripts": [
     {

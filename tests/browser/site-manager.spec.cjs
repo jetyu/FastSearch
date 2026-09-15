@@ -249,7 +249,7 @@ test('global JSON backup round-trips saved menu, toolbar, settings and icons', a
   const backup = await exportBackup(page)
   expect(backup.format).toBe('all-search-backup')
   expect(backup.sites[0].list[0].nameZh).toBe('百度')
-  expect(backup.toolbar[0].nameZh).toBe('百度')
+  expect(backup.toolbar.map(item => item.nameZh)).toEqual(['Google', '百度', 'Google翻译', 'ChatGPT'])
   expect(backup.settings.openInNewTab).toBe(true)
   expect(backup.settings.primaryColor).toBe('#123456')
   expect(backup.iconCache['example.com']).toBe('data:image/png;base64,aA==')
@@ -358,4 +358,47 @@ test('clearing failures and changes from another page retain the menu and JSON d
   expect(await stored(page)).toEqual(newer)
   await expect(dialog.locator('.ace_content')).toContainText('keep draft')
   await expect(page.locator('.as-menu-item-title', { hasText: '视频' })).toHaveCount(0)
+})
+
+test('AI menu and search dialog preserve the entire query when opening configured assistants', async ({ page }, testInfo) => {
+  await boot(page, { fresh: true })
+  const keyword = '中文 & a+b / #? 100% $&'
+  await page.locator('#kw').fill(keyword)
+  await page.evaluate(() => {
+    window.openedUrls = []
+    window.open = url => { window.openedUrls.push(url); return null }
+  })
+  const ai = page.locator('.as-menu-item-title', { hasText: /^AI$/ })
+  await expect(ai).toBeVisible()
+  await expect(page.locator('#icon-ai')).toHaveCount(1)
+  const targets = [
+    ['ChatGPT', 'https://chatgpt.com/?q='],
+    ['Grok', 'https://grok.com/?q='],
+    ['Deepseek', 'https://chat.deepseek.com/?q='],
+    ['Perplexity', 'https://www.perplexity.ai/search?q='],
+    ['Claude', 'https://claude.ai/new?q=']
+  ]
+  for (const [name, prefix] of targets) {
+    await ai.hover()
+    await page.locator('.as-subMenu:visible').getByText(name, { exact: true }).click({ modifiers: ['Control'] })
+    expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe(prefix + encodeURIComponent(keyword))
+  }
+  await ai.hover()
+  await page.locator('.as-subMenu:visible').getByText('Gemini', { exact: true }).click({ modifiers: ['Control'] })
+  expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe('https://gemini.google.com/app')
+  await page.locator('body > p').evaluate((element, text) => {
+    element.textContent = text
+    element.dispatchEvent(new Event('selectstart', { bubbles: true }))
+    const range = document.createRange()
+    range.selectNodeContents(element)
+    const selection = window.getSelection()
+    selection.removeAllRanges()
+    selection.addRange(range)
+    element.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }))
+  }, keyword)
+  await page.locator('.as-more-icon').click()
+  await expect(page.locator('.se-input')).toHaveValue(keyword)
+  await page.locator('.cate-container').filter({ has: page.locator('.cate-name', { hasText: /^AI$/ }) }).getByText('Deepseek', { exact: true }).click({ modifiers: ['Control'] })
+  expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe('https://chat.deepseek.com/?q=' + encodeURIComponent(keyword))
+  await page.screenshot({ path: testInfo.outputPath('ai-search.png') })
 })

@@ -1,6 +1,7 @@
 {
-  "name": "all-search",
-  "version": "1.5.16",
+  "name": "all-search-plus",
+  "displayName": "All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)",
+  "version": "1.5.19",
   "keywords": [
     "tamperMonkey",
     "user-script",
@@ -9,13 +10,16 @@
     "javascript",
     "vue3"
   ],
-  "description": "A top fixed menu that allows you to jump between various search engines, build based on Vue, and use rollup.",
-  "author": "endday",
-  "homepage": "https://github.com/all-search/all-search",
+  "description": "全搜增强版，搜索引擎快捷跳转，支持任意网站展示",
+  "author": "endday > jetyu ",
+  "homepage": "https://github.com/jetyu/all-search_plus",
+  "bugs": {
+    "url": "https://github.com/jetyu/all-search_plus/issues"
+  },
   "license": "GPL-3.0-only",
   "repository": {
     "type": "git",
-    "url": "git@github.com:all-search/all-search.git"
+    "url": "git+https://github.com/jetyu/all-search_plus.git"
   },
   "files": [
     "dist",

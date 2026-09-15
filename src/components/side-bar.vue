@@ -27,7 +27,7 @@
             class="as-side-bar"
             @click.stop>
             <header class="header">
-              全搜 all-search
+              All Search Plus
             </header>
             <section>
               <form-item
@@ -122,7 +122,7 @@
             <footer>
               <a class="link"
                  title="github"
-                 href="https://github.com/all-search/all-search/issues"
+                 href="https://github.com/jetyu/all-search_plus/issues"
                  target="_blank">
                 反馈
               </a>

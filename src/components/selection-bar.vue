@@ -148,7 +148,7 @@ export default {
     }, false)
 
     function handleClick(item, newWin) {
-      const keyword = selection.value
+      const keyword = encodeURIComponent(selection.value || '')
       if (newWin) {
         window.open(item.url.replace('%s', keyword))
       } else {

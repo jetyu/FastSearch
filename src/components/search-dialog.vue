@@ -103,7 +103,7 @@ export default {
     const { openInNewTab } = useOpenInNewTab()
 
     const handleClick = (item, newWin) => {
-      const keyword = inputValue.value
+      const keyword = encodeURIComponent(inputValue.value || '')
       if (newWin || openInNewTab.value) {
         window.open(item.url.replace('%s', keyword))
       } else {

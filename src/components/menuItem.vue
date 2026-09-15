@@ -89,7 +89,7 @@ export default {
     }
     const defaultKeyword = () => {
       if (selection && selection.value) {
-        return selection.value
+        return encodeURIComponent(selection.value)
       }
       let keyword = getKeyword()
       const selectors = currentSite.selectors
@@ -97,16 +97,16 @@ export default {
       if (keyword === undefined) {
         if (selectors) {
           const el = document.querySelector(selectors)
-          keyword = el ? el.value : ''
+          keyword = el ? encodeURIComponent(el.value) : ''
         } else if (query) {
           query.some(name => {
             const word = getQueryString(name)
-            keyword = word
+            keyword = encodeURIComponent(word)
             return !!word
           })
         }
       }
-      return keyword
+      return keyword || ''
     }
     const handleCateClick = (cate, newWin) => {
       if (isTap) {

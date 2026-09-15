@@ -20,11 +20,15 @@ export default [
     url: 'https://s.weibo.com/weibo?q=%s'
   },
   {
-    nameZh: '脸书',
+    nameZh: 'Facebook',
     url: 'https://www.facebook.com/search/results.php?q=%s'
   },
   {
     nameZh: '微信搜索',
     url: 'http://weixin.sogou.com/weixin?ie=utf8&type=2&query=%s'
+  },
+  {
+    nameZh: 'SOV2EX',
+    url: 'https://www.sov2ex.com/?q=%s'
   }
 ]

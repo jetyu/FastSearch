@@ -1,7 +1,11 @@
 ![all-search](https://socialify.git.ci/all-search/all-search/image?description=1&font=Inter&forks=1&issues=1&language=1&owner=1&pattern=Plus&stargazers=1&theme=Light)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
-## all-search 全搜，一个搜索引擎快捷跳转菜单
+## All Search Plus
+
+> 全搜增强版，搜索引擎快捷跳转，支持任意网站展示
+
+**All Search Plus** 是基于 [All Search / 全搜](https://github.com/all-search/all-search) 进行二次修改的增强版本，由本仓库独立维护。在原有搜索引擎快捷跳转功能基础上，增加了脚本内网址管理、整份配置备份与恢复、新标签页打开设置，并调整了内置网址和 AI 搜索入口。感谢原作者 endday 及上游贡献者的开源工作。
 
 一个让你可以方便地在各个搜索引擎之间跳转的顶部固定菜单，基于 Vue 3，使用 Vite 构建。
 
@@ -12,16 +16,35 @@
 
 #### 有什么需求、建议、问题直接提 Issues。<br>做这个脚本纯粹是个人兴趣，用爱发电。<br>开源不易，多多鼓励，如果觉得还不错，就去 Github 点个⭐ Star 鼓励一下, 或者把脚本分享给身边的人。
 
-## 脚本地址
-油猴和脚本猫的脚本差异已经抹平
+## GM 用户脚本说明与安装地址
+
+All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat）的搜索辅助脚本。在搜索结果页面中，通过快捷菜单切换搜索引擎，复用当前关键词；也可以选中文字后使用划词工具栏或搜索弹窗发起搜索。增强版支持脚本内网址管理、自定义分类与排序、整份配置备份与恢复，以及新标签页打开设置，并修复了部分已知 Bug。
+
+### All Search Plus 安装入口
+
+* [增强版 GM 脚本：output/index.user.js](./output/index.user.js)
+
+1. 在浏览器中安装并启用油猴或脚本猫扩展。
+2. 打开上方脚本文件，在 GitHub 文件页面点击 **Raw** 查看完整脚本；如果脚本管理器弹出安装页面，确认安装。
+3. 如果没有弹出安装页面，在脚本管理器中新建脚本，将完整文件内容（包含开头的 `// ==UserScript==` 元信息）复制进去，替换默认内容并保存、启用。
+4. 刷新搜索结果页面，即可使用全搜菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
+
+同一时间只启用一个全搜版本，避免菜单重复。增强版默认名称为 `All Search Plus`，简体中文环境显示 `全搜增强版`，`@namespace` 保持为 `all-search-plus`；主页与反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
+
+通过 Greasy Fork 发布并安装时，平台会移除脚本中自带的更新地址，让脚本从 Greasy Fork 获取更新，详见 [Greasy Fork 元信息说明](https://greasyfork.org/zh-CN/help/meta-keys)。
+
+### 原项目 all-search 地址
+
+以下为原版 all-search 的发布入口。安装本仓库的增强版，请使用上方 **All Search Plus 安装入口**。
+
 * [GitHub 地址](https://raw.github.com/all-search/all-search/release/index.user.js)
 * [iQDNS/iQZone 地址](https://raw.iqiq.io/all-search/all-search/release/index.user.js)
 * [KGitHub 地址](https://raw.kgithub.com/all-search/all-search/release/index.user.js)
 
-### greasyFork
+#### Greasy Fork
 * [greasyfork地址](https://greasyfork.org/zh-CN/scripts/397993-all-search)
 
-### 脚本猫
+#### 脚本猫
 * [脚本猫ScriptCat地址](https://scriptcat.org/script-show-page/477)
 
 ## 设置入口
@@ -43,6 +66,43 @@
 各 Tab 底部仅保留 **取消 / 保存**。取消会恢复到上次保存的内容；“配置”和“编辑”的菜单草稿会一起恢复，划词工具栏的草稿独立处理。
 
 “编辑”页的 JSON 编辑器上方提供 **清除网址管理配置**。确认后立即删除已保存的自定义菜单配置及当前菜单草稿，恢复脚本内置网址，同步更新“配置”和“编辑”页，无需再点保存。划词工具栏、其他设置和图标缓存独立保留。需要保留自定义配置时，可先导出整份备份。
+
+### 内置网址更新（1.5.19）
+
+* 删除火山翻译、AcFun、niconico、苏宁、值得买、当当网、亚马逊、豆丁文档、爱问知识，以及默认的“常用”分类。
+* 新增视频分类的抖音（`https://www.douyin.com/search/%s?type=video`）、购物分类的闲鱼（`https://www.goofish.com/search?q=%s`）、社交分类的 SOV2EX（`https://www.sov2ex.com/?q=%s`）。`%s` 代表搜索关键词。
+* 新增“AI”分类，更新后内置菜单共 13 个分类、93 个网址入口。
+* 划词工具栏默认入口依次为 Google、百度、Google翻译、ChatGPT。
+
+安装新版脚本并刷新页面后，未保存过自定义菜单的用户会直接使用新版内置网址。已有自定义配置时，仍优先使用已保存的内容；要完整采用新版内置列表，先导出备份，再进入 **网址管理 → 编辑 → 清除网址管理配置** 并确认。需要保留自定义网址时，可在“配置”中逐项修改后保存。
+
+### AI 分类
+
+AI 分类位于“搜索”之后，共 10 个入口，采用“支持时带入当前搜索词，其余打开官网”的方式。
+
+以下入口使用传词链接：
+
+| AI | 网址模板 | 核对来源 |
+| --- | --- | --- |
+| ChatGPT | `https://chatgpt.com/?q=%s` | [OpenAI 社区的参数使用记录](https://community.openai.com/t/query-parameters-in-chatgpt/1027747) |
+| Grok | `https://grok.com/?q=%s` | [原始研究中的链接说明](https://www.gabriel.urdhr.fr/2026/07/17/reprompt-lechat-grok/) |
+| Deepseek | `https://chat.deepseek.com/?q=%s` | [官方页面](https://chat.deepseek.com/)引用的[前端脚本](https://fe-static.deepseek.com/chat/static/main.9199a2404f.js)会读取 `q` 或 `prompt` |
+| Perplexity | `https://www.perplexity.ai/search?q=%s` | [官方 OpenSearch 描述](https://www.perplexity.ai/opensearch.xml) |
+| Claude | `https://claude.ai/new?q=%s` | [Oasis 对网页预填参数的研究](https://www.oasis.security/blog/claude-ai-prompt-injection-data-exfiltration-vulnerability) |
+
+`%s` 替换为经过 URL 编码的当前搜索词。链接传词不等于自动发送，登录、预填及发送确认由目标网站处理。
+
+以下入口先打开官网，再手动输入问题：
+
+| AI | 官网 |
+| --- | --- |
+| Gemini | `https://gemini.google.com/app` |
+| 豆包 | `https://www.doubao.com/chat/` |
+| 千问 | `https://www.qianwen.com/` |
+| Kimi | `https://www.kimi.com/` |
+| 智谱清言 | `https://chatglm.cn/` |
+
+这五项本次未确认当前可直接使用的网页传词链接，因此使用官网入口。所有 AI 链接沿用“新标签页打开”设置。文心和腾讯元宝已移除。
 
 ### 整份配置备份
 
@@ -137,9 +197,9 @@ corepack pnpm build:script
 
 每次修改源码后，重新执行 `corepack pnpm build:script`，更新脚本管理器中的代码，并刷新待测页面。
 
-#### 网址管理对话框测试（1.5.16）
+#### 网址管理对话框测试（1.5.19）
 
-1. 安装 `output/index.user.js`，刷新搜索结果页，打开“设置 → 网址管理 → 打开”，确认标题显示 `1.5.16`，有“配置 / 编辑 / 划词工具栏”三个 Tab，各 Tab 底部只有“取消 / 保存”。
+1. 安装 `output/index.user.js`，刷新搜索结果页，打开“设置 → 网址管理 → 打开”，确认标题显示 `1.5.19`，有“配置 / 编辑 / 划词工具栏”三个 Tab，各 Tab 底部只有“取消 / 保存”。
 2. 在“配置”中改名、新增或删除分类 / 网址。网址以 `%s` 代表关键词。拖动左侧手柄排序，也可聚焦手柄后按上下方向键。
 3. 切换到“编辑”，确认图形界面的修改出现在 JSON 中。可以在代码 / 树形 / 预览模式间切换；有效 JSON 修改切回“配置”后会同步。JSON 无效时提示错误，保留原草稿。
 4. 点击“保存”，看到“保存成功，当前页面已生效”后，当前菜单立即更新。刷新后配置保留；其他已打开页面需要刷新。
@@ -163,7 +223,6 @@ corepack pnpm test:browser
 
 浏览器测试运行生成的脚本，使用模拟 GM 存储，覆盖三个 Tab、JSON 模式、草稿同步、拖拽、保存 / 取消、整份备份恢复、导入失败回退及移动端布局。实际油猴 / 脚本猫环境仍需按上述步骤手动验证。
 
-#### 反馈与交流
-[腾讯频道](https://pd.qq.com/s/2bmefcl98)
+## 来源与许可
 
-频道号 pd15449687
+本版基于 [all-search/all-search](https://github.com/all-search/all-search) 二次修改，保留上游归属说明，并沿用 **GPL-3.0-only** 许可证，完整条款见 [LICENSE](./LICENSE)。本版问题请提交到 [jetyu/all-search_mod Issues](https://github.com/jetyu/all-search_plus/issues)。
