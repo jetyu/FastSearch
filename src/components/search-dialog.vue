@@ -62,6 +62,7 @@ import asDialog from './dialog'
 import icon from './icon'
 import favicon from './favicon'
 import useSites from './useSites'
+import useOpenInNewTab from './useOpenInNewTab'
 import scrollbar from './scrollbar/src/scrollbar'
 
 export default {
@@ -98,10 +99,11 @@ export default {
     const inputValue = ref('')
 
     const { sites } = useSites('tm')
+    const { openInNewTab } = useOpenInNewTab()
 
     const handleClick = (item, newWin) => {
       const keyword = inputValue.value
-      if (newWin) {
+      if (newWin || openInNewTab.value) {
         window.open(item.url.replace('%s', keyword))
       } else {
         window.location.href = item.url.replace('%s', keyword)

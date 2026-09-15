@@ -52,6 +52,7 @@ import icon from './icon'
 import favicon from './favicon'
 import { onTap } from '../util/tap'
 import { selection } from './selection'
+import useOpenInNewTab from './useOpenInNewTab'
 
 let isTap = false
 
@@ -72,6 +73,7 @@ export default {
     }
   },
   setup (props) {
+    const { openInNewTab } = useOpenInNewTab()
     const categoryRef = ref(null)
     const currentSite = site
     const classList = computed(() =>
@@ -116,7 +118,7 @@ export default {
     }
     const handleClick = (item, newWin) => {
       const keyword = defaultKeyword()
-      if (newWin) {
+      if (newWin || openInNewTab.value) {
         window.open(item.url.replace('%s', keyword))
       } else {
         window.location.href = item.url.replace('%s', keyword)

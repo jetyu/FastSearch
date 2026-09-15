@@ -30,6 +30,18 @@
             </header>
             <section>
               <form-item
+                label-width="100"
+                label="新标签页打开">
+                <as-radio
+                  :label="true"
+                  v-model="openInNewTab">开启
+                </as-radio>
+                <as-radio
+                  :label="false"
+                  v-model="openInNewTab">关闭
+                </as-radio>
+              </form-item>
+              <form-item
                 label-width="84"
                 label="划词工具栏">
                 <as-radio
@@ -140,6 +152,7 @@ import useSwitchShow from '../components/useSwitchShow'
 import useColor from './useColor'
 import useFavicon from './useFavicon'
 import useToolbar from './useToolbar'
+import useOpenInNewTab from './useOpenInNewTab'
 import useSites from './useSites'
 import overlay from '../components/overlay'
 import radio from '../components/radio'
@@ -171,6 +184,7 @@ export default {
     const { show, options, scrollHide } = useSwitchShow()
     const { favicon, clearIconCache } = useFavicon()
     const { visible: toolbarVisible } = useToolbar()
+    const { openInNewTab } = useOpenInNewTab()
     const { resetSites } = useSites('tm')
 
     const hide = () => {
@@ -194,6 +208,7 @@ export default {
       align,
       favicon,
       toolbarVisible,
+      openInNewTab,
       primaryColor,
       primaryTextColor,
       show,
