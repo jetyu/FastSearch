@@ -7,7 +7,6 @@ export const devFileName = 'index.dev.js'
 const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_mod/master/output/${fileName}`
 
 const meta = `// @name         ${pkg.displayName}
-// @name:zh-CN   全搜增强版
 // @namespace    ${pkg.name}
 // @version      ${pkg.version}
 // @description  ${pkg.description}
