@@ -5,7 +5,7 @@ import { cloneData, normalizeSites, normalizeUrls, createListRepository } from '
 const defaults = [{ name: 'search', nameZh: '搜索', list: [{ nameZh: '搜索引擎', url: 'https://example.com/?q=%s', selectors: '#q', query: ['q'] }] }]
 function fixture (stored) {
   const changes = []
-  const config = { defaults, normalize: normalizeSites, read: async () => stored, write: async value => { stored = value }, onChange: value => changes.push(value) }
+  const config = { defaults, normalize: normalizeSites, read: async () => stored, write: async value => { stored = value }, remove: async () => { stored = undefined }, onChange: value => changes.push(value) }
   return { config, changes, set: value => { stored = value }, get: () => stored }
 }
 
@@ -62,4 +62,38 @@ test('corrupt saved configuration is reported instead of silently overwritten', 
   await assert.rejects(repository.reload(), /分类数组/)
   await assert.rejects(repository.save([]), /分类数组/)
   assert.deepEqual(f.get(), { bad: true })
+})
+
+test('clearing waits for deletion, removes the saved override and allows subsequent saves', async () => {
+  const f = fixture([])
+  let finish
+  f.config.remove = () => new Promise(resolve => { finish = () => { f.set(undefined); resolve() } })
+  const repository = createListRepository(f.config)
+  await repository.reload()
+  const clearing = repository.clear()
+  await new Promise(resolve => setImmediate(resolve))
+  assert.deepEqual(repository.snapshot(), [])
+  await assert.rejects(repository.save([]), /正在处理/)
+  finish()
+  assert.deepEqual(await clearing, normalizeSites(defaults))
+  assert.equal(f.get(), undefined)
+  assert.deepEqual(await repository.reload(), normalizeSites(defaults))
+  await repository.save([])
+  assert.deepEqual(f.get(), [])
+})
+
+test('failed deletion or a stale page cannot clear saved data or publish defaults', async () => {
+  const f = fixture([])
+  let removals = 0
+  f.config.remove = async () => { removals++; throw Error('delete failed') }
+  const repository = createListRepository(f.config)
+  await repository.reload()
+  await assert.rejects(repository.clear(), /delete failed/)
+  assert.deepEqual(f.get(), [])
+  assert.deepEqual(repository.snapshot(), [])
+  assert.equal(f.changes.length, 1)
+  f.set(defaults)
+  await assert.rejects(repository.clear(), /其他页面修改/)
+  assert.equal(removals, 1)
+  assert.deepEqual(f.get(), defaults)
 })

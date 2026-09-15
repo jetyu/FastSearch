@@ -28,7 +28,10 @@ async function boot (page, options = {}) {
       if (window.failOnceKey === key) { window.failOnceKey = ''; throw Error('模拟备份恢复失败') }
       localStorage.setItem(key, JSON.stringify(value))
     }
-    window.GM_deleteValue = key => localStorage.removeItem(key)
+    window.GM_deleteValue = async key => {
+      if (window.failDelete) throw Error('模拟清除失败')
+      localStorage.removeItem(key)
+    }
     window.testCommands = {}
     window.GM_registerMenuCommand = (name, fn) => { window.testCommands[name] = fn }
     document.addEventListener('DOMContentLoaded', () => scripts.forEach(content => {
@@ -286,4 +289,73 @@ test('global restore rejects partial files and rolls back after a write failure'
   expect(await stored(page)).toEqual(legacy)
   expect(await stored(page, 'toolbar')).toBeUndefined()
   await expect(page.locator('.as-menu-item-title').first()).toHaveText('搜索')
+})
+
+test('clearing menu configuration confirms first, restores built-ins and preserves other settings and drafts', async ({ page }, testInfo) => {
+  await boot(page)
+  const toolbar = [{ nameZh: '自定义划词', url: 'https://toolbar.example.com/?q=%s' }]
+  await page.evaluate(async toolbar => {
+    await window.GM_setValue('__allSearch__toolbar', toolbar)
+    await window.GM_setValue('__allSearch__openInNewTab', true)
+  }, toolbar)
+  const dialog = await openManager(page)
+  const clear = dialog.getByRole('button', { name: '清除网址管理配置', exact: true })
+  await expect(clear).toHaveCount(0)
+  await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
+  await expect(clear).toHaveCount(0)
+  await dialog.getByLabel('网址名称', { exact: true }).first().fill('保留划词草稿')
+  await dialog.getByRole('tab', { name: '编辑', exact: true }).click()
+  await expect(clear).toBeVisible()
+  await expect(dialog.locator('.sm-footer-actions button')).toHaveText(['取消', '保存'])
+  await editJson(page, '{invalid draft')
+  page.once('dialog', prompt => prompt.dismiss())
+  await clear.click()
+  expect(await stored(page)).toEqual(legacy)
+  await expect(dialog.locator('.ace_content')).toContainText('invalid draft')
+  page.once('dialog', async prompt => {
+    expect(prompt.message()).toContain('恢复内置网址')
+    await prompt.accept()
+  })
+  await clear.click()
+  await expect(dialog.getByRole('status')).toContainText('网址管理配置已清除')
+  expect(await stored(page)).toBeUndefined()
+  expect(await stored(page, 'toolbar')).toEqual(toolbar)
+  expect(await stored(page, 'openInNewTab')).toBe(true)
+  await expect(dialog.getByRole('button', { name: '保存', exact: true })).toBeDisabled()
+  await expect(dialog.locator('.ace_content')).not.toContainText('invalid draft')
+  await expect(page.locator('.as-menu-item-title', { hasText: '视频' })).toHaveCount(1)
+  await page.screenshot({ path: testInfo.outputPath('clear-menu-desktop.png') })
+  await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
+  await expect(dialog.getByLabel('网址名称', { exact: true }).first()).toHaveValue('保留划词草稿')
+  await page.reload()
+  expect(await stored(page)).toBeUndefined()
+  await expect(page.locator('.as-menu-item-title', { hasText: '视频' })).toHaveCount(1)
+  await page.setViewportSize({ width: 390, height: 844 })
+  const reopened = await openManager(page, '编辑')
+  const bounds = await reopened.getByRole('button', { name: '清除网址管理配置', exact: true }).boundingBox()
+  expect(bounds.x + bounds.width).toBeLessThanOrEqual(390)
+  await page.screenshot({ path: testInfo.outputPath('clear-menu-mobile.png') })
+})
+
+test('clearing failures and changes from another page retain the menu and JSON draft', async ({ page }) => {
+  await boot(page)
+  const dialog = await openManager(page, '编辑')
+  const clear = dialog.getByRole('button', { name: '清除网址管理配置', exact: true })
+  await editJson(page, '{keep draft')
+  page.on('dialog', prompt => prompt.accept())
+  await page.evaluate(() => { window.failDelete = true })
+  await clear.click()
+  await expect(dialog.getByRole('status')).toContainText('模拟清除失败')
+  expect(await stored(page)).toEqual(legacy)
+  await expect(dialog.locator('.ace_content')).toContainText('keep draft')
+  const newer = [{ name: 'newer', nameZh: '其他页面配置', list: [] }]
+  await page.evaluate(async newer => {
+    window.failDelete = false
+    await window.GM_setValue('__allSearch__sites', newer)
+  }, newer)
+  await clear.click()
+  await expect(dialog.getByRole('status')).toContainText('其他页面修改')
+  expect(await stored(page)).toEqual(newer)
+  await expect(dialog.locator('.ace_content')).toContainText('keep draft')
+  await expect(page.locator('.as-menu-item-title', { hasText: '视频' })).toHaveCount(0)
 })
