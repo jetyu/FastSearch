@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         all-search 全搜，搜索引擎快捷跳转，支持任意网站展示
 // @namespace    all-search
-// @version      1.5.10
+// @version      1.5.11
 // @author       endday
 // @description  2026-9-15更新 搜索辅助增强，任意跳转，无需代码适配，支持任意网站展示
 // @license      GPL-3.0-only
