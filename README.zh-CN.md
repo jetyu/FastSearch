@@ -77,8 +77,8 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 - 新增视频分类的抖音（`https://www.douyin.com/search/%s?type=video`），购物分类的闲鱼、唯品会、亚马逊（全球）和 eBay，社交分类的 SOV2EX 和小红书。`%s` 代表搜索关键词。
 - 开发分类新增 Docker Hub、Hugging Face 和 Maven Central，并将误标为 W3C 的菜鸟教程入口改正。
 - ChatGPT、Grok、Deepseek、Perplexity 和 Claude 并入“搜索”，Hugging Face 归入“开发”，不再单设 AI 分类。
-- 网盘分类保留百度网盘，并新增 PanSearch 和小酷盘；新闻分类新增人民网、央视网、澎湃新闻和中新网。
-- 新增高德地图、百度地图、谷歌地图组成的“地图”分类；更新后内置菜单共 13 个分类、86 个网址入口。
+- 网盘分类保留百度网盘，并新增 PanSearch 和小酷盘；新闻分类新增人民网、央视网、澎湃新闻和中新网；百科分类新增快懂百科。
+- 新增高德地图、百度地图、谷歌地图组成的“地图”分类；更新后内置菜单共 13 个分类、87 个网址入口。
 - 所有实际内置入口均改用 HTTPS 并包含至少一个 `%s`；同一网址中的多个 `%s` 现在都会替换为当前搜索词。
 - 划词工具栏默认入口依次为 Google、百度、Google翻译、ChatGPT。
 

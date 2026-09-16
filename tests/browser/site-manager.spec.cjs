@@ -505,7 +505,8 @@ test('new built-in sites pass encoded queries and removed sites stay absent', as
     ['新闻', '人民网', 'https://search.people.cn/s/?keyword=%s'],
     ['新闻', '央视网', 'https://search.cctv.com/search.php?qtext=%s&type=web'],
     ['新闻', '澎湃新闻', 'https://www.thepaper.cn/searchResult?id=%s'],
-    ['新闻', '中新网', 'https://sou.chinanews.com.cn/search.do?q=%s']
+    ['新闻', '中新网', 'https://sou.chinanews.com.cn/search.do?q=%s'],
+    ['百科', '快懂百科', 'https://www.baike.com/search?keyword=%s']
   ]
   for (const [category, name, template] of targets) {
     const menu = page.locator('.as-menu-item-title', { hasText: new RegExp(`^${category}$`) })
