@@ -12,7 +12,7 @@ export default [
     url: 'https://cn.bing.com/search?q=%s'
   },
   {
-    nameZh: 'DDG',
+    nameZh: 'DuckDuckGo',
     url: 'https://duckduckgo.com/?q=%s'
   },
   {

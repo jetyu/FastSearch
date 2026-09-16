@@ -8,7 +8,7 @@ export default [
     url: 'https://developer.mozilla.org/zh-CN/search?q=%s'
   },
   {
-    nameZh: 'stackoverflow',
+    nameZh: 'Stack Overflow',
     url: 'https://stackoverflow.com/search?q=%s'
   },
   {
@@ -25,7 +25,7 @@ export default [
     url: 'https://github.com/search?utf8=✓&q=%s'
   },
   {
-    nameZh: 'w3c',
+    nameZh: 'W3C',
     url: 'http://www.runoob.com/?s=%s'
   },
   {

@@ -16,11 +16,11 @@ export default [
     url: 'https://pic.sogou.com/pics?query=%s'
   },
   {
-    nameZh: 'pixiv',
+    nameZh: 'Pixiv',
     url: 'http://www.pixiv.net/search.php?word=%s'
   },
   {
-    nameZh: 'flickr',
+    nameZh: 'Flickr',
     url: 'http://www.flickr.com/search/?q=%s'
   },
   {
@@ -32,16 +32,16 @@ export default [
     url: 'https://www.pinterest.com/search/pins/?q=%s&rs=typed&term_meta'
   },
   {
-    nameZh: 'yandex',
+    nameZh: 'Yandex',
     url: 'https://yandex.com/images/search?text=%s'
   },
   {
-    nameZh: 'pixabay',
+    nameZh: 'Pixabay',
     url: 'https://pixabay.com/images/search/%s/',
     icon: 'https://pixabay.com/favicon-32x32.png'
   },
   {
-    nameZh: 'unsplash',
+    nameZh: 'Unsplash',
     url: 'https://unsplash.com/s/photos/%s'
   }
 ]

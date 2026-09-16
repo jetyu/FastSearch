@@ -517,22 +517,6 @@
     {
       nameZh: "Claude",
       url: "https://claude.ai/new?q=%s"
-    },
-    {
-      nameZh: "豆包",
-      url: "https://www.doubao.com/chat/"
-    },
-    {
-      nameZh: "千问",
-      url: "https://www.qianwen.com/"
-    },
-    {
-      nameZh: "Kimi",
-      url: "https://www.kimi.com/"
-    },
-    {
-      nameZh: "智谱清言",
-      url: "https://chatglm.cn/"
     }
   ];
   const translate = [
@@ -634,23 +618,15 @@
       icon: "https://s1.music.126.net/style/favicon.ico"
     },
     {
-      nameZh: "一听",
-      url: "http://so.1ting.com/all.do?q=%s"
-    },
-    {
       nameZh: "QQ音乐",
       url: "https://y.qq.com/portal/search.html#page=1&searchid=1&remoteplace=txt.yqq.top&t=song&w=%s"
-    },
-    {
-      nameZh: "百度音乐",
-      url: "http://music.baidu.com/search?ie=utf-8&oe=utf-8&key=%s"
     },
     {
       nameZh: "酷我音乐",
       url: "https://kuwo.cn/search/list?key=%s"
     },
     {
-      nameZh: "酷狗",
+      nameZh: "酷狗音乐",
       url: "http://search.5sing.kugou.com/?keyword=%s"
     }
   ];

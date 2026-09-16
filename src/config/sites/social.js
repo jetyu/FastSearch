@@ -8,6 +8,10 @@ export default [
     url: 'https://twitter.com/search/%s'
   },
   {
+    nameZh: 'SOV2EX',
+    url: 'https://www.sov2ex.com/?q=%s'
+  },
+  {
     nameZh: '豆瓣',
     url: 'https://www.douban.com/search?source=suggest&q=%s'
   },
@@ -24,11 +28,7 @@ export default [
     url: 'https://www.facebook.com/search/results.php?q=%s'
   },
   {
-    nameZh: '微信搜索',
+    nameZh: '微信',
     url: 'http://weixin.sogou.com/weixin?ie=utf8&type=2&query=%s'
-  },
-  {
-    nameZh: 'SOV2EX',
-    url: 'https://www.sov2ex.com/?q=%s'
   }
 ]

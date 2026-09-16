@@ -22,11 +22,12 @@ All Search Plus is a search helper userscript for Tampermonkey or ScriptCat. Swi
 
 ### Install All Search Plus
 
-* [Enhanced GM userscript: output/index.user.js](./output/index.user.js)
+* [Greasy Fork installation page (recommended)](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
+* [GitHub build: output/index.user.js](./output/index.user.js)
 
 1. Install and enable the Tampermonkey or ScriptCat browser extension.
-2. Open the script file above and click **Raw** on the GitHub file page to view the complete script. If your userscript manager opens an installation page, confirm the installation.
-3. If no installation page appears, create a new script in your userscript manager, replace the default contents with the complete file (including the opening `// ==UserScript==` metadata), then save and enable it.
+2. For the recommended method, open the Greasy Fork page above, click **Install this script**, and confirm the installation in your userscript manager. Future releases published there will be checked for updates automatically.
+3. Alternatively, open the GitHub build and click **Raw**. If no installation page appears, create a new script in your userscript manager, replace the default contents with the complete file (including the opening `// ==UserScript==` metadata), then save and enable it.
 4. Refresh a search results page to use the menu. Open **Settings → URL management → Open** to manage search entries, or **Settings → Configuration backup** to import or export the full configuration.
 
 Enable only one all-search version at a time to avoid duplicate menus. The enhanced version uses `All Search Plus` as its default `@name`, `全搜增强版` as its Simplified Chinese name, and `all-search-plus` as its `@namespace`. Homepage and support links point to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
@@ -55,9 +56,9 @@ Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 �
 
 ### Built-in sites in 1.5.20
 
-This version removes the requested legacy sites and the default empty Personal category, adds Douyin, Xianyu and SOV2EX, and adds an AI category after Search. The catalog contains 13 categories and 93 entries.
+This version removes the requested legacy sites and the default empty Personal category, adds Douyin, Xianyu and SOV2EX, and adds an AI category after Search. The catalog contains 13 categories and 87 entries.
 
-The AI category has 10 entries. ChatGPT, Grok, Deepseek, Perplexity and Claude use query links. Gemini, Doubao, Qianwen, Kimi and Zhipu Qingyan open their homepages because working native query links were not confirmed in this review. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are removed. See the [Chinese README](./README.zh-CN.md#ai-分类) for exact URLs and sources.
+The AI category has 6 entries. ChatGPT, Grok, Deepseek, Perplexity and Claude use query links. Gemini opens its homepage because a working native query link was not confirmed in this review. Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. See the [Chinese README](./README.zh-CN.md#ai-分类) for exact URLs and sources.
 
 The default selection toolbar contains Google, Baidu, Google Translate and ChatGPT, in that order.
 

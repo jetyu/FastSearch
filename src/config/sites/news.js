@@ -10,10 +10,6 @@ export default [
     icon: 'https://www.baidu.com/favicon.ico'
   },
   {
-    nameZh: '网易-百度',
-    url: 'https://www.baidu.com/s?wd=%s%20site%3Anews.163.com'
-  },
-  {
     nameZh: '腾讯新闻',
     url: 'https://www.sogou.com/sogou?site=news.qq.com&query=%s'
   },

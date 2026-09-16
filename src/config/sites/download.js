@@ -16,16 +16,8 @@ export default [
     url: 'https://thepiratebay.org/search/%s'
   },
   {
-    name: 'veryCD',
-    url: 'http://www.verycd.com/search/folders/%s'
-  },
-  {
     name: 'ED2000',
     url: 'http://www.ed2000.com/FileList.asp?PageIndex=1&SearchWord=%s&searchMethod=ED2000'
-  },
-  {
-    name: '人人影视',
-    url: 'http://www.zimuzu.tv/search/index?keyword=%s'
   },
   {
     name: 'subHD字幕',

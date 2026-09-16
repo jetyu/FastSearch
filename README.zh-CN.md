@@ -22,11 +22,12 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 ### All Search Plus 安装入口
 
-* [增强版 GM 脚本：output/index.user.js](./output/index.user.js)
+* [Greasy Fork 安装页（推荐）](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
+* [GitHub 构建脚本：output/index.user.js](./output/index.user.js)
 
 1. 在浏览器中安装并启用油猴或脚本猫扩展。
-2. 打开上方脚本文件，在 GitHub 文件页面点击 **Raw** 查看完整脚本；如果脚本管理器弹出安装页面，确认安装。
-3. 如果没有弹出安装页面，在脚本管理器中新建脚本，将完整文件内容（包含开头的 `// ==UserScript==` 元信息）复制进去，替换默认内容并保存、启用。
+2. 推荐打开上方 Greasy Fork 安装页，点击 **安装此脚本**，然后在脚本管理器中确认安装。以后发布的新版本会由 Greasy Fork 自动检查更新。
+3. 也可以打开 GitHub 构建脚本，在文件页面点击 **Raw** 安装；如果没有弹出安装页面，可在脚本管理器中新建脚本，将完整文件内容（包含开头的 `// ==UserScript==` 元信息）复制进去并保存、启用。
 4. 刷新搜索结果页面，即可使用全搜菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
 
 同一时间只启用一个全搜版本，避免菜单重复。增强版默认名称为 `All Search Plus`，简体中文环境显示 `全搜增强版`，`@namespace` 保持为 `all-search-plus`；主页与反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
@@ -71,14 +72,14 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 * 删除火山翻译、AcFun、niconico、苏宁、值得买、当当网、亚马逊、豆丁文档、爱问知识，以及默认的“常用”分类。
 * 新增视频分类的抖音（`https://www.douyin.com/search/%s?type=video`）、购物分类的闲鱼（`https://www.goofish.com/search?q=%s`）、社交分类的 SOV2EX（`https://www.sov2ex.com/?q=%s`）。`%s` 代表搜索关键词。
-* 新增“AI”分类，更新后内置菜单共 13 个分类、93 个网址入口。
+* 新增“AI”分类，更新后内置菜单共 13 个分类、87 个网址入口。
 * 划词工具栏默认入口依次为 Google、百度、Google翻译、ChatGPT。
 
 安装新版脚本并刷新页面后，未保存过自定义菜单的用户会直接使用新版内置网址。已有自定义配置时，仍优先使用已保存的内容；要完整采用新版内置列表，先导出备份，再进入 **网址管理 → 编辑 → 清除网址管理配置** 并确认。需要保留自定义网址时，可在“配置”中逐项修改后保存。
 
 ### AI 分类
 
-AI 分类位于“搜索”之后，共 10 个入口，采用“支持时带入当前搜索词，其余打开官网”的方式。
+AI 分类位于“搜索”之后，共 6 个入口，采用“支持时带入当前搜索词，其余打开官网”的方式。
 
 以下入口使用传词链接：
 
@@ -97,12 +98,8 @@ AI 分类位于“搜索”之后，共 10 个入口，采用“支持时带入�
 | AI | 官网 |
 | --- | --- |
 | Gemini | `https://gemini.google.com/app` |
-| 豆包 | `https://www.doubao.com/chat/` |
-| 千问 | `https://www.qianwen.com/` |
-| Kimi | `https://www.kimi.com/` |
-| 智谱清言 | `https://chatglm.cn/` |
 
-这五项本次未确认当前可直接使用的网页传词链接，因此使用官网入口。所有 AI 链接沿用“新标签页打开”设置。文心和腾讯元宝已移除。
+Gemini 本次未确认当前可直接使用的网页传词链接，因此保留官网入口。豆包、千问、Kimi 和智谱清言因入口不含 `%s` 搜索占位符而移除。所有 AI 链接沿用“新标签页打开”设置。文心和腾讯元宝也已移除。
 
 ### 整份配置备份
 
