@@ -412,25 +412,24 @@ test('new built-in developer, shopping, social and map entries pass encoded quer
   })
   const encoded = encodeURIComponent(keyword)
   const targets = [
-    ['开发', 'npm', 'https://www.npmjs.com/search?q='],
-    ['开发', 'PyPI', 'https://pypi.org/search/?q='],
-    ['开发', 'Docker Hub', 'https://hub.docker.com/search?q='],
-    ['开发', 'Hugging Face', 'https://huggingface.co/search/full-text?q='],
-    ['开发', 'Maven Central', 'https://central.sonatype.com/search?q='],
-    ['购物', '唯品会', 'https://category.vip.com/suggest.php?keyword='],
-    ['购物', 'AliExpress', 'https://www.aliexpress.com/wholesale?SearchText='],
-    ['购物', '亚马逊（全球）', 'https://www.amazon.com/s?k='],
-    ['购物', 'eBay', 'https://www.ebay.com/sch/i.html?_nkw='],
-    ['社交', '小红书', 'https://www.xiaohongshu.com/search_result?keyword='],
-    ['地图', '高德地图', 'https://uri.amap.com/search?keyword='],
-    ['地图', '百度地图', 'https://map.baidu.com/search/'],
-    ['地图', '谷歌地图', 'https://www.google.com/maps/search/']
+    ['开发', 'npm', 'https://www.npmjs.com/search?q=%s'],
+    ['开发', 'PyPI', 'https://pypi.org/search/?q=%s'],
+    ['开发', 'Docker Hub', 'https://hub.docker.com/search?q=%s'],
+    ['开发', 'Maven Central', 'https://central.sonatype.com/search?q=%s'],
+    ['购物', '唯品会', 'https://category.vip.com/suggest.php?keyword=%s'],
+    ['购物', 'AliExpress', 'https://www.aliexpress.com/wholesale?SearchText=%s'],
+    ['购物', '亚马逊（全球）', 'https://www.amazon.com/s?k=%s'],
+    ['购物', 'eBay', 'https://www.ebay.com/sch/i.html?_nkw=%s'],
+    ['社交', '小红书', 'https://www.xiaohongshu.com/search_result?keyword=%s&source=web_search_result_notes'],
+    ['地图', '高德地图', 'https://uri.amap.com/search?keyword=%s'],
+    ['地图', '百度地图', 'https://map.baidu.com/search/%s'],
+    ['地图', '谷歌地图', 'https://www.google.com/maps/search/%s']
   ]
-  for (const [category, name, prefix] of targets) {
+  for (const [category, name, template] of targets) {
     const menu = page.locator('.as-menu-item-title', { hasText: new RegExp(`^${category}$`) })
     await menu.hover()
     await page.locator('.as-subMenu:visible').getByText(name, { exact: true }).click({ modifiers: ['Control'] })
-    expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe(prefix + encoded)
+    expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe(template.replace('%s', encoded))
   }
 
   const scholar = page.locator('.as-menu-item-title', { hasText: /^学术$/ })

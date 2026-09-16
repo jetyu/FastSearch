@@ -56,7 +56,7 @@ Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 �
 
 ### Built-in sites in 1.5.20
 
-This version removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, AliExpress, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; and adds AI and Map categories. The catalog contains 14 categories and 98 entries.
+This version removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, AliExpress, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; and adds AI and Map categories. The catalog contains 14 categories and 97 entries.
 
 The AI category has 5 entries, and every entry uses a query link: ChatGPT, Grok, Deepseek, Perplexity and Claude. Gemini, Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. The Developer category now includes npm, PyPI, Docker Hub, Hugging Face and Maven Central, while the Map category includes Amap, Baidu Maps and Google Maps. See the [Chinese README](./README.zh-CN.md#ai-分类) for exact AI URLs and sources.
 
