@@ -29,7 +29,10 @@ export default defineConfig(({ mode }) => {
   } else if (mode === 'script') {
     return {
       build: {
-        outDir: 'output'
+        outDir: 'output',
+        // vite-plugin-monkey defaults userscript builds to unminified output.
+        // Keep the metadata block readable while minifying the bundled code.
+        minify: 'esbuild'
       },
       resolve: {
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
@@ -43,7 +46,10 @@ export default defineConfig(({ mode }) => {
             fileName: 'index.user.js',
             externalGlobals: {
               vue: ['Vue', () => `https://registry.npmmirror.com/vue/3.4.15/files/dist/vue.global.prod.js`],
-              '@popperjs/core': ['Popper', () => `https://registry.npmmirror.com/@popperjs/core/2.11.8/files/dist/umd/popper-lite.min.js`]
+              '@popperjs/core': ['Popper', () => `https://registry.npmmirror.com/@popperjs/core/2.11.8/files/dist/umd/popper-lite.min.js`],
+              // JSONEditor accounts for most of the bundle. Pin the CDN version so
+              // userscript managers cache and execute the same reviewed build.
+              jsoneditor: ['JSONEditor', () => `https://cdn.jsdelivr.net/npm/jsoneditor@9.10.5/dist/jsoneditor.min.js`]
             },
             cssSideEffects: () => {
               return (e) => {

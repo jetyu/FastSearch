@@ -14,8 +14,9 @@ export default {
   author: pkg.author,
   license: pkg.license,
   icon: `data:image/svg+xml;base64,${iconBase64}`,
-  homepage: pkg.homepage,
-  homepageURL: pkg.homepage,
+  // Prevent vite-plugin-monkey from adding homepage aliases from package.json.
+  homepage: null,
+  homepageURL: null,
   supportURL: pkg.bugs.url,
   updateURL: scriptUrl,
   downloadURL: scriptUrl,

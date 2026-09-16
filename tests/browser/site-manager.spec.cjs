@@ -5,6 +5,7 @@ const root = path.resolve(__dirname, '../..')
 const scripts = [
   'node_modules/vue/dist/vue.global.prod.js',
   'node_modules/@popperjs/core/dist/umd/popper-lite.min.js',
+  'node_modules/jsoneditor/dist/jsoneditor.min.js',
   'output/index.user.js'
 ].map((file) => fs.readFileSync(path.join(root, file), 'utf8'))
 const legacy = [

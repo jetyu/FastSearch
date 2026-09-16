@@ -1,14 +1,10 @@
-![all-search](https://socialify.git.ci/all-search/all-search/image?description=1&font=Inter&forks=1&issues=1&language=1&owner=1&pattern=Plus&stargazers=1&theme=Light)
-
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
 ## All Search Plus
 
-> An enhanced version of All Search with quick search engine switching and support for displaying the menu on any website.
+> Quick search engine switching with support for displaying the menu on any website.
 
-**All Search Plus** is an independently maintained fork of [All Search](https://github.com/all-search/all-search), originally developed by endday and contributors. This version adds in-script URL management, complete configuration backups, a new-tab option, and a revised site catalog with AI search links. Thanks to the upstream author and contributors for their open-source work.
-
-A top fixed menu that allows you to easily jump between search engines, based on Vue 3 and built using Vite.
+**All Search Plus** is a search helper userscript for Tampermonkey and ScriptCat. It provides a fixed search menu, text-selection tools, in-script URL management and configuration backup. It is based on Vue 3 and built with Vite.
 
 Thanks to searchEngineJump for the idea and URL source.
 Similar tools recommended.
@@ -19,7 +15,7 @@ Similar tools recommended.
 
 ## GM userscript overview and installation
 
-All Search Plus is a search helper userscript for Tampermonkey or ScriptCat. Switch search engines from a quick menu while reusing the current query, or select text to search using the selection toolbar or search popup. The enhanced version adds in-script URL management, custom categories and sorting, full configuration backup and restore, an option to open searches in a new tab, and fixes for some known bugs.
+Switch search engines from a quick menu while reusing the current query, or select text to search using the selection toolbar or search popup. The script supports in-script URL management, custom categories and sorting, full configuration backup and restore, and an option to open searches in a new tab.
 
 ### Install All Search Plus
 
@@ -31,25 +27,9 @@ All Search Plus is a search helper userscript for Tampermonkey or ScriptCat. Swi
 3. Alternatively, open the GitHub build and click **Raw**. If no installation page appears, create a new script in your userscript manager, replace the default contents with the complete file (including the opening `// ==UserScript==` metadata), then save and enable it.
 4. Refresh a search results page to use the menu. Open **Settings → URL management → Open** to manage search entries, or **Settings → Configuration backup** to import or export the full configuration.
 
-Enable only one all-search version at a time to avoid duplicate menus. The enhanced version uses the single `@name` value `All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)` and the `@namespace` value `all-search-plus`. Homepage and support links point to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
+The script uses the `@name` value `All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)` and the `@namespace` value `all-search-plus`. The support link points to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
 
 When a script is published and installed through Greasy Fork, the platform removes its embedded update URLs so it receives updates from Greasy Fork. See the [Greasy Fork metadata documentation](https://greasyfork.org/en/help/meta-keys).
-
-### Original all-search links
-
-The following links are release sources for the original all-search project. To install this repository's enhanced version, use **Install All Search Plus** above.
-
-- [GitHub URL](https://raw.github.com/all-search/all-search/release/index.user.js)
-- [iQDNS/iQZone URL](https://raw.iqiq.io/all-search/all-search/release/index.user.js)
-- [KGitHub URL](https://raw.kgithub.com/all-search/all-search/release/index.user.js)
-
-#### Greasy Fork
-
-- [greasyfork URL](https://greasyfork.org/zh-CN/scripts/397993-all-search)
-
-#### ScriptCat
-
-- [ScriptCat ScriptCat URL](https://scriptcat.org/script-show-page/477)
 
 ## Settings
 
@@ -59,7 +39,7 @@ Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 �
 
 ### Built-in sites in 1.5.21
 
-This version removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; merges AI assistants into Search; and adds a Map category. The Drive category now contains Baidu Netdisk, PanSearch and Xiaokupan, News adds People.cn, CCTV, The Paper and China News, and Knowledge adds Baike.com. The catalog contains 13 categories and 87 entries.
+Version 1.5.21 removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; merges AI assistants into Search; and adds a Map category. The Drive category now contains Baidu Netdisk, PanSearch and Xiaokupan, News adds People.cn, CCTV, The Paper and China News, and Knowledge adds Baike.com. The catalog contains 13 categories and 87 entries.
 
 The Search category includes 5 AI assistants, and every entry uses a query link: ChatGPT, Grok, Deepseek, Perplexity and Claude. Gemini, Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. The Developer category now includes Docker Hub, Hugging Face and Maven Central, while the Map category includes Amap, Baidu Maps and Google Maps. See the [Chinese README](./README.zh-CN.md#ai-搜索入口) for exact AI URLs and sources.
 
@@ -122,10 +102,4 @@ Generates [`output/index.user.js`](./output/index.user.js) for Tampermonkey, rep
 
 ## Attribution and license
 
-This fork is based on [all-search/all-search](https://github.com/all-search/all-search) and retains its attribution and **GPL-3.0-only** license. See [LICENSE](./LICENSE) for the full terms. Report issues with this version in [jetyu/all-search_plus Issues](https://github.com/jetyu/all-search_plus/issues).
-
-#### Upstream feedback and communication
-
-[Tencent Channel](https://pd.qq.com/s/2bmefcl98)
-
-Channel No. pd15449687
+This script references [All Search](https://github.com/all-search/all-search) and is released under the **GPL-3.0-only** license. See [LICENSE](./LICENSE) for the full terms. Report issues in [jetyu/all-search_plus Issues](https://github.com/jetyu/all-search_plus/issues).

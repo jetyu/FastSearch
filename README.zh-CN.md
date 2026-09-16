@@ -1,14 +1,10 @@
-![all-search](https://socialify.git.ci/all-search/all-search/image?description=1&font=Inter&forks=1&issues=1&language=1&owner=1&pattern=Plus&stargazers=1&theme=Light)
-
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
 ## All Search Plus
 
-> 全搜增强版，搜索引擎快捷跳转，支持任意网站展示
+> 搜索引擎快捷跳转，支持任意网站展示
 
-**All Search Plus** 是基于 [All Search / 全搜](https://github.com/all-search/all-search) 进行二次修改的增强版本，由本仓库独立维护。在原有搜索引擎快捷跳转功能基础上，增加了脚本内网址管理、整份配置备份与恢复、新标签页打开设置，并调整了内置网址和 AI 搜索入口。感谢原作者 endday 及上游贡献者的开源工作。
-
-一个让你可以方便地在各个搜索引擎之间跳转的顶部固定菜单，基于 Vue 3，使用 Vite 构建。
+**All Search Plus** 是一款适用于油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助脚本，提供固定搜索菜单、划词搜索、脚本内网址管理和整份配置备份功能。项目基于 Vue 3，使用 Vite 构建。
 
 感谢searchEngineJump提供的创意和网址来源。
 同类工具推荐：
@@ -19,7 +15,7 @@
 
 ## GM 用户脚本说明与安装地址
 
-All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat）的搜索辅助脚本。在搜索结果页面中，通过快捷菜单切换搜索引擎，复用当前关键词；也可以选中文字后使用划词工具栏或搜索弹窗发起搜索。增强版支持脚本内网址管理、自定义分类与排序、整份配置备份与恢复，以及新标签页打开设置，并修复了部分已知 Bug。
+在搜索结果页面中，可以通过快捷菜单切换搜索引擎并复用当前关键词；也可以选中文字后使用划词工具栏或搜索弹窗发起搜索。脚本支持网址管理、自定义分类与排序、整份配置备份与恢复，以及新标签页打开设置。
 
 ### All Search Plus 安装入口
 
@@ -31,25 +27,9 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 3. 也可以打开 GitHub 构建脚本，在文件页面点击 **Raw** 安装；如果没有弹出安装页面，可在脚本管理器中新建脚本，将完整文件内容（包含开头的 `// ==UserScript==` 元信息）复制进去并保存、启用。
 4. 刷新搜索结果页面，即可使用全搜菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
 
-同一时间只启用一个全搜版本，避免菜单重复。增强版只使用统一的 `@name`：`All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)`，不再设置 `@name:zh-CN`；`@namespace` 保持为 `all-search-plus`。主页与反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
+脚本使用统一的 `@name`：`All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)`，`@namespace` 为 `all-search-plus`。反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
 
 通过 Greasy Fork 发布并安装时，平台会移除脚本中自带的更新地址，让脚本从 Greasy Fork 获取更新，详见 [Greasy Fork 元信息说明](https://greasyfork.org/zh-CN/help/meta-keys)。
-
-### 原项目 all-search 地址
-
-以下为原版 all-search 的发布入口。安装本仓库的增强版，请使用上方 **All Search Plus 安装入口**。
-
-- [GitHub 地址](https://raw.github.com/all-search/all-search/release/index.user.js)
-- [iQDNS/iQZone 地址](https://raw.iqiq.io/all-search/all-search/release/index.user.js)
-- [KGitHub 地址](https://raw.kgithub.com/all-search/all-search/release/index.user.js)
-
-#### Greasy Fork
-
-- [greasyfork地址](https://greasyfork.org/zh-CN/scripts/397993-all-search)
-
-#### 脚本猫
-
-- [脚本猫ScriptCat地址](https://scriptcat.org/script-show-page/477)
 
 ## 设置入口
 
@@ -57,12 +37,12 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 在对话框内切换“配置”“编辑”“划词工具栏”三个 Tab。
 没有显示全搜菜单时，可在油猴 / 脚本猫菜单中选择 **全搜：网址管理**。
 
-对话框参照原配置网站，提供三个 Tab：
+对话框提供三个 Tab：
 
 | Tab        | 对应原页面        | 功能                                                                               |
 | ---------- | ----------------- | ---------------------------------------------------------------------------------- |
 | 配置       | `/config/sites`   | 横向分类标签、分类改名 / 排序 / 显隐、网址列表、拖拽排序、图标设置、添加到常用分类 |
-| 编辑       | `/config/edit`    | 原版 JSONEditor，提供代码、树形、预览模式及校验                                    |
+| 编辑       | `/config/edit`    | JSONEditor，提供代码、树形、预览模式及校验                                          |
 | 划词工具栏 | `/config/toolbar` | 编辑划词搜索入口、拖拽排序、显示隐藏                                               |
 
 “配置”和“编辑”共享菜单草稿；“划词工具栏”单独编辑和保存。所有页面都在脚本内运行，不需要部署或打开 GitHub 配置网站。
