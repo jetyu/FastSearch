@@ -20,19 +20,6 @@ export default [
     url: 'https://juejin.cn/search?query=%s'
   },
   {
-    nameZh: 'Can I Use',
-    url: 'https://caniuse.com/#search=%s',
-    icon: 'https://caniuse.com/img/favicon-128.png'
-  },
-  {
-    nameZh: 'npm',
-    url: 'https://www.npmjs.com/search?q=%s'
-  },
-  {
-    nameZh: 'PyPI',
-    url: 'https://pypi.org/search/?q=%s'
-  },
-  {
     nameZh: 'Docker Hub',
     url: 'https://hub.docker.com/search?q=%s'
   },

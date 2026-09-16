@@ -10,10 +10,6 @@ export default [
     icon: 'https://www.baidu.com/favicon.ico'
   },
   {
-    nameZh: '腾讯新闻',
-    url: 'https://www.sogou.com/sogou?site=news.qq.com&query=%s'
-  },
-  {
     nameZh: '凤凰新闻',
     url: 'https://so.ifeng.com/?q=%s&c=1'
   },

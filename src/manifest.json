@@ -1,19 +1,15 @@
 {
   "name": "All Search Plus",
   "description": "全搜增强版，搜索引擎快捷跳转，支持任意网站展示",
-  "version": "1.0.0",
+  "version": "1.5.21",
   "icons": {},
   "action": {
     "default_title": "All Search Plus"
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "as-script/main.js"
-      ],
+      "matches": ["<all_urls>"],
+      "js": ["as-script/main.js"],
       "run_at": "document_idle"
     }
   ],
@@ -22,16 +18,10 @@
   },
   "web_accessible_resources": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "resources": [
-        "assets/*"
-      ]
+      "matches": ["<all_urls>"],
+      "resources": ["assets/*"]
     }
   ],
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "manifest_version": 3
 }

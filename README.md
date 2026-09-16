@@ -54,11 +54,11 @@ Open **设置 → 网址管理 → 打开** in the search menu. The dialog conta
 
 Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 → 编辑 → 清除网址管理配置** to restore the built-in menu after confirmation. If the menu is unavailable, open **全搜：网址管理** from your userscript manager's menu. Everyday settings work inside the script without a separate configuration website.
 
-### Built-in sites in 1.5.20
+### Built-in sites in 1.5.21
 
-This version removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, AliExpress, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; merges AI assistants into Search; and adds a Map category. The catalog contains 13 categories and 97 entries.
+This version removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; merges AI assistants into Search; and adds a Map category. The catalog contains 13 categories and 85 entries.
 
-The Search category includes 5 AI assistants, and every entry uses a query link: ChatGPT, Grok, Deepseek, Perplexity and Claude. Gemini, Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. The Developer category now includes npm, PyPI, Docker Hub, Hugging Face and Maven Central, while the Map category includes Amap, Baidu Maps and Google Maps. See the [Chinese README](./README.zh-CN.md#ai-搜索入口) for exact AI URLs and sources.
+The Search category includes 5 AI assistants, and every entry uses a query link: ChatGPT, Grok, Deepseek, Perplexity and Claude. Gemini, Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. The Developer category now includes Docker Hub, Hugging Face and Maven Central, while the Map category includes Amap, Baidu Maps and Google Maps. See the [Chinese README](./README.zh-CN.md#ai-搜索入口) for exact AI URLs and sources.
 
 Every built-in site now uses HTTPS and contains at least one `%s` search placeholder. URLs with repeated placeholders are fully expanded with the encoded query.
 

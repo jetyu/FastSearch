@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)
 // @namespace    all-search-plus
-// @version      1.5.20
+// @version      1.5.21
 // @author       endday > jetyu
 // @description  全搜增强版，搜索引擎快捷跳转，支持任意网站展示
 // @license      GPL-3.0-only
-// @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzY3JpcHRpb24iPgogIDx0aXRsZSBpZD0idGl0bGUiPkFsbCBTZWFyY2ggUGx1czwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2NyaXB0aW9uIj5BIG1hZ25pZnlpbmcgZ2xhc3Mgb3ZlciBzZWFyY2ggcmVzdWx0IGxpbmVzPC9kZXNjPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiYWNrZ3JvdW5kIiB4MT0iMTgiIHkxPSIxNCIgeDI9IjExMiIgeTI9IjExNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjNjc1Q0ZGIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA4QTlFNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iaGlnaGxpZ2h0IiB4MT0iNzgiIHkxPSIxOCIgeDI9IjEwNSIgeTI9IjQ1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNGRkU2NkQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZCNTQ3Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjI4IiBmaWxsPSJ1cmwoI2JhY2tncm91bmQpIi8+CiAgPGNpcmNsZSBjeD0iNTQiIGN5PSI1MyIgcj0iMzEiIGZpbGw9IiNGRkZGRkYiIGZpbGwtb3BhY2l0eT0iLjEyIi8+CiAgPGNpcmNsZSBjeD0iNTQiIGN5PSI1MyIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI5Ii8+CiAgPHBhdGggZD0iTTc2IDc1TDEwMSAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTM5IDQzSDY4TTM5IDUzSDYzTTM5IDYzSDU3IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iOTYiIGN5PSIyOSIgcj0iOSIgZmlsbD0idXJsKCNoaWdobGlnaHQpIi8+Cjwvc3ZnPgo=
+// @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzY3JpcHRpb24iPgogIDx0aXRsZSBpZD0idGl0bGUiPkFsbCBTZWFyY2ggUGx1czwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2NyaXB0aW9uIj5BIG1hZ25pZnlpbmcgZ2xhc3MgY29udGFpbmluZyBtdWx0aXBsZSBzZWFyY2ggc291cmNlcyBhbmQgYSBwbHVzPC9kZXNjPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiYWNrZ3JvdW5kIiB4MT0iMTUiIHkxPSIxMCIgeDI9IjExNiIgeTI9IjEyMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjNUI0QkZGIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjUyIiBzdG9wLWNvbG9yPSIjMTY4N0Y4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA4QjdDOCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIHJ4PSIyOCIgZmlsbD0idXJsKCNiYWNrZ3JvdW5kKSIvPgogIDxjaXJjbGUgY3g9IjUzIiBjeT0iNTMiIHI9IjMxIiBmaWxsPSIjRkZGRkZGIiBmaWxsLW9wYWNpdHk9Ii4xMyIvPgogIDxjaXJjbGUgY3g9IjUzIiBjeT0iNTMiIHI9IjI5IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iOSIvPgogIDxwYXRoIGQ9Ik03NCA3NEwxMDEgMTAxIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQ0IiBjeT0iNDQiIHI9IjYiIGZpbGw9IiNGRkQxNjYiLz4KICA8Y2lyY2xlIGN4PSI2MiIgY3k9IjQ0IiByPSI2IiBmaWxsPSIjRkY3QTkwIi8+CiAgPGNpcmNsZSBjeD0iNDQiIGN5PSI2MiIgcj0iNiIgZmlsbD0iIzcyRjFCOCIvPgogIDxjaXJjbGUgY3g9IjYyIiBjeT0iNjIiIHI9IjYiIGZpbGw9IiNGRkZGRkYiLz4KICA8cGF0aCBkPSJNOTYgMjBWNDBNODYgMzBIMTA2IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkQxNjYiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=
 // @homepage     https://github.com/jetyu/all-search_plus
 // @homepageURL  https://github.com/jetyu/all-search_plus
 // @source       https://github.com/jetyu/all-search_plus.git
@@ -35,7 +35,7 @@
   var _GM_setValue = /* @__PURE__ */ (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
   const name = "all-search-plus";
   const displayName = "All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)";
-  const version$2 = "1.5.20";
+  const version$2 = "1.5.21";
   const keywords = [
     "tamperMonkey",
     "user-script",
@@ -480,23 +480,13 @@
       url: "https://duckduckgo.com/?q=%s"
     },
     {
-      nameZh: "头条搜索",
-      url: "https://so.toutiao.com/search?dvpf=pc&keyword=%s"
-    },
-    {
-      nameZh: "360",
-      url: "https://www.so.com/s?ie=utf-8&q=%s"
-    },
-    {
       nameZh: "搜狗",
       url: "https://www.sogou.com/web?query=%s"
     },
     {
       nameZh: "Yandex",
       url: "https://yandex.com/search/?text=%s"
-    }
-  ];
-  const ai = [
+    },
     {
       nameZh: "ChatGPT",
       url: "https://chatgpt.com/?q=%s"
@@ -516,10 +506,6 @@
     {
       nameZh: "Claude",
       url: "https://claude.ai/new?q=%s"
-    },
-    {
-      nameZh: "Hugging Face",
-      url: "https://huggingface.co/search/full-text?q=%s"
     }
   ];
   const translate = [
@@ -582,21 +568,12 @@
       url: "https://juejin.cn/search?query=%s"
     },
     {
-      nameZh: "Can I Use",
-      url: "https://caniuse.com/#search=%s",
-      icon: "https://caniuse.com/img/favicon-128.png"
-    },
-    {
-      nameZh: "npm",
-      url: "https://www.npmjs.com/search?q=%s"
-    },
-    {
-      nameZh: "PyPI",
-      url: "https://pypi.org/search/?q=%s"
-    },
-    {
       nameZh: "Docker Hub",
       url: "https://hub.docker.com/search?q=%s"
+    },
+    {
+      nameZh: "Hugging Face",
+      url: "https://huggingface.co/search/full-text?q=%s"
     },
     {
       nameZh: "Maven Central",
@@ -634,10 +611,6 @@
       nameZh: "优酷",
       url: "https://www.soku.com/search_video/q_%s",
       icon: "https://img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png"
-    },
-    {
-      nameZh: "搜狐",
-      url: "https://so.tv.sohu.com/mts?wd=%s"
     }
   ];
   const music = [
@@ -669,10 +642,6 @@
       nameZh: "百度新闻",
       url: "https://news.baidu.com/ns?word=%s&tn=news&from=news&cl=2&rn=20&ct=1",
       icon: "https://www.baidu.com/favicon.ico"
-    },
-    {
-      nameZh: "腾讯新闻",
-      url: "https://www.sogou.com/sogou?site=news.qq.com&query=%s"
     },
     {
       nameZh: "凤凰新闻",
@@ -737,18 +706,6 @@
     {
       nameZh: "百度百科",
       url: "https://baike.baidu.com/search/word?pic=1&sug=1&word=%s"
-    },
-    {
-      nameZh: "百度文库",
-      url: "https://wenku.baidu.com/search?word=%s&ie=utf-8"
-    },
-    {
-      nameZh: "果壳",
-      url: "https://www.guokr.com/search/all/?wd=%s"
-    },
-    {
-      nameZh: "Quora",
-      url: "https://www.quora.com/search?q=%s"
     }
   ];
   const image = [
@@ -814,20 +771,12 @@
       url: "https://www.goofish.com/search?q=%s"
     },
     {
-      nameZh: "天猫",
-      url: "https://list.tmall.com/search_product.htm?q=%s"
-    },
-    {
       nameZh: "1688",
       url: "https://s.1688.com/selloffer/offer_search.htm?keywords=%s"
     },
     {
       nameZh: "唯品会",
       url: "https://category.vip.com/suggest.php?keyword=%s"
-    },
-    {
-      nameZh: "AliExpress",
-      url: "https://www.aliexpress.com/wholesale?SearchText=%s"
     },
     {
       nameZh: "亚马逊（全球）",
@@ -896,11 +845,6 @@
       nameZh: "搜索",
       name: "search",
       list: search
-    },
-    {
-      nameZh: "AI",
-      name: "ai",
-      list: ai
     },
     {
       nameZh: "翻译",
@@ -1616,7 +1560,7 @@
       options
     };
   }
-  const iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title description">\n  <title id="title">All Search Plus</title>\n  <desc id="description">A magnifying glass over search result lines</desc>\n  <defs>\n    <linearGradient id="background" x1="18" y1="14" x2="112" y2="116" gradientUnits="userSpaceOnUse">\n      <stop stop-color="#675CFF"/>\n      <stop offset="1" stop-color="#08A9E6"/>\n    </linearGradient>\n    <linearGradient id="highlight" x1="78" y1="18" x2="105" y2="45" gradientUnits="userSpaceOnUse">\n      <stop stop-color="#FFE66D"/>\n      <stop offset="1" stop-color="#FFB547"/>\n    </linearGradient>\n  </defs>\n  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#background)"/>\n  <circle cx="54" cy="53" r="31" fill="#FFFFFF" fill-opacity=".12"/>\n  <circle cx="54" cy="53" r="30" fill="none" stroke="#FFFFFF" stroke-width="9"/>\n  <path d="M76 75L101 100" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>\n  <path d="M39 43H68M39 53H63M39 63H57" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>\n  <circle cx="96" cy="29" r="9" fill="url(#highlight)"/>\n</svg>\n';
+  const iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title description">\n  <title id="title">All Search Plus</title>\n  <desc id="description">A magnifying glass containing multiple search sources and a plus</desc>\n  <defs>\n    <linearGradient id="background" x1="15" y1="10" x2="116" y2="120" gradientUnits="userSpaceOnUse">\n      <stop stop-color="#5B4BFF"/>\n      <stop offset=".52" stop-color="#1687F8"/>\n      <stop offset="1" stop-color="#08B7C8"/>\n    </linearGradient>\n  </defs>\n  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#background)"/>\n  <circle cx="53" cy="53" r="31" fill="#FFFFFF" fill-opacity=".13"/>\n  <circle cx="53" cy="53" r="29" fill="none" stroke="#FFFFFF" stroke-width="9"/>\n  <path d="M74 74L101 101" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>\n  <circle cx="44" cy="44" r="6" fill="#FFD166"/>\n  <circle cx="62" cy="44" r="6" fill="#FF7A90"/>\n  <circle cx="44" cy="62" r="6" fill="#72F1B8"/>\n  <circle cx="62" cy="62" r="6" fill="#FFFFFF"/>\n  <path d="M96 20V40M86 30H106" fill="none" stroke="#FFD166" stroke-width="6" stroke-linecap="round"/>\n</svg>\n';
   const _export_sfc = (sfc, props2) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props2) {

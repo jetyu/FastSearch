@@ -2,7 +2,8 @@ export default [
   {
     nameZh: '哔哩哔哩',
     url: 'https://search.bilibili.com/all?keyword=%s'
-  }, {
+  },
+  {
     nameZh: 'YouTube',
     url: 'https://www.youtube.com/results?search_query=%s'
   },
@@ -23,9 +24,5 @@ export default [
     nameZh: '优酷',
     url: 'https://www.soku.com/search_video/q_%s',
     icon: 'https://img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png'
-  },
-  {
-    nameZh: '搜狐',
-    url: 'https://so.tv.sohu.com/mts?wd=%s'
   }
 ]

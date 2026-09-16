@@ -78,12 +78,12 @@ const list = [
     name: 'scholar',
     list: scholar
   }
-].map(item => ({
+].map((item) => ({
   ...item,
   data: {
     visible: true
   },
-  list: item.list.map(child => ({
+  list: item.list.map((child) => ({
     ...child,
     data: {
       visible: true

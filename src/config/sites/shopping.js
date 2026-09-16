@@ -14,20 +14,12 @@ export default [
     url: 'https://www.goofish.com/search?q=%s'
   },
   {
-    nameZh: '天猫',
-    url: 'https://list.tmall.com/search_product.htm?q=%s'
-  },
-  {
     nameZh: '1688',
     url: 'https://s.1688.com/selloffer/offer_search.htm?keywords=%s'
   },
   {
     nameZh: '唯品会',
     url: 'https://category.vip.com/suggest.php?keyword=%s'
-  },
-  {
-    nameZh: 'AliExpress',
-    url: 'https://www.aliexpress.com/wholesale?SearchText=%s'
   },
   {
     nameZh: '亚马逊（全球）',
