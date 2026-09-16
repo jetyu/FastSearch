@@ -1,7 +1,10 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import pkg from '../../package.json'
 
 const fileName = 'index.user.js'
 const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/${fileName}`
+const iconBase64 = readFileSync(resolve(process.cwd(), 'src/assets/all-search.svg')).toString('base64')
 
 export default {
   name: pkg.displayName,
@@ -10,7 +13,7 @@ export default {
   description: pkg.description,
   author: pkg.author,
   license: pkg.license,
-  icon: 'https://raw.githubusercontent.com/jetyu/all-search_plus/master/src/assets/all-search.svg',
+  icon: `data:image/svg+xml;base64,${iconBase64}`,
   homepage: pkg.homepage,
   homepageURL: pkg.homepage,
   supportURL: pkg.bugs.url,

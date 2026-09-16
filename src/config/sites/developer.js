@@ -37,6 +37,10 @@ export default [
     url: 'https://hub.docker.com/search?q=%s'
   },
   {
+    nameZh: 'Hugging Face',
+    url: 'https://huggingface.co/search/full-text?q=%s'
+  },
+  {
     nameZh: 'Maven Central',
     url: 'https://central.sonatype.com/search?q=%s'
   },

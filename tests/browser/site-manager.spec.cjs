@@ -62,6 +62,10 @@ async function editJson (page, text) {
 
 test('one dialog contains three tabs; compact rows, category edits and saved menu update', async ({ page }, testInfo) => {
   await boot(page)
+  const logo = page.locator('.as-title')
+  await expect(logo).toHaveAttribute('aria-label', 'All Search Plus')
+  await expect(logo.locator('.as-title-icon')).toHaveAttribute('src', /^data:image\/svg\+xml;base64,/)
+  await expect(logo).not.toContainText('All Search Plus')
   const dialog = await openManager(page)
   await expect(dialog.getByRole('tab')).toHaveText(['配置', '编辑', '划词工具栏'])
   await expect(dialog.getByRole('tab', { name: '配置', exact: true })).toHaveAttribute('aria-selected', 'true')
@@ -360,7 +364,7 @@ test('clearing failures and changes from another page retain the menu and JSON d
   await expect(page.locator('.as-menu-item-title', { hasText: '视频' })).toHaveCount(0)
 })
 
-test('AI menu and search dialog preserve the entire query when opening configured assistants', async ({ page }, testInfo) => {
+test('Search menu and search dialog preserve the entire query when opening configured assistants', async ({ page }, testInfo) => {
   await boot(page, { fresh: true })
   const keyword = '中文 & a+b / #? 100% $&'
   await page.locator('#kw').fill(keyword)
@@ -368,9 +372,10 @@ test('AI menu and search dialog preserve the entire query when opening configure
     window.openedUrls = []
     window.open = url => { window.openedUrls.push(url); return null }
   })
-  const ai = page.locator('.as-menu-item-title', { hasText: /^AI$/ })
-  await expect(ai).toBeVisible()
-  await expect(page.locator('#icon-ai')).toHaveCount(1)
+  const search = page.locator('.as-menu-item-title', { hasText: /^搜索$/ })
+  await expect(search).toBeVisible()
+  await expect(page.locator('.as-menu-item-title', { hasText: /^AI$/ })).toHaveCount(0)
+  await expect(page.locator('#icon-search')).toHaveCount(1)
   const targets = [
     ['ChatGPT', 'https://chatgpt.com/?q='],
     ['Grok', 'https://grok.com/?q='],
@@ -379,11 +384,13 @@ test('AI menu and search dialog preserve the entire query when opening configure
     ['Claude', 'https://claude.ai/new?q=']
   ]
   for (const [name, prefix] of targets) {
-    await ai.hover()
+    await search.hover()
     await page.locator('.as-subMenu:visible').getByText(name, { exact: true }).click({ modifiers: ['Control'] })
     expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe(prefix + encodeURIComponent(keyword))
   }
   await expect(page.getByText('Gemini', { exact: true })).toHaveCount(0)
+  await page.mouse.move(300, 200)
+  await expect(page.locator('.as-subMenu:visible')).toHaveCount(0)
   await page.locator('body > p').evaluate((element, text) => {
     element.textContent = text
     element.dispatchEvent(new Event('selectstart', { bubbles: true }))
@@ -396,7 +403,7 @@ test('AI menu and search dialog preserve the entire query when opening configure
   }, keyword)
   await page.locator('.as-more-icon').click()
   await expect(page.locator('.se-input')).toHaveValue(keyword)
-  await page.locator('.cate-container').filter({ has: page.locator('.cate-name', { hasText: /^AI$/ }) }).getByText('Deepseek', { exact: true }).click({ modifiers: ['Control'] })
+  await page.locator('.cate-container').filter({ has: page.locator('.cate-name', { hasText: /^搜索$/ }) }).getByText('Deepseek', { exact: true }).click({ modifiers: ['Control'] })
   expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe('https://chat.deepseek.com/?q=' + encodeURIComponent(keyword))
   await page.screenshot({ path: testInfo.outputPath('ai-search.png') })
 })

@@ -4,15 +4,19 @@
     class="as-title"
     href="https://github.com/jetyu/all-search_plus"
     target="_blank"
-    :class="`as-title-${mode}`">
-    <p class="as-title-inner">
-      All Search Plus
-    </p>
+    aria-label="All Search Plus"
+    title="All Search Plus"
+    :class="`as-title-${mode}`"
+  >
+    <img class="as-title-icon" :src="iconUrl" alt="" aria-hidden="true" />
   </a>
 </template>
 
 <script>
 import { isMobile } from '../util/index'
+import iconSvg from '../assets/all-search.svg?raw'
+
+const iconUrl = `data:image/svg+xml;base64,${btoa(iconSvg)}`
 
 export default {
   name: 'logo',
@@ -20,19 +24,20 @@ export default {
     mode: {
       type: String,
       default: 'horizontal',
-      validator: val => ['horizontal', 'vertical'].indexOf(val) > -1
+      validator: (val) => ['horizontal', 'vertical'].indexOf(val) > -1
     }
   },
-  setup () {
+  setup() {
     return {
-      isMobile: isMobile()
+      isMobile: isMobile(),
+      iconUrl
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import "../assets/common";
+@import '../assets/common';
 
 @media screen and (max-width: 750px) {
   .as-title-horizontal {
@@ -41,37 +46,36 @@ export default {
 }
 
 .as-title-horizontal {
-  min-width: 90px;
-  margin: 0 10px;
-  white-space: nowrap;
+  width: 32px;
+  min-width: 32px;
+  height: $height;
+  margin: 0 4px;
 }
 
 .as-title-vertical {
   width: 100%;
-
-  .as-title-inner {
-    height: auto;
-    line-height: 1.4;
-    padding: 6px 0;
-  }
+  padding: 8px 0;
 }
 
 .as-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none !important;
-  padding: 0;
-  margin: 0;
-  color: var(--as-primary-color);
+  box-sizing: border-box;
 }
 
-.as-title-inner {
-  padding: 0;
-  font-size: 17px;
-  height: $height;
-  line-height: $height;
-  font-weight: 600;
-  color: var(--as-primary-color);
-  margin: 0 auto;
-  text-align: center;
+.as-title-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+.as-title-vertical .as-title-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 </style>

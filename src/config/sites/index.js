@@ -1,5 +1,4 @@
 import search from './search'
-import ai from './ai'
 import translate from './translate'
 import map from './map'
 import developer from './developer'
@@ -18,11 +17,6 @@ const list = [
     nameZh: '搜索',
     name: 'search',
     list: search
-  },
-  {
-    nameZh: 'AI',
-    name: 'ai',
-    list: ai
   },
   {
     nameZh: '翻译',
