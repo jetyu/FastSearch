@@ -30,7 +30,7 @@ All Search Plus is a search helper userscript for Tampermonkey or ScriptCat. Swi
 3. Alternatively, open the GitHub build and click **Raw**. If no installation page appears, create a new script in your userscript manager, replace the default contents with the complete file (including the opening `// ==UserScript==` metadata), then save and enable it.
 4. Refresh a search results page to use the menu. Open **Settings → URL management → Open** to manage search entries, or **Settings → Configuration backup** to import or export the full configuration.
 
-Enable only one all-search version at a time to avoid duplicate menus. The enhanced version uses `All Search Plus` as its default `@name`, `全搜增强版` as its Simplified Chinese name, and `all-search-plus` as its `@namespace`. Homepage and support links point to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
+Enable only one all-search version at a time to avoid duplicate menus. The enhanced version uses the single `@name` value `All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)` and the `@namespace` value `all-search-plus`. Homepage and support links point to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
 
 When a script is published and installed through Greasy Fork, the platform removes its embedded update URLs so it receives updates from Greasy Fork. See the [Greasy Fork metadata documentation](https://greasyfork.org/en/help/meta-keys).
 
@@ -56,9 +56,11 @@ Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 �
 
 ### Built-in sites in 1.5.20
 
-This version removes the requested legacy sites and the default empty Personal category, adds Douyin, Xianyu and SOV2EX, and adds an AI category after Search. The catalog contains 13 categories and 87 entries.
+This version removes the requested legacy sites and the default empty Personal category; adds Douyin, Xianyu, Vipshop, AliExpress, global Amazon, eBay, SOV2EX and Xiaohongshu; expands the Developer category; and adds AI and Map categories. The catalog contains 14 categories and 98 entries.
 
-The AI category has 6 entries. ChatGPT, Grok, Deepseek, Perplexity and Claude use query links. Gemini opens its homepage because a working native query link was not confirmed in this review. Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. See the [Chinese README](./README.zh-CN.md#ai-分类) for exact URLs and sources.
+The AI category has 5 entries, and every entry uses a query link: ChatGPT, Grok, Deepseek, Perplexity and Claude. Gemini, Doubao, Qianwen, Kimi and Zhipu Qingyan are removed because their entries did not include a `%s` search placeholder. All AI entries follow the new-tab preference. Wenxin and Tencent Yuanbao are also removed. The Developer category now includes npm, PyPI, Docker Hub, Hugging Face and Maven Central, while the Map category includes Amap, Baidu Maps and Google Maps. See the [Chinese README](./README.zh-CN.md#ai-分类) for exact AI URLs and sources.
+
+Every built-in site now uses HTTPS and contains at least one `%s` search placeholder. URLs with repeated placeholders are fully expanded with the encoded query.
 
 The default selection toolbar contains Google, Baidu, Google Translate and ChatGPT, in that order.
 

@@ -1,6 +1,7 @@
 import search from './search'
 import ai from './ai'
 import translate from './translate'
+import map from './map'
 import developer from './developer'
 import video from './video'
 import music from './music'
@@ -27,6 +28,11 @@ const list = [
     nameZh: '翻译',
     name: 'translate',
     list: translate
+  },
+  {
+    nameZh: '地图',
+    name: 'map',
+    list: map
   },
   {
     nameZh: '视频',

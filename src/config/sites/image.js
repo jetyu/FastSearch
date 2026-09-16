@@ -5,7 +5,7 @@ export default [
   },
   {
     nameZh: '百度图片',
-    url: 'http://image.baidu.com/search/index?tn=baiduimage&ie=utf-8&word=%s'
+    url: 'https://image.baidu.com/search/index?tn=baiduimage&ie=utf-8&word=%s'
   },
   {
     nameZh: '必应图片',
@@ -17,15 +17,15 @@ export default [
   },
   {
     nameZh: 'Pixiv',
-    url: 'http://www.pixiv.net/search.php?word=%s'
+    url: 'https://www.pixiv.net/search.php?word=%s'
   },
   {
     nameZh: 'Flickr',
-    url: 'http://www.flickr.com/search/?q=%s'
+    url: 'https://www.flickr.com/search/?q=%s'
   },
   {
     nameZh: '花瓣',
-    url: 'http://huaban.com/search/?q=%s'
+    url: 'https://huaban.com/search/?q=%s'
   },
   {
     nameZh: 'Pinterest',

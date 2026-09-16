@@ -4,8 +4,8 @@ export default [
     url: 'https://www.zhihu.com/search?q=%s&type=content'
   },
   {
-    nameZh: '推特',
-    url: 'https://twitter.com/search/%s'
+    nameZh: '小红书',
+    url: 'https://www.xiaohongshu.com/search_result?keyword=%s&source=web_search_result_notes'
   },
   {
     nameZh: 'SOV2EX',
@@ -20,15 +20,19 @@ export default [
     url: 'https://tieba.baidu.com/f?kw=%s&ie=utf-8'
   },
   {
+    nameZh: '微信',
+    url: 'https://weixin.sogou.com/weixin?ie=utf8&type=2&query=%s'
+  },
+  {
     nameZh: '新浪微博',
     url: 'https://s.weibo.com/weibo?q=%s'
   },
   {
-    nameZh: 'Facebook',
-    url: 'https://www.facebook.com/search/results.php?q=%s'
+    nameZh: 'X',
+    url: 'https://twitter.com/search/%s'
   },
   {
-    nameZh: '微信',
-    url: 'http://weixin.sogou.com/weixin?ie=utf8&type=2&query=%s'
+    nameZh: 'Facebook',
+    url: 'https://www.facebook.com/search/results.php?q=%s'
   }
 ]

@@ -12,15 +12,15 @@ export default [
     url: 'https://chat.deepseek.com/?q=%s'
   },
   {
-    nameZh: 'Gemini',
-    url: 'https://gemini.google.com/app'
-  },
-  {
     nameZh: 'Perplexity',
     url: 'https://www.perplexity.ai/search?q=%s'
   },
   {
     nameZh: 'Claude',
     url: 'https://claude.ai/new?q=%s'
+  },
+  {
+    nameZh: 'Hugging Face',
+    url: 'https://huggingface.co/search/full-text?q=%s'
   }
 ]

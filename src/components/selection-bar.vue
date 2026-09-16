@@ -150,9 +150,9 @@ export default {
     function handleClick(item, newWin) {
       const keyword = encodeURIComponent(selection.value || '')
       if (newWin) {
-        window.open(item.url.replace('%s', keyword))
+        window.open(item.url.split('%s').join(keyword))
       } else {
-        window.location.href = item.url.replace('%s', keyword)
+        window.location.href = item.url.split('%s').join(keyword)
       }
     }
 

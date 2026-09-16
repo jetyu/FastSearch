@@ -1,7 +1,7 @@
 export default [
   {
     nameZh: '百度翻译',
-    url: 'http://fanyi.baidu.com/#auto/zh/%s'
+    url: 'https://fanyi.baidu.com/#auto/zh/%s'
   },
   {
     nameZh: 'DeepL',
@@ -14,11 +14,11 @@ export default [
   },
   {
     nameZh: '有道词典',
-    url: 'http://dict.youdao.com/search?q=%s',
+    url: 'https://dict.youdao.com/search?q=%s',
     icon: 'https://shared.ydstatic.com/images/favicon.ico'
   },
   {
     nameZh: '必应翻译',
-    url: 'http://cn.bing.com/dict/search?q=%s'
+    url: 'https://cn.bing.com/dict/search?q=%s'
   }
 ]

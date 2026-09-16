@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title description">
+  <title id="title">All Search Plus</title>
+  <desc id="description">A magnifying glass over search result lines</desc>
+  <defs>
+    <linearGradient id="background" x1="18" y1="14" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#675CFF"/>
+      <stop offset="1" stop-color="#08A9E6"/>
+    </linearGradient>
+    <linearGradient id="highlight" x1="78" y1="18" x2="105" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE66D"/>
+      <stop offset="1" stop-color="#FFB547"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#background)"/>
+  <circle cx="54" cy="53" r="31" fill="#FFFFFF" fill-opacity=".12"/>
+  <circle cx="54" cy="53" r="30" fill="none" stroke="#FFFFFF" stroke-width="9"/>
+  <path d="M76 75L101 100" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+  <path d="M39 43H68M39 53H63M39 63H57" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="96" cy="29" r="9" fill="url(#highlight)"/>
+</svg>

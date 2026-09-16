@@ -6,7 +6,7 @@ export default [
   },
   {
     nameZh: '百度新闻',
-    url: 'http://news.baidu.com/ns?word=%s&tn=news&from=news&cl=2&rn=20&ct=1',
+    url: 'https://news.baidu.com/ns?word=%s&tn=news&from=news&cl=2&rn=20&ct=1',
     icon: 'https://www.baidu.com/favicon.ico'
   },
   {

@@ -1,7 +1,7 @@
 export default [
   {
-    nameZh: '开发者搜索',
-    url: 'https://kaifa.baidu.com/searchPage?wd=%s&module=SEARCH'
+    nameZh: 'GitHub',
+    url: 'https://github.com/search?utf8=✓&q=%s'
   },
   {
     nameZh: 'MDN',
@@ -12,21 +12,33 @@ export default [
     url: 'https://stackoverflow.com/search?q=%s'
   },
   {
+    nameZh: '菜鸟教程',
+    url: 'https://www.runoob.com/?s=%s'
+  },
+  {
     nameZh: '掘金',
     url: 'https://juejin.cn/search?query=%s'
   },
   {
     nameZh: 'Can I Use',
-    url: 'http://caniuse.com/#search=%s',
+    url: 'https://caniuse.com/#search=%s',
     icon: 'https://caniuse.com/img/favicon-128.png'
   },
   {
-    nameZh: 'GitHub',
-    url: 'https://github.com/search?utf8=✓&q=%s'
+    nameZh: 'npm',
+    url: 'https://www.npmjs.com/search?q=%s'
   },
   {
-    nameZh: 'W3C',
-    url: 'http://www.runoob.com/?s=%s'
+    nameZh: 'PyPI',
+    url: 'https://pypi.org/search/?q=%s'
+  },
+  {
+    nameZh: 'Docker Hub',
+    url: 'https://hub.docker.com/search?q=%s'
+  },
+  {
+    nameZh: 'Maven Central',
+    url: 'https://central.sonatype.com/search?q=%s'
   },
   {
     nameZh: 'GreasyFork',

@@ -105,9 +105,9 @@ export default {
     const handleClick = (item, newWin) => {
       const keyword = encodeURIComponent(inputValue.value || '')
       if (newWin || openInNewTab.value) {
-        window.open(item.url.replace('%s', keyword))
+        window.open(item.url.split('%s').join(keyword))
       } else {
-        window.location.href = item.url.replace('%s', keyword)
+        window.location.href = item.url.split('%s').join(keyword)
       }
     }
 

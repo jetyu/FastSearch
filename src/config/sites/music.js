@@ -1,7 +1,7 @@
 export default [
   {
     nameZh: '网易音乐',
-    url: 'http://music.163.com/#/search/m/?s=%s',
+    url: 'https://music.163.com/#/search/m/?s=%s',
     icon: 'https://s1.music.126.net/style/favicon.ico'
   },
   {
@@ -14,6 +14,6 @@ export default [
   },
   {
     nameZh: '酷狗音乐',
-    url: 'http://search.5sing.kugou.com/?keyword=%s'
+    url: 'https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%s'
   }
 ]

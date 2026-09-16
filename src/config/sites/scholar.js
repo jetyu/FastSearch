@@ -6,7 +6,7 @@ export default [
   },
   {
     nameZh: '百度学术',
-    url: 'http://xueshu.baidu.com/s?wd=%s'
+    url: 'https://xueshu.baidu.com/s?wd=%s'
   },
   {
     nameZh: '知网',
@@ -14,14 +14,14 @@ export default [
   },
   {
     nameZh: 'JSTOR',
-    url: 'http://www.jstor.org/action/doAdvancedSearch?q0=%s'
+    url: 'https://www.jstor.org/action/doBasicSearch?Query=%s'
   },
   {
     nameZh: 'Springer',
-    url: 'http://rd.springer.com/search?query=%s'
+    url: 'https://link.springer.com/search?query=%s'
   },
   {
     nameZh: '国家图书馆',
-    url: 'http://find.nlc.cn/search/doSearch?query=%s&secQuery=&actualQuery=%s&searchType=2&docType=%E5%85%A8%E9%83%A8&isGroup=isGroup&targetFieldLog=%E5%85%A8%E9%83%A8%E5%AD%97%E6%AE%B5&orderBy=RELATIVE'
+    url: 'https://find.nlc.cn/search/doSearch?query=%s&secQuery=&actualQuery=%s&searchType=2&docType=%E5%85%A8%E9%83%A8&isGroup=isGroup&targetFieldLog=%E5%85%A8%E9%83%A8%E5%AD%97%E6%AE%B5&orderBy=RELATIVE'
   }
 ]

@@ -214,7 +214,7 @@ test('cancel discards the active draft, including invalid JSON, while retaining 
   await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
   await dialog.getByLabel('网址名称', { exact: true }).first().fill('划词草稿')
   await dialog.getByRole('button', { name: '取消', exact: true }).click()
-  await expect(dialog.getByLabel('网址名称', { exact: true }).first()).toHaveValue('百度')
+  await expect(dialog.getByLabel('网址名称', { exact: true }).first()).toHaveValue('Google')
   await dialog.getByRole('tab', { name: '配置', exact: true }).click()
   await expect(dialog.getByLabel('分类名称', { exact: true })).toHaveValue('菜单草稿')
   await dialog.getByRole('tab', { name: '编辑', exact: true }).click()
@@ -383,9 +383,7 @@ test('AI menu and search dialog preserve the entire query when opening configure
     await page.locator('.as-subMenu:visible').getByText(name, { exact: true }).click({ modifiers: ['Control'] })
     expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe(prefix + encodeURIComponent(keyword))
   }
-  await ai.hover()
-  await page.locator('.as-subMenu:visible').getByText('Gemini', { exact: true }).click({ modifiers: ['Control'] })
-  expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe('https://gemini.google.com/app')
+  await expect(page.getByText('Gemini', { exact: true })).toHaveCount(0)
   await page.locator('body > p').evaluate((element, text) => {
     element.textContent = text
     element.dispatchEvent(new Event('selectstart', { bubbles: true }))
@@ -401,4 +399,45 @@ test('AI menu and search dialog preserve the entire query when opening configure
   await page.locator('.cate-container').filter({ has: page.locator('.cate-name', { hasText: /^AI$/ }) }).getByText('Deepseek', { exact: true }).click({ modifiers: ['Control'] })
   expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe('https://chat.deepseek.com/?q=' + encodeURIComponent(keyword))
   await page.screenshot({ path: testInfo.outputPath('ai-search.png') })
+})
+
+test('new built-in developer, shopping, social and map entries pass encoded queries', async ({ page }) => {
+  await boot(page, { fresh: true })
+  await expect(page.locator('#icon-map')).toHaveCount(1)
+  const keyword = '上海 & Vue 100%'
+  await page.locator('#kw').fill(keyword)
+  await page.evaluate(() => {
+    window.openedUrls = []
+    window.open = url => { window.openedUrls.push(url); return null }
+  })
+  const encoded = encodeURIComponent(keyword)
+  const targets = [
+    ['开发', 'npm', 'https://www.npmjs.com/search?q='],
+    ['开发', 'PyPI', 'https://pypi.org/search/?q='],
+    ['开发', 'Docker Hub', 'https://hub.docker.com/search?q='],
+    ['开发', 'Hugging Face', 'https://huggingface.co/search/full-text?q='],
+    ['开发', 'Maven Central', 'https://central.sonatype.com/search?q='],
+    ['购物', '唯品会', 'https://category.vip.com/suggest.php?keyword='],
+    ['购物', 'AliExpress', 'https://www.aliexpress.com/wholesale?SearchText='],
+    ['购物', '亚马逊（全球）', 'https://www.amazon.com/s?k='],
+    ['购物', 'eBay', 'https://www.ebay.com/sch/i.html?_nkw='],
+    ['社交', '小红书', 'https://www.xiaohongshu.com/search_result?keyword='],
+    ['地图', '高德地图', 'https://uri.amap.com/search?keyword='],
+    ['地图', '百度地图', 'https://map.baidu.com/search/'],
+    ['地图', '谷歌地图', 'https://www.google.com/maps/search/']
+  ]
+  for (const [category, name, prefix] of targets) {
+    const menu = page.locator('.as-menu-item-title', { hasText: new RegExp(`^${category}$`) })
+    await menu.hover()
+    await page.locator('.as-subMenu:visible').getByText(name, { exact: true }).click({ modifiers: ['Control'] })
+    expect(await page.evaluate(() => window.openedUrls.at(-1))).toBe(prefix + encoded)
+  }
+
+  const scholar = page.locator('.as-menu-item-title', { hasText: /^学术$/ })
+  await scholar.hover()
+  await page.locator('.as-subMenu:visible').getByText('国家图书馆', { exact: true }).click({ modifiers: ['Control'] })
+  const opened = await page.evaluate(() => window.openedUrls.at(-1))
+  expect(opened).toContain(`query=${encoded}`)
+  expect(opened).toContain(`actualQuery=${encoded}`)
+  expect(opened).not.toContain('%s')
 })
