@@ -4,23 +4,11 @@ export default [
     url: 'https://pan.baidu.com/disk/main#/index?category=all&search=%s'
   },
   {
-    nameZh: '大力盘',
-    url: 'https://www.dalipan.com/search?keyword=%s'
+    nameZh: 'PanSearch',
+    url: 'https://www.pansearch.me/search?keyword=%s'
   },
   {
-    nameZh: '大圣盘',
-    url: 'https://www.dashengpan.com/search?keyword=%s'
-  },
-  {
-    nameZh: '罗马盘',
-    url: 'https://www.luomapan.com/search?keyword=%s'
-  },
-  {
-    nameZh: '小白盘',
-    url: 'https://www.xiaobaipan.com/list-%s.html?from=1'
-  },
-  {
-    nameZh: '56网盘',
-    url: 'https://www.56wangpan.com/search/kw%s'
+    nameZh: '小酷盘',
+    url: 'https://xiaokupan.com/s/%s'
   }
 ]

@@ -648,6 +648,22 @@
       url: "https://so.ifeng.com/?q=%s&c=1"
     },
     {
+      nameZh: "人民网",
+      url: "https://search.people.cn/s/?keyword=%s"
+    },
+    {
+      nameZh: "央视网",
+      url: "https://search.cctv.com/search.php?qtext=%s&type=web"
+    },
+    {
+      nameZh: "澎湃新闻",
+      url: "https://www.thepaper.cn/searchResult?id=%s"
+    },
+    {
+      nameZh: "中新网",
+      url: "https://sou.chinanews.com.cn/search.do?q=%s"
+    },
+    {
       nameZh: "CNN",
       url: "https://edition.cnn.com/search/?q=%s"
     },
@@ -793,24 +809,12 @@
       url: "https://pan.baidu.com/disk/main#/index?category=all&search=%s"
     },
     {
-      nameZh: "大力盘",
-      url: "https://www.dalipan.com/search?keyword=%s"
+      nameZh: "PanSearch",
+      url: "https://www.pansearch.me/search?keyword=%s"
     },
     {
-      nameZh: "大圣盘",
-      url: "https://www.dashengpan.com/search?keyword=%s"
-    },
-    {
-      nameZh: "罗马盘",
-      url: "https://www.luomapan.com/search?keyword=%s"
-    },
-    {
-      nameZh: "小白盘",
-      url: "https://www.xiaobaipan.com/list-%s.html?from=1"
-    },
-    {
-      nameZh: "56网盘",
-      url: "https://www.56wangpan.com/search/kw%s"
+      nameZh: "小酷盘",
+      url: "https://xiaokupan.com/s/%s"
     }
   ];
   const scholar = [

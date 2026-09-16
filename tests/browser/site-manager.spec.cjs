@@ -476,7 +476,7 @@ test('Search menu and search dialog preserve the entire query when opening confi
   await page.screenshot({ path: testInfo.outputPath('ai-search.png') })
 })
 
-test('new built-in developer, shopping, social and map entries pass encoded queries', async ({ page }) => {
+test('new built-in sites pass encoded queries and removed sites stay absent', async ({ page }) => {
   await boot(page, { fresh: true })
   await expect(page.locator('#icon-map')).toHaveCount(1)
   const keyword = '上海 & Vue 100%'
@@ -498,7 +498,14 @@ test('new built-in developer, shopping, social and map entries pass encoded quer
     ['社交', '小红书', 'https://www.xiaohongshu.com/search_result?keyword=%s&source=web_search_result_notes'],
     ['地图', '高德地图', 'https://uri.amap.com/search?keyword=%s'],
     ['地图', '百度地图', 'https://map.baidu.com/search/%s'],
-    ['地图', '谷歌地图', 'https://www.google.com/maps/search/%s']
+    ['地图', '谷歌地图', 'https://www.google.com/maps/search/%s'],
+    ['网盘', '百度网盘', 'https://pan.baidu.com/disk/main#/index?category=all&search=%s'],
+    ['网盘', 'PanSearch', 'https://www.pansearch.me/search?keyword=%s'],
+    ['网盘', '小酷盘', 'https://xiaokupan.com/s/%s'],
+    ['新闻', '人民网', 'https://search.people.cn/s/?keyword=%s'],
+    ['新闻', '央视网', 'https://search.cctv.com/search.php?qtext=%s&type=web'],
+    ['新闻', '澎湃新闻', 'https://www.thepaper.cn/searchResult?id=%s'],
+    ['新闻', '中新网', 'https://sou.chinanews.com.cn/search.do?q=%s']
   ]
   for (const [category, name, template] of targets) {
     const menu = page.locator('.as-menu-item-title', { hasText: new RegExp(`^${category}$`) })
@@ -522,7 +529,12 @@ test('new built-in developer, shopping, social and map entries pass encoded quer
     ['购物', '天猫'],
     ['购物', 'AliExpress'],
     ['新闻', '腾讯新闻'],
-    ['视频', '搜狐']
+    ['视频', '搜狐'],
+    ['网盘', '大力盘'],
+    ['网盘', '大圣盘'],
+    ['网盘', '罗马盘'],
+    ['网盘', '小白盘'],
+    ['网盘', '56网盘']
   ]
   for (const [category, name] of removedTargets) {
     const menu = page.locator('.as-menu-item-title', { hasText: new RegExp(`^${category}$`) })

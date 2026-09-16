@@ -1,6 +1,7 @@
 ![all-search](https://socialify.git.ci/all-search/all-search/image?description=1&font=Inter&forks=1&issues=1&language=1&owner=1&pattern=Plus&stargazers=1&theme=Light)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
+
 ## All Search Plus
 
 > 全搜增强版，搜索引擎快捷跳转，支持任意网站展示
@@ -22,8 +23,8 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 ### All Search Plus 安装入口
 
-* [Greasy Fork 安装页（推荐）](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
-* [GitHub 构建脚本：output/index.user.js](./output/index.user.js)
+- [Greasy Fork 安装页（推荐）](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
+- [GitHub 构建脚本：output/index.user.js](./output/index.user.js)
 
 1. 在浏览器中安装并启用油猴或脚本猫扩展。
 2. 推荐打开上方 Greasy Fork 安装页，点击 **安装此脚本**，然后在脚本管理器中确认安装。以后发布的新版本会由 Greasy Fork 自动检查更新。
@@ -38,15 +39,17 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 以下为原版 all-search 的发布入口。安装本仓库的增强版，请使用上方 **All Search Plus 安装入口**。
 
-* [GitHub 地址](https://raw.github.com/all-search/all-search/release/index.user.js)
-* [iQDNS/iQZone 地址](https://raw.iqiq.io/all-search/all-search/release/index.user.js)
-* [KGitHub 地址](https://raw.kgithub.com/all-search/all-search/release/index.user.js)
+- [GitHub 地址](https://raw.github.com/all-search/all-search/release/index.user.js)
+- [iQDNS/iQZone 地址](https://raw.iqiq.io/all-search/all-search/release/index.user.js)
+- [KGitHub 地址](https://raw.kgithub.com/all-search/all-search/release/index.user.js)
 
 #### Greasy Fork
-* [greasyfork地址](https://greasyfork.org/zh-CN/scripts/397993-all-search)
+
+- [greasyfork地址](https://greasyfork.org/zh-CN/scripts/397993-all-search)
 
 #### 脚本猫
-* [脚本猫ScriptCat地址](https://scriptcat.org/script-show-page/477)
+
+- [脚本猫ScriptCat地址](https://scriptcat.org/script-show-page/477)
 
 ## 设置入口
 
@@ -56,11 +59,11 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 对话框参照原配置网站，提供三个 Tab：
 
-| Tab | 对应原页面 | 功能 |
-| --- | --- | --- |
-| 配置 | `/config/sites` | 横向分类标签、分类改名 / 排序 / 显隐、网址列表、拖拽排序、图标设置、添加到常用分类 |
-| 编辑 | `/config/edit` | 原版 JSONEditor，提供代码、树形、预览模式及校验 |
-| 划词工具栏 | `/config/toolbar` | 编辑划词搜索入口、拖拽排序、显示隐藏 |
+| Tab        | 对应原页面        | 功能                                                                               |
+| ---------- | ----------------- | ---------------------------------------------------------------------------------- |
+| 配置       | `/config/sites`   | 横向分类标签、分类改名 / 排序 / 显隐、网址列表、拖拽排序、图标设置、添加到常用分类 |
+| 编辑       | `/config/edit`    | 原版 JSONEditor，提供代码、树形、预览模式及校验                                    |
+| 划词工具栏 | `/config/toolbar` | 编辑划词搜索入口、拖拽排序、显示隐藏                                               |
 
 “配置”和“编辑”共享菜单草稿；“划词工具栏”单独编辑和保存。所有页面都在脚本内运行，不需要部署或打开 GitHub 配置网站。
 
@@ -70,13 +73,14 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 ### 内置网址更新（1.5.21）
 
-* 删除火山翻译、AcFun、niconico、苏宁、值得买、当当网、天猫、AliExpress、搜狐、腾讯新闻、Can I Use、npm、PyPI、果壳、百度文库、Quora、360、头条搜索、豆丁文档、爱问知识，以及默认的“常用”分类。
-* 新增视频分类的抖音（`https://www.douyin.com/search/%s?type=video`），购物分类的闲鱼、唯品会、亚马逊（全球）和 eBay，社交分类的 SOV2EX 和小红书。`%s` 代表搜索关键词。
-* 开发分类新增 Docker Hub、Hugging Face 和 Maven Central，并将误标为 W3C 的菜鸟教程入口改正。
-* ChatGPT、Grok、Deepseek、Perplexity 和 Claude 并入“搜索”，Hugging Face 归入“开发”，不再单设 AI 分类。
-* 新增高德地图、百度地图、谷歌地图组成的“地图”分类；更新后内置菜单共 13 个分类、85 个网址入口。
-* 所有实际内置入口均改用 HTTPS 并包含至少一个 `%s`；同一网址中的多个 `%s` 现在都会替换为当前搜索词。
-* 划词工具栏默认入口依次为 Google、百度、Google翻译、ChatGPT。
+- 删除火山翻译、AcFun、niconico、苏宁、值得买、当当网、天猫、AliExpress、搜狐、腾讯新闻、Can I Use、npm、PyPI、果壳、百度文库、Quora、360、头条搜索、豆丁文档、爱问知识、大力盘、大圣盘、罗马盘、小白盘、56网盘，以及默认的“常用”分类。
+- 新增视频分类的抖音（`https://www.douyin.com/search/%s?type=video`），购物分类的闲鱼、唯品会、亚马逊（全球）和 eBay，社交分类的 SOV2EX 和小红书。`%s` 代表搜索关键词。
+- 开发分类新增 Docker Hub、Hugging Face 和 Maven Central，并将误标为 W3C 的菜鸟教程入口改正。
+- ChatGPT、Grok、Deepseek、Perplexity 和 Claude 并入“搜索”，Hugging Face 归入“开发”，不再单设 AI 分类。
+- 网盘分类保留百度网盘，并新增 PanSearch 和小酷盘；新闻分类新增人民网、央视网、澎湃新闻和中新网。
+- 新增高德地图、百度地图、谷歌地图组成的“地图”分类；更新后内置菜单共 13 个分类、86 个网址入口。
+- 所有实际内置入口均改用 HTTPS 并包含至少一个 `%s`；同一网址中的多个 `%s` 现在都会替换为当前搜索词。
+- 划词工具栏默认入口依次为 Google、百度、Google翻译、ChatGPT。
 
 安装新版脚本并刷新页面后，未保存过自定义菜单的用户会直接使用新版内置网址。已有自定义配置时，仍优先使用已保存的内容；要完整采用新版内置列表，先导出备份，再进入 **网址管理 → 编辑 → 清除网址管理配置** 并确认。需要保留自定义网址时，可在“配置”中逐项修改后保存。
 
@@ -86,13 +90,13 @@ All Search Plus 是一款用于油猴（Tampermonkey）或脚本猫（ScriptCat�
 
 以下入口使用传词链接：
 
-| AI | 网址模板 | 核对来源 |
-| --- | --- | --- |
-| ChatGPT | `https://chatgpt.com/?q=%s` | [OpenAI 社区的参数使用记录](https://community.openai.com/t/query-parameters-in-chatgpt/1027747) |
-| Grok | `https://grok.com/?q=%s` | [原始研究中的链接说明](https://www.gabriel.urdhr.fr/2026/07/17/reprompt-lechat-grok/) |
-| Deepseek | `https://chat.deepseek.com/?q=%s` | [官方页面](https://chat.deepseek.com/)引用的[前端脚本](https://fe-static.deepseek.com/chat/static/main.9199a2404f.js)会读取 `q` 或 `prompt` |
-| Perplexity | `https://www.perplexity.ai/search?q=%s` | [官方 OpenSearch 描述](https://www.perplexity.ai/opensearch.xml) |
-| Claude | `https://claude.ai/new?q=%s` | [Oasis 对网页预填参数的研究](https://www.oasis.security/blog/claude-ai-prompt-injection-data-exfiltration-vulnerability) |
+| AI         | 网址模板                                | 核对来源                                                                                                                                    |
+| ---------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| ChatGPT    | `https://chatgpt.com/?q=%s`             | [OpenAI 社区的参数使用记录](https://community.openai.com/t/query-parameters-in-chatgpt/1027747)                                             |
+| Grok       | `https://grok.com/?q=%s`                | [原始研究中的链接说明](https://www.gabriel.urdhr.fr/2026/07/17/reprompt-lechat-grok/)                                                       |
+| Deepseek   | `https://chat.deepseek.com/?q=%s`       | [官方页面](https://chat.deepseek.com/)引用的[前端脚本](https://fe-static.deepseek.com/chat/static/main.9199a2404f.js)会读取 `q` 或 `prompt` |
+| Perplexity | `https://www.perplexity.ai/search?q=%s` | [官方 OpenSearch 描述](https://www.perplexity.ai/opensearch.xml)                                                                            |
+| Claude     | `https://claude.ai/new?q=%s`            | [Oasis 对网页预填参数的研究](https://www.oasis.security/blog/claude-ai-prompt-injection-data-exfiltration-vulnerability)                    |
 
 `%s` 替换为经过 URL 编码的当前搜索词。链接传词不等于自动发送，登录、预填及发送确认由目标网站处理。
 
@@ -102,35 +106,38 @@ Gemini、豆包、千问、Kimi 和智谱清言因入口不含 `%s` 搜索占位
 
 在网页内 **设置 → 配置备份** 中使用 **导出 / 导入**：
 
-* **导出**：下载 `all-search-backup-日期.json`，包含已保存的菜单网址、划词工具栏、全部设置（新标签页打开、布局、颜色等）和图标缓存。未保存的草稿不包含在备份中，请先保存再导出。
-* **导入**：选择整份 JSON 备份，校验通过后确认覆盖全部配置，完成后自动刷新页面生效。写入失败时会尝试恢复原配置，并显示结果。
-* 旧的单独网址数组不是整份备份；可将其粘贴到网址管理的“编辑”Tab 中，检查后保存。
+- **导出**：下载 `all-search-backup-日期.json`，包含已保存的菜单网址、划词工具栏、全部设置（新标签页打开、布局、颜色等）和图标缓存。未保存的草稿不包含在备份中，请先保存再导出。
+- **导入**：选择整份 JSON 备份，校验通过后确认覆盖全部配置，完成后自动刷新页面生效。写入失败时会尝试恢复原配置，并显示结果。
+- 旧的单独网址数组不是整份备份；可将其粘贴到网址管理的“编辑”Tab 中，检查后保存。
 
 ## 特色功能
-* 脚本内图形界面添加网址，三个 Tab 管理搜索菜单、JSON 配置和划词工具栏
-* 拖动调整网址顺序，通过左右按钮调整分类顺序
-* 支持垂直和横向布局
-* 点击分类使用分类第一个地址打开
-* 在网页内的“设置”侧栏开启“新标签页打开”，普通点击菜单、分类和搜索弹窗中的网址即可在新标签页打开；默认关闭，修改即时生效并自动保存
-* 鼠标中键或 Ctrl + 鼠标左键点击菜单、分类和搜索弹窗中的网址，可以强制在新标签页打开
-* 提供移动端支持
-    * 若页面宽度不足，可以进行滚动，
-    * 移动端为点击触发菜单
-* 自动隐藏功能，通过按钮触发，亦可更改为向上或向下滚动触发隐藏
-* 新添加的网址支持自动加载（即用户自行添加的，都可以自动展示）
-* 自适应样式，无需要额外适配
-* 文字选中工具栏
-* 全局弹窗搜索
+
+- 脚本内图形界面添加网址，三个 Tab 管理搜索菜单、JSON 配置和划词工具栏
+- 拖动调整网址顺序，通过左右按钮调整分类顺序
+- 支持垂直和横向布局
+- 点击分类使用分类第一个地址打开
+- 在网页内的“设置”侧栏开启“新标签页打开”，普通点击菜单、分类和搜索弹窗中的网址即可在新标签页打开；默认关闭，修改即时生效并自动保存
+- 鼠标中键或 Ctrl + 鼠标左键点击菜单、分类和搜索弹窗中的网址，可以强制在新标签页打开
+- 提供移动端支持
+  - 若页面宽度不足，可以进行滚动，
+  - 移动端为点击触发菜单
+- 自动隐藏功能，通过按钮触发，亦可更改为向上或向下滚动触发隐藏
+- 新添加的网址支持自动加载（即用户自行添加的，都可以自动展示）
+- 自适应样式，无需要额外适配
+- 文字选中工具栏
+- 全局弹窗搜索
 
 ## 待完成
-* 英语支持
-* 快捷键唤起全局弹窗搜索（待定）
-* 谷歌插件化（待定）
+
+- 英语支持
+- 快捷键唤起全局弹窗搜索（待定）
+- 谷歌插件化（待定）
 
 ## 兼容和性能
-* 针对百度样式问题，没有使用损耗性能的定时器，采用劫持Node.prototype.removeChild来实现
-* 针对youtube的spf.js的路由切换进行监听
-* 与AC-baidu等主流油猴脚本无兼容问题
+
+- 针对百度样式问题，没有使用损耗性能的定时器，采用劫持Node.prototype.removeChild来实现
+- 针对youtube的spf.js的路由切换进行监听
+- 与AC-baidu等主流油猴脚本无兼容问题
 
 ## 贡献
 
@@ -178,16 +185,16 @@ corepack pnpm build:script
 4. 找到“新标签页打开”，切换“开启 / 关闭”。此设置自动保存，无需额外点击保存。
 5. 按下表验证。打开搜索弹窗的方法是：选中页面文字，在划词工具栏中点击“更多”图标。
 
-| 测试场景 | 预期结果 |
-| --- | --- |
-| 尚未保存过该设置 | 默认选中“关闭” |
-| 关闭时，普通点击菜单网址或搜索弹窗中的网址 | 在当前标签页打开 |
-| 开启时，普通点击菜单网址或搜索弹窗中的网址 | 在新标签页打开，原页面保留 |
-| 开启时，点击包含其他搜索引擎的分类标题 | 在新标签页执行搜索 |
-| 开启后立即关闭，再普通点击网址 | 恢复在当前标签页打开 |
-| 开启或关闭时，Ctrl + 左键或鼠标中键点击菜单、分类或弹窗网址 | 始终在新标签页打开 |
-| 修改开关后刷新页面，或重新打开搜索结果页面 | 保留已保存的设置 |
-| 普通点击划词工具栏中的搜索图标 | 沿用原有行为，在新标签页打开 |
+| 测试场景                                                    | 预期结果                     |
+| ----------------------------------------------------------- | ---------------------------- |
+| 尚未保存过该设置                                            | 默认选中“关闭”               |
+| 关闭时，普通点击菜单网址或搜索弹窗中的网址                  | 在当前标签页打开             |
+| 开启时，普通点击菜单网址或搜索弹窗中的网址                  | 在新标签页打开，原页面保留   |
+| 开启时，点击包含其他搜索引擎的分类标题                      | 在新标签页执行搜索           |
+| 开启后立即关闭，再普通点击网址                              | 恢复在当前标签页打开         |
+| 开启或关闭时，Ctrl + 左键或鼠标中键点击菜单、分类或弹窗网址 | 始终在新标签页打开           |
+| 修改开关后刷新页面，或重新打开搜索结果页面                  | 保留已保存的设置             |
+| 普通点击划词工具栏中的搜索图标                              | 沿用原有行为，在新标签页打开 |
 
 每次修改源码后，重新执行 `corepack pnpm build:script`，更新脚本管理器中的代码，并刷新待测页面。
 
