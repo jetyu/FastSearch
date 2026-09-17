@@ -24,8 +24,8 @@ export default {
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
-    background: #fff;
-    border: 1px solid #dcdfe6;
+    background: var(--as-surface-color);
+    border: 1px solid var(--as-control-border-color);
     color: var(--as-primary-text-color);
     text-align: center;
     box-sizing: border-box;

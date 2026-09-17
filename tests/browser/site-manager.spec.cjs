@@ -298,6 +298,7 @@ test('global JSON backup round-trips saved menu, toolbar, settings and icons', a
   expect(backup.sites[0].list[0].nameZh).toBe('百度')
   expect(backup.toolbar.map((item) => item.nameZh)).toEqual(['Google', '百度', 'Google翻译', 'ChatGPT'])
   expect(backup.settings.openInNewTab).toBe(true)
+  expect(backup.settings.theme).toBe('auto')
   expect(backup.settings.primaryColor).toBe('#123456')
   expect(backup.iconCache['example.com']).toBe('data:image/png;base64,aA==')
   backup.sites[0].nameZh = '从备份恢复'
@@ -320,6 +321,39 @@ test('global JSON backup round-trips saved menu, toolbar, settings and icons', a
   expect(restored.toolbar).toEqual(backup.toolbar)
   expect(restored.settings).toEqual(backup.settings)
   expect(restored.iconCache).toEqual(backup.iconCache)
+})
+
+test('appearance follows the system or an explicit dark and light preference', async ({ page }, testInfo) => {
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await boot(page, { fresh: true })
+  const root = page.locator('#all-search')
+  await expect(root).toHaveAttribute('data-as-theme', 'dark')
+
+  await page.locator('.as-setting-btn').getByText('设置', { exact: true }).click()
+  const sidebar = page.locator('.as-side-bar')
+  await sidebar.getByText('浅色', { exact: true }).click()
+  await expect(root).toHaveAttribute('data-as-theme', 'light')
+  expect(await stored(page, 'theme')).toBe('light')
+
+  await sidebar.getByText('自动', { exact: true }).click()
+  await page.emulateMedia({ colorScheme: 'light' })
+  await expect(root).toHaveAttribute('data-as-theme', 'light')
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await expect(root).toHaveAttribute('data-as-theme', 'dark')
+  expect(await stored(page, 'theme')).toBe('auto')
+
+  await sidebar.getByText('深色', { exact: true }).click()
+  await page.emulateMedia({ colorScheme: 'light' })
+  await expect(root).toHaveAttribute('data-as-theme', 'dark')
+  expect(await stored(page, 'theme')).toBe('dark')
+  await page.screenshot({ path: testInfo.outputPath('dark-sidebar.png') })
+
+  await sidebar.getByRole('button', { name: '打开', exact: true }).click()
+  const dialog = page.getByRole('dialog', { name: /网址管理/ })
+  await expect(dialog.getByRole('status')).toContainText('配置已加载')
+  await page.screenshot({ path: testInfo.outputPath('dark-manager.png') })
+  await page.reload()
+  await expect(root).toHaveAttribute('data-as-theme', 'dark')
 })
 
 test('global restore rejects partial files and rolls back after a write failure', async ({ page }) => {

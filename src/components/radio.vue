@@ -72,7 +72,7 @@ export default {
       width: 12px;
       height: 12px;
       background: var(--as-bg-color);
-      border: 1px solid #979797;
+      border: 1px solid var(--as-control-border-color);
       border-radius: 50%;
       vertical-align: -2px;
     }
@@ -92,11 +92,11 @@ export default {
 
     }
     input:disabled + .as-radio-icon {
-      background-color: #e8e8e8;
-      border: solid 1px #979797;
+      background-color: var(--as-muted-background-color);
+      border: solid 1px var(--as-control-border-color);
     }
     input:disabled:checked + .as-radio-icon:after {
-      background-color: #c1c1c1;
+      background-color: var(--as-muted-text-color);
     }
     &.as-radio-animate .as-radio-icon {
       transition: background-color ease-out .3s;

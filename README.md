@@ -15,7 +15,7 @@ Similar tools recommended.
 
 ## GM userscript overview and installation
 
-Switch search engines from a quick menu while reusing the current query, or select text to search using the selection toolbar or search popup. The script supports in-script URL management, custom categories and sorting, full configuration backup and restore, and an option to open searches in a new tab.
+Switch search engines from a quick menu while reusing the current query, or select text to search using the selection toolbar or search popup. The script supports in-script URL management, custom categories and sorting, full configuration backup and restore, a new-tab preference, and automatic, dark, or light appearance modes.
 
 ### Install All Search Plus
 
@@ -56,6 +56,7 @@ Query links pass URL-encoded search text. Login and confirmation before sending 
 - Support vertical and horizontal layout
 - Click on a category to use the first URL of the category to open it
 - A new-tab preference, plus middle-click or Ctrl + left-click to open a new tab
+- Automatic, dark and light appearance modes; automatic mode follows the operating-system color scheme
 - Provide mobile support
   - Scrolling is possible if the page width is insufficient
   - Mobile for click-triggered menu

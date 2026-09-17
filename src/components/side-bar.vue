@@ -54,6 +54,23 @@
                   v-model="toolbarVisible">隐藏
                 </as-radio>
               </form-item>
+              <form-item
+                class="as-theme-setting"
+                label-width="64"
+                label="外观">
+                <as-radio
+                  label="auto"
+                  v-model="theme">自动
+                </as-radio>
+                <as-radio
+                  label="dark"
+                  v-model="theme">深色
+                </as-radio>
+                <as-radio
+                  label="light"
+                  v-model="theme">浅色
+                </as-radio>
+              </form-item>
               <form-item label="方向">
                 <as-radio
                   label="horizontal"
@@ -143,6 +160,7 @@ import useColor from './useColor'
 import useFavicon from './useFavicon'
 import useToolbar from './useToolbar'
 import useOpenInNewTab from './useOpenInNewTab'
+import useTheme from './useTheme'
 import useSiteManager from './useSiteManager'
 import overlay from '../components/overlay'
 import radio from '../components/radio'
@@ -177,6 +195,7 @@ export default {
     const { favicon, clearIconCache } = useFavicon()
     const { visible: toolbarVisible } = useToolbar()
     const { openInNewTab } = useOpenInNewTab()
+    const { theme } = useTheme()
     const { openManager } = useSiteManager()
     function manage (tab) {
       visible.value = false
@@ -205,6 +224,7 @@ export default {
       favicon,
       toolbarVisible,
       openInNewTab,
+      theme,
       primaryColor,
       primaryTextColor,
       show,
@@ -246,7 +266,7 @@ export default {
 
   &:hover {
     color: var(--as-primary-color);
-    background-color: rgba(0, 0, 0, .04);
+    background-color: var(--as-secondary-background-color);
   }
 }
 
@@ -259,7 +279,7 @@ export default {
   bottom: 0;
   position: absolute;
   box-sizing: border-box;
-  background: var(--as-bg-color) radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed;
+  background: var(--as-panel-background);
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2), 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12);
@@ -281,8 +301,8 @@ export default {
     height: 100%;
     flex: 1;
     border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, .1);
-    background: rgba(255, 255, 255, .67);
+    border: 1px solid var(--as-border-color);
+    background: var(--as-translucent-surface-color);
   }
 
   > footer {
@@ -306,6 +326,10 @@ export default {
     }
 
   }
+}
+
+.as-theme-setting .as-radio + .as-radio {
+  margin-left: 6px;
 }
 
 .overlay-enter-active, .overlay-leave-active {

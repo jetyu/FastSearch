@@ -181,9 +181,9 @@ export default {
   max-width: 300px;
   position: absolute;
   z-index: 99999;
-  background-color: #fff;
-  color: #444;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--as-surface-color);
+  color: var(--as-primary-text-color);
+  box-shadow: 0 0 0 1px var(--as-border-color), 0 2px 3px 0 var(--as-shadow-color);
   border-radius: 2px;
   cursor: pointer;
   white-space: nowrap;
@@ -194,7 +194,7 @@ export default {
   padding: 2px;
   width: 20px;
   height: 20px;
-  border: 1px solid #FFF;
+  border: 1px solid var(--as-surface-color);
   cursor: pointer;
   box-sizing: content-box;
 

@@ -2,6 +2,7 @@ import { cloneData, normalizeSites, normalizeUrls } from './site-data.mjs'
 
 export const settingDefaults = Object.freeze({
   openInNewTab: false,
+  theme: 'auto',
   showToolbar: 1,
   mode: 'horizontal',
   align: 'flex-start',
@@ -14,6 +15,7 @@ export const settingDefaults = Object.freeze({
 })
 const choices = {
   openInNewTab: [true, false], showToolbar: [1, 2], switchShow: [1, 2], favicon: [1, 2],
+  theme: ['auto', 'dark', 'light'],
   mode: ['horizontal', 'vertical'], align: ['flex-start', 'center', 'flex-end'],
   scrollHide: ['none', 'top', 'bottom', 'all']
 }
@@ -29,7 +31,9 @@ export function normalizeBackup (raw) {
   if (!isObject(raw.settings)) throw Error('备份缺少完整的设置数据')
   const settings = {}
   for (const name of settingNames) {
-    const value = raw.settings[name]
+    // Theme was added after schemaVersion 1 backups already existed. Treat an
+    // omitted theme as automatic so those backups remain importable.
+    const value = name === 'theme' && raw.settings[name] === undefined ? settingDefaults.theme : raw.settings[name]
     if (choices[name] ? !choices[name].includes(value) : typeof value !== 'string' || !/^(|#[a-f\d]{3}|#[a-f\d]{6})$/i.test(value)) {
       throw Error(`备份中的设置“${name}”缺失或格式不正确`)
     }

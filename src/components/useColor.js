@@ -5,8 +5,12 @@ const reg = /^#([a-fA-F\d]{6}|[a-fA-F\d]{3})$/
 
 function setCssValue (name, value, defaultVal) {
   const el = document.getElementById('all-search')
-  const formatVal = reg.test(value) ? value : defaultVal
-  el.style.setProperty(`--as-${name}`, formatVal)
+  if (!el) return
+  if (reg.test(value) && value.toLowerCase() !== defaultVal.toLowerCase()) {
+    el.style.setProperty(`--as-${name}`, value)
+  } else {
+    el.style.removeProperty(`--as-${name}`)
+  }
 }
 
 const primaryColor = useConfig({

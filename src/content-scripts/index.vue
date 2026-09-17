@@ -40,6 +40,7 @@ import iconfont from '../components/iconfont'
 import selectionBar from '../components/selection-bar'
 import searchDialog from '../components/search-dialog'
 import useToolbar from '../components/useToolbar'
+import useTheme from '../components/useTheme'
 import siteManager from '../components/site-manager.vue'
 import useSiteManager from '../components/useSiteManager'
 
@@ -60,6 +61,7 @@ export default {
     const { value: mode } = useMode()
     const { show } = useSwitchShow()
     const { visible: toolbarVisible } = useToolbar('tm')
+    useTheme()
     const { managerVisible } = useSiteManager()
 
     const classList = computed(() => ([
@@ -164,24 +166,49 @@ body, #all-search {
   --as-horizontal-height: $height;
   --as-primary-color: #1890ff;
   --as-bg-color: #ffffff;
+  --as-surface-color: #ffffff;
+  --as-translucent-surface-color: rgba(255, 255, 255, .67);
+  --as-panel-background: #ffffff radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed;
   --as-primary-text-color: #606266;
+  --as-heading-color: #303133;
+  --as-muted-text-color: #909399;
   --as-secondary-background-color: #f5f7fa;
   --as-border-color: #e8e8e8;
+  --as-control-border-color: #dcdfe6;
+  --as-hover-background-color: #ecf5ff;
+  --as-primary-soft-border-color: #a0cfff;
+  --as-danger-soft-background-color: #fef0f0;
+  --as-danger-soft-border-color: #fab6b6;
+  --as-muted-background-color: #f4f4f5;
+  --as-dialog-background-color: rgba(243, 243, 243, .85);
+  --as-overlay-color: rgba(0, 0, 0, .5);
+  --as-shadow-color: rgba(0, 0, 0, .16);
 }
 
 #all-search {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/*@media (prefers-color-scheme: dark) {
-  #all-search {
-    --as-primary-color: #3d9be9;
-    --as-bg-color: #212121;
-    --as-primary-text-color: #e0e0e0;
-    --as-secondary-background-color: #444;
-    --as-border-color: #212121;
-  }
-}*/
+#all-search[data-as-theme="dark"] {
+  --as-bg-color: #17191e;
+  --as-surface-color: #20242b;
+  --as-translucent-surface-color: rgba(32, 36, 43, .88);
+  --as-panel-background: radial-gradient(circle at top, #252a32 0, #17191e 72%) no-repeat fixed;
+  --as-primary-text-color: #e5e7eb;
+  --as-heading-color: #f3f4f6;
+  --as-muted-text-color: #9ca3af;
+  --as-secondary-background-color: #2b3038;
+  --as-border-color: #3a404a;
+  --as-control-border-color: #4b5260;
+  --as-hover-background-color: #26384d;
+  --as-primary-soft-border-color: #326899;
+  --as-danger-soft-background-color: #482b30;
+  --as-danger-soft-border-color: #82464d;
+  --as-muted-background-color: #30353e;
+  --as-dialog-background-color: rgba(27, 31, 38, .94);
+  --as-overlay-color: rgba(0, 0, 0, .68);
+  --as-shadow-color: rgba(0, 0, 0, .55);
+}
 
 .as-horizontal {
   height: $height;

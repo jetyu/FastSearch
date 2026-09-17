@@ -46,7 +46,7 @@ export default {
   left: 0;
   z-index: $overlayZIndex;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--as-overlay-color);
   overflow: auto;
 }
 </style>

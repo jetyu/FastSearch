@@ -122,34 +122,31 @@ export default {
 </script>
 
 <style lang="scss">
-$bg: rgba(242, 242, 242, .9);
-$bg1: #f3f3f3 radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed;
-$bg2: rgba(255, 255, 255, 0.67);
 
 .se-header {
   padding: 15px 20px;
-  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
-  background: #f3f3f3 radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed;
+  box-shadow: 0 1px 6px 0 var(--as-shadow-color);
+  background: var(--as-panel-background);
 }
 
 .se-input-box {
-  border: 1px solid #ccc;
-  background-color: $bg2;
+  border: 1px solid var(--as-control-border-color);
+  background-color: var(--as-translucent-surface-color);
   overflow: hidden;
   display: flex;
   border-radius: 6px;
   height: 40px;
   align-items: center;
   transition: .2s;
-  color: #222;
+  color: var(--as-primary-text-color);
 
   &:hover {
-    border-color: #fff;
-    box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+    border-color: var(--as-primary-color);
+    box-shadow: 0 1px 6px var(--as-shadow-color);
   }
 
   &:active {
-    border-color: #fff;
+    border-color: var(--as-primary-color);
   }
 
   .se-input {
@@ -168,7 +165,7 @@ $bg2: rgba(255, 255, 255, 0.67);
 .se-scrollbar-container {
   height: 50vh;
   padding: 0 20px 20px;
-  background: $bg1;
+  background: var(--as-panel-background);
 }
 
 .se-container {
@@ -181,8 +178,8 @@ $bg2: rgba(255, 255, 255, 0.67);
 .cate-container {
   flex: 0 0 150px;
   margin: 0 10px 10px 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: $bg2;
+  border: 1px solid var(--as-border-color);
+  background: var(--as-translucent-surface-color);
   padding: 6px;
 }
 
@@ -218,7 +215,7 @@ $bg2: rgba(255, 255, 255, 0.67);
     }
 
     &:hover {
-      background-color: #fff;
+      background-color: var(--as-secondary-background-color);
       color: var(--as-primary-color);
     }
   }

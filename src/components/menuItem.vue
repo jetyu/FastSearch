@@ -244,8 +244,8 @@ a.as-menu-item {
 
 .as-subMenu-container {
   background: var(--as-bg-color);
-  border: 1px solid #e4e7ed;
-  box-shadow: 0 0 12px rgba(0, 0, 0, .12);
+  border: 1px solid var(--as-border-color);
+  box-shadow: 0 0 12px var(--as-shadow-color);
   border-radius: 4px;
 }
 

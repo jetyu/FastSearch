@@ -24,6 +24,7 @@ test('backup contains complete defaults and the saved menu, toolbar, settings an
   assert.equal(data.format, 'all-search-backup')
   assert.deepEqual(Object.keys(data.settings), Object.keys(settingDefaults))
   assert.equal(data.settings.openInNewTab, true)
+  assert.equal(data.settings.theme, 'auto')
   assert.equal(data.settings.primaryColor, '')
   assert.equal(data.settings.mode, 'horizontal')
   assert.deepEqual(data.toolbar, [])
@@ -38,6 +39,14 @@ test('partial lists, unsupported versions and invalid settings are rejected befo
   let writes = 0
   await assert.rejects(restoreBackup([], { read: async () => undefined, write: async () => { writes++ }, remove: async () => {} }), /整份/)
   assert.equal(writes, 0)
+})
+
+test('schema version 1 backups without a theme remain importable', async () => {
+  const data = await backup()
+  delete data.settings.theme
+  assert.equal(normalizeBackup(data).settings.theme, 'auto')
+  data.settings.theme = 'sepia'
+  assert.throws(() => normalizeBackup(data), /theme/)
 })
 
 test('full backup restores all settings and intentionally empty lists', async () => {

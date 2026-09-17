@@ -81,15 +81,15 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--as-overlay-color);
     backdrop-filter: blur(5px);
   }
 
   &-container {
     position: relative;
-    background: rgba(243, 243, 243, .85);
+    background: var(--as-dialog-background-color);
     border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    box-shadow: 0 1px 3px var(--as-shadow-color);
     box-sizing: border-box;
     min-width: 50%;
     max-width: 80%;
@@ -105,7 +105,7 @@ export default {
   }
 
   &__body {
-    color: #666;
+    color: var(--as-primary-text-color);
     font-size: 14px;
     word-break: break-all;
   }
@@ -125,7 +125,7 @@ export default {
     background: transparent;
     cursor: pointer;
     font-size: 16px;
-    color: #909399;
+    color: var(--as-muted-text-color);
 
     &:before {
       content: "\2716";
