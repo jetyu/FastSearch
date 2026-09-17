@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite'
+import { copyFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import crx from 'vite-plugin-crx-mv3'
 import externalGlobals from 'rollup-plugin-external-globals'
@@ -6,11 +8,12 @@ import monkey from 'vite-plugin-monkey'
 import scriptConfig from './src/config/script-config'
 
 export default defineConfig(({ mode }) => {
-  if (mode === 'plugin') {
+  if (mode === 'plugin' || process.env.FASTSEARCH_TARGET === 'chrome') {
+    const outDir = 'extension-dist'
     return {
       resolve: {
         alias: {
-          '$': 'vite-plugin-monkey/dist/client'
+          '$': resolve(process.cwd(), 'src/platform/chrome.mjs')
         },
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
       },
@@ -18,12 +21,49 @@ export default defineConfig(({ mode }) => {
         vue(),
         crx({
           manifest: './src/manifest.json'
-        })
+        }),
+        {
+          name: 'finalize-chrome-extension',
+          closeBundle () {
+            mkdirSync(outDir, { recursive: true })
+            copyFileSync('LICENSE', `${outDir}/LICENSE`)
+
+            // vite-plugin-crx-mv3 0.1.x mistakes Vue's SVG namespace for
+            // a packaged asset URL. Restore the platform namespace and remove
+            // the invalid manifest resource until the build plugin is replaced.
+            const pending = [outDir]
+            while (pending.length) {
+              const directory = pending.pop()
+              for (const entry of readdirSync(directory, { withFileTypes: true })) {
+                const path = `${directory}/${entry.name}`
+                if (entry.isDirectory()) pending.push(path)
+                else if (entry.name.endsWith('.js')) {
+                  const code = readFileSync(path, 'utf8')
+                  const fixed = code.replaceAll(
+                    'chrome.runtime.getURL("http://www.w3.org/2000/svg")',
+                    '"http://www.w3.org/2000/svg"'
+                  )
+                  if (fixed !== code) writeFileSync(path, fixed)
+                }
+              }
+            }
+            const manifestPath = `${outDir}/manifest.json`
+            const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
+            manifest.web_accessible_resources = (manifest.web_accessible_resources || [])
+              .map(item => ({
+                ...item,
+                resources: item.resources.filter(resource => resource !== 'http://www.w3.org/2000/svg')
+              }))
+              .filter(item => item.resources.length)
+            writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
+          }
+        }
       ],
       build: {
+        outDir,
         target: 'es2015',
-        emptyOutDir: mode === 'production',
-        minify: mode === 'production'
+        emptyOutDir: true,
+        minify: 'esbuild'
       }
     }
   } else if (mode === 'script') {

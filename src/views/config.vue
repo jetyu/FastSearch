@@ -8,7 +8,7 @@
         :underline="false"
         type="primary"
         href="/all-search">
-        All Search Plus
+        FastSearch
       </el-link>
       <div class="header-bd">
         <el-menu

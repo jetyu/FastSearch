@@ -27,7 +27,7 @@
             class="as-side-bar"
             @click.stop>
             <header class="header">
-              All Search Plus
+              FastSearch
             </header>
             <section>
               <form-item

@@ -1,12 +1,12 @@
-# All Search Plus
+# FastSearch
 
 > 全搜增强版，搜索引擎快捷跳转，支持任意网站展示
 
 ## 项目介绍
 
-**All Search Plus** 是一款适用于油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助脚本，基于开源项目 [All Search / 全搜](https://github.com/all-search/all-search) 二次开发，由本项目独立维护。
+**FastSearch** 是一款适用于油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助脚本，基于开源项目 [All Search / 全搜](https://github.com/all-search/all-search) 二次开发，由本项目独立维护。
 
-搜索同一个问题时，经常需要在搜索引擎、视频平台、知识社区和学术网站之间切换。All Search Plus 将这些搜索入口集中到网页中的快捷菜单，复用当前关键词，减少重复输入与打开网站的操作。选中网页文字后，也可以通过划词工具栏或搜索弹窗继续搜索。
+搜索同一个问题时，经常需要在搜索引擎、视频平台、知识社区和学术网站之间切换。FastSearch 将这些搜索入口集中到网页中的快捷菜单，复用当前关键词，减少重复输入与打开网站的操作。选中网页文字后，也可以通过划词工具栏或搜索弹窗继续搜索。
 
 增强版保留原项目的核心搜索功能，围绕网址管理、配置迁移和打开方式进行扩展，并修复部分已知 Bug，方便按个人习惯组织和使用搜索入口。
 
@@ -56,7 +56,7 @@ AI 入口通过链接传递关键词，是否需要登录、是否预填以及�
 4. 在 **设置 → 网址管理 → 打开** 中调整分类、网址和划词工具栏。
 5. 在 **设置 → 配置备份** 中导出或导入个人配置。
 
-如果当前页面没有显示全搜菜单，可在脚本管理器菜单中选择 **全搜：网址管理**，进入配置对话框。
+如果当前页面没有显示 FastSearch 菜单，可在脚本管理器菜单中选择 **FastSearch：网址管理**，进入配置对话框。
 
 ## 自定义搜索入口
 
@@ -81,5 +81,5 @@ https://www.example.com/search?q=%s
 
 感谢原作者 **endday** 及 all-search 上游贡献者的开源工作，也感谢 **searchEngineJump** 提供的创意与网址来源。
 
-- [All Search Plus 项目仓库](https://github.com/jetyu/all-search_plus)
+- [FastSearch 项目仓库](https://github.com/jetyu/all-search_plus)
 - [原项目 All Search / 全搜](https://github.com/all-search/all-search)

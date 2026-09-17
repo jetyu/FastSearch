@@ -4,8 +4,8 @@
     class="as-title"
     href="https://github.com/jetyu/all-search_plus"
     target="_blank"
-    aria-label="All Search Plus"
-    title="All Search Plus"
+    aria-label="FastSearch"
+    title="FastSearch"
     :class="`as-title-${mode}`"
   >
     <img class="as-title-icon" :src="iconUrl" alt="" aria-hidden="true" />
@@ -14,9 +14,7 @@
 
 <script>
 import { isMobile } from '../util/index'
-import iconSvg from '../assets/all-search.svg?raw'
-
-const iconUrl = `data:image/svg+xml;base64,${btoa(iconSvg)}`
+import iconUrl from '../assets/fast-search-32.png?inline'
 
 export default {
   name: 'logo',

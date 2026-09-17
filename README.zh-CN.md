@@ -1,10 +1,10 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-## All Search Plus
+## FastSearch
 
 > 搜索引擎快捷跳转，支持任意网站展示
 
-**All Search Plus** 是一款适用于油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助脚本，提供固定搜索菜单、划词搜索、脚本内网址管理和整份配置备份功能。项目基于 Vue 3，使用 Vite 构建。
+**FastSearch** 是一款适用于 Chrome、油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助工具，提供固定搜索菜单、划词搜索、全局搜索、脚本内网址管理和整份配置备份功能。项目基于 Vue 3，使用 Vite 构建。
 
 感谢searchEngineJump提供的创意和网址来源。
 同类工具推荐：
@@ -17,7 +17,7 @@
 
 在搜索结果页面中，可以通过快捷菜单切换搜索引擎并复用当前关键词；也可以选中文字后使用划词工具栏或搜索弹窗发起搜索。脚本支持网址管理、自定义分类与排序、整份配置备份与恢复、新标签页打开设置，以及自动 / 深色 / 浅色外观。
 
-### All Search Plus 安装入口
+### FastSearch 用户脚本安装入口
 
 - [Greasy Fork 安装页（推荐）](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
 - [GitHub 构建脚本：output/index.user.js](./output/index.user.js)
@@ -25,17 +25,27 @@
 1. 在浏览器中安装并启用油猴或脚本猫扩展。
 2. 推荐打开上方 Greasy Fork 安装页，点击 **安装此脚本**，然后在脚本管理器中确认安装。以后发布的新版本会由 Greasy Fork 自动检查更新。
 3. 也可以打开 GitHub 构建脚本，在文件页面点击 **Raw** 安装；如果没有弹出安装页面，可在脚本管理器中新建脚本，将完整文件内容（包含开头的 `// ==UserScript==` 元信息）复制进去并保存、启用。
-4. 刷新搜索结果页面，即可使用全搜菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
+4. 刷新搜索结果页面，即可使用 FastSearch 菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
 
-脚本使用统一的 `@name`：`All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)`，`@namespace` 为 `all-search-plus`。反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
+脚本使用统一的 `@name`：`FastSearch`，`@namespace` 继续使用 `all-search-plus`，以兼容已有安装和配置。反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
+
+### Chrome 扩展安装
+
+执行 `corepack pnpm build:chrome` 后，将生成的 `extension-dist/` 作为未打包扩展加载：
+
+1. 打开 `chrome://extensions/`，启用右上角的“开发者模式”。
+2. 点击“加载已解压的扩展程序”，选择仓库中的 `extension-dist/`。
+3. 点击浏览器工具栏中的 FastSearch 图标，或按 `Ctrl+Shift+K`（macOS 为 `Command+Shift+K`）打开搜索面板。
+
+Chrome 版使用 `chrome.storage.local` 保存配置。用户脚本与 Chrome 扩展的存储空间相互独立，可以通过“配置备份”的导出与导入迁移配置。
 
 通过 Greasy Fork 发布并安装时，平台会移除脚本中自带的更新地址，让脚本从 Greasy Fork 获取更新，详见 [Greasy Fork 元信息说明](https://greasyfork.org/zh-CN/help/meta-keys)。
 
 ## 设置入口
 
-在网页内全搜菜单点击 **设置 → 网址管理 → 打开**，进入脚本内的配置对话框。
+在网页内 FastSearch 菜单点击 **设置 → 网址管理 → 打开**，进入配置对话框。
 在对话框内切换“配置”“编辑”“划词工具栏”三个 Tab。
-没有显示全搜菜单时，可在油猴 / 脚本猫菜单中选择 **全搜：网址管理**。
+没有显示 FastSearch 菜单时，可在油猴 / 脚本猫菜单中选择 **FastSearch：网址管理**；Chrome 版可先点击扩展图标打开搜索面板。
 
 对话框提供三个 Tab：
 
@@ -86,7 +96,7 @@ Gemini、豆包、千问、Kimi 和智谱清言因入口不含 `%s` 搜索占位
 
 在网页内 **设置 → 配置备份** 中使用 **导出 / 导入**：
 
-- **导出**：下载 `all-search-backup-日期.json`，包含已保存的菜单网址、划词工具栏、全部设置（新标签页打开、外观、布局、颜色等）和图标缓存。未保存的草稿不包含在备份中，请先保存再导出。
+- **导出**：下载 `fast-search-backup-日期.json`，包含已保存的菜单网址、划词工具栏、全部设置（新标签页打开、外观、布局、颜色等）和图标缓存。未保存的草稿不包含在备份中，请先保存再导出。
 - **导入**：选择整份 JSON 备份，校验通过后确认覆盖全部配置，完成后自动刷新页面生效。写入失败时会尝试恢复原配置，并显示结果。
 - 旧的单独网址数组不是整份备份；可将其粘贴到网址管理的“编辑”Tab 中，检查后保存。
 
@@ -156,6 +166,14 @@ corepack pnpm build:script
 
 生成可安装的脚本：[`output/index.user.js`](./output/index.user.js)。每次构建都会更新这个文件。脚本版本号来自 `package.json`；正式发布新版本时需要更新版本号。
 
+构建 Chrome Manifest V3 扩展：
+
+```sh
+corepack pnpm build:chrome
+```
+
+生成可由 Chrome“加载已解压的扩展程序”安装的 `extension-dist/`。扩展内的运行时代码全部随包构建，不从 CDN 加载远程 JavaScript。
+
 独立配置网站的构建命令为 `corepack pnpm build:site`，输出到 `dist/`。油猴脚本单独输出到 `output/`，两种构建互不覆盖。
 
 #### 浏览器手动测试
@@ -179,9 +197,9 @@ corepack pnpm build:script
 
 每次修改源码后，重新执行 `corepack pnpm build:script`，更新脚本管理器中的代码，并刷新待测页面。
 
-#### 网址管理对话框测试（1.5.22）
+#### 网址管理对话框测试（1.6.0）
 
-1. 安装 `output/index.user.js`，刷新搜索结果页，打开“设置 → 网址管理 → 打开”，确认标题显示 `1.5.22`，有“配置 / 编辑 / 划词工具栏”三个 Tab，各 Tab 底部只有“取消 / 保存”。
+1. 安装 `output/index.user.js`，刷新搜索结果页，打开“设置 → 网址管理 → 打开”，确认标题显示 `1.6.0`，有“配置 / 编辑 / 划词工具栏”三个 Tab，各 Tab 底部只有“取消 / 保存”。
 2. 在“配置”中改名、新增或删除分类 / 网址。网址以 `%s` 代表关键词。拖动左侧手柄排序，也可聚焦手柄后按上下方向键。
 3. 切换到“编辑”，确认图形界面的修改出现在 JSON 中。可以在代码 / 树形 / 预览模式间切换；有效 JSON 修改切回“配置”后会同步。JSON 无效时提示错误，保留原草稿。
 4. 点击“保存”，看到“保存成功，当前页面已生效”后，当前菜单立即更新。刷新后配置保留；其他已打开页面需要刷新。

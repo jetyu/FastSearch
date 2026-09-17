@@ -26,7 +26,7 @@ const storageNames = ['sites', 'toolbar', ...settingNames, 'iconCache']
 
 export function normalizeBackup (raw) {
   if (!isObject(raw) || raw.format !== 'all-search-backup' || raw.schemaVersion !== 1) {
-    throw Error('请选择全搜的整份 JSON 配置备份。单独的网址数组可以粘贴到“编辑”Tab 中。')
+    throw Error('请选择 FastSearch 的整份 JSON 配置备份。单独的网址数组可以粘贴到“编辑”Tab 中。')
   }
   if (!isObject(raw.settings)) throw Error('备份缺少完整的设置数据')
   const settings = {}

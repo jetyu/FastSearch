@@ -12,20 +12,19 @@
     </div>
     <hoverBtn v-show="visible"/>
   </template>
-  <template
-    v-if="toolbarVisible === 1">
+  <template v-if="toolbarVisible === 1">
     <selection-bar
       @openDialog="openDialog"/>
-    <search-dialog
-      :keyword="keyword"
-      v-model:visible="dialogVisible"/>
   </template>
-  <iconfont v-if="!disabled || toolbarVisible === 1"/>
+  <search-dialog
+    :keyword="keyword"
+    v-model:visible="dialogVisible"/>
+  <iconfont/>
   <site-manager v-if="managerVisible"/>
 </template>
 
 <script>
-import { computed, watch, unref, ref, toRefs, toValue, watchEffect } from 'vue'
+import { computed, watch, unref, ref, toRefs, toValue, watchEffect, onMounted, onBeforeUnmount } from 'vue'
 import { initSpecialStyle } from '../util/addSpecialStyle'
 import { addCustomStyle, changeBodyStyle, protectStyle } from '../util/initStyle'
 import { site } from '../config/siteInfo'
@@ -43,6 +42,8 @@ import useToolbar from '../components/useToolbar'
 import useTheme from '../components/useTheme'
 import siteManager from '../components/site-manager.vue'
 import useSiteManager from '../components/useSiteManager'
+import { getKeyword } from '../util/getKeyword'
+import { OPEN_SEARCH_EVENT } from '../platform/messages'
 
 export default {
   name: 'all-search',
@@ -103,6 +104,19 @@ export default {
       keyword.value = text
       dialogVisible.value = true
     }
+
+    function openExtensionDialog () {
+      const selectedText = window.getSelection()?.toString().trim()
+      const pageKeyword = selectedText ? '' : getKeyword()
+      let text = selectedText || ''
+      if (!text && pageKeyword) {
+        try { text = decodeURIComponent(pageKeyword) } catch { text = pageKeyword }
+      }
+      openDialog(text)
+    }
+
+    onMounted(() => document.addEventListener(OPEN_SEARCH_EVENT, openExtensionDialog))
+    onBeforeUnmount(() => document.removeEventListener(OPEN_SEARCH_EVENT, openExtensionDialog))
 
     const { disabled } = toRefs(site)
 

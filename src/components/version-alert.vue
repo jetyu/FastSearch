@@ -3,7 +3,7 @@
     class="version-alert"
     v-show="data.notInstall"
     title="错误"
-    description="检测到您 未安装 或者 未启用 All Search Plus"
+    description="检测到您未安装或未启用 FastSearch"
     type="error"
     show-icon
     :closable="false"/>

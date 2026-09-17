@@ -1,4 +1,4 @@
-import { GM_getResourceText } from '$'
+import { GM_deleteValue, GM_getResourceText } from '$'
 import pkg from '../../package.json'
 
 export const version = pkg.version
@@ -79,9 +79,7 @@ export function parseJson (val) {
 
 export let delSession = function (name) {
   const formatName = getName(name)
-  // eslint-disable-next-line
   if (GM_deleteValue) {
-    // eslint-disable-next-line
     GM_deleteValue(formatName)
   } else {
     window.localStorage.removeItem(formatName)

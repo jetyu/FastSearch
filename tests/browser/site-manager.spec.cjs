@@ -93,9 +93,9 @@ test('one dialog contains three tabs; compact rows, category edits and saved men
 }, testInfo) => {
   await boot(page)
   const logo = page.locator('.as-title')
-  await expect(logo).toHaveAttribute('aria-label', 'All Search Plus')
-  await expect(logo.locator('.as-title-icon')).toHaveAttribute('src', /^data:image\/svg\+xml;base64,/)
-  await expect(logo).not.toContainText('All Search Plus')
+  await expect(logo).toHaveAttribute('aria-label', 'FastSearch')
+  await expect(logo.locator('.as-title-icon')).toHaveAttribute('src', /^data:image\/png;base64,/)
+  await expect(logo).not.toContainText('FastSearch')
   const dialog = await openManager(page)
   await expect(dialog.getByRole('tab')).toHaveText(['配置', '编辑', '划词工具栏'])
   await expect(dialog.getByRole('tab', { name: '配置', exact: true })).toHaveAttribute('aria-selected', 'true')
@@ -236,7 +236,7 @@ test('empty lists saved from the JSON editor remain empty and can be managed aga
   await expect(page.locator('.as-menu-item-title')).toHaveCount(0)
   await page.reload()
   await expect(page.locator('.as-menu-item-title')).toHaveCount(0)
-  await page.evaluate(() => window.testCommands['全搜：网址管理']())
+  await page.evaluate(() => window.testCommands['FastSearch：网址管理']())
   await expect(page.getByRole('dialog', { name: /网址管理/ })).toBeVisible()
 })
 
@@ -526,8 +526,7 @@ test('new built-in sites pass encoded queries and removed sites stay absent', as
   const encoded = encodeURIComponent(keyword)
   const targets = [
     ['开发', 'Docker Hub', 'https://hub.docker.com/search?q=%s'],
-    ['开发', 'Maven Central', 'https://central.sonatype.com/search?q=%s'],
-    ['购物', '唯品会', 'https://category.vip.com/suggest.php?keyword=%s'],
+    ['开发', 'Hugging Face', 'https://huggingface.co/search/full-text?q=%s'],
     ['购物', '亚马逊（全球）', 'https://www.amazon.com/s?k=%s'],
     ['购物', 'eBay', 'https://www.ebay.com/sch/i.html?_nkw=%s'],
     ['社交', '小红书', 'https://www.xiaohongshu.com/search_result?keyword=%s&source=web_search_result_notes'],
@@ -537,10 +536,10 @@ test('new built-in sites pass encoded queries and removed sites stay absent', as
     ['网盘', '百度网盘', 'https://pan.baidu.com/disk/main#/index?category=all&search=%s'],
     ['网盘', 'PanSearch', 'https://www.pansearch.me/search?keyword=%s'],
     ['网盘', '小酷盘', 'https://xiaokupan.com/s/%s'],
-    ['新闻', '人民网', 'https://search.people.cn/s/?keyword=%s'],
-    ['新闻', '央视网', 'https://search.cctv.com/search.php?qtext=%s&type=web'],
-    ['新闻', '澎湃新闻', 'https://www.thepaper.cn/searchResult?id=%s'],
-    ['新闻', '中新网', 'https://sou.chinanews.com.cn/search.do?q=%s'],
+    ['新闻', '路透社', 'https://www.reuters.com/site-search/?query=%s'],
+    ['新闻', '美联社', 'https://apnews.com/search?q=%s'],
+    ['新闻', '德国之声', 'https://www.dw.com/search/en?searchNavigationId=9097&languageCode=en&item=%s'],
+    ['新闻', 'NHK', 'https://www3.nhk.or.jp/nhkworld/en/search/?q=%s'],
     ['百科', '快懂百科', 'https://www.baike.com/search?keyword=%s']
   ]
   for (const [category, name, template] of targets) {

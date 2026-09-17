@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { GM_registerMenuCommand } from '$'
 import index from './index'
 import useSiteManager from '../components/useSiteManager'
+import { OPEN_SEARCH_EVENT, OPEN_SEARCH_MESSAGE } from '../platform/messages'
 import {
   createAsRoot,
   getAsRoot
@@ -12,6 +13,15 @@ import {
 } from '../util/storage'
 
 initTmMethods()
+
+if (globalThis.chrome?.runtime?.onMessage) {
+  chrome.runtime.onMessage.addListener(message => {
+    if (message?.type === OPEN_SEARCH_MESSAGE) {
+      document.dispatchEvent(new CustomEvent(OPEN_SEARCH_EVENT))
+    }
+  })
+}
+
 const el = getAsRoot()
 if (!el) {
   const app = createApp(index)
@@ -20,6 +30,6 @@ if (!el) {
   app.mount(mountEL)
   if (GM_registerMenuCommand) {
     const { openManager } = useSiteManager()
-    GM_registerMenuCommand('全搜：网址管理', () => openManager('sites'))
+    GM_registerMenuCommand('FastSearch：网址管理', () => openManager('sites'))
   }
 }

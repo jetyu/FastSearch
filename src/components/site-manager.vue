@@ -3,7 +3,7 @@
     <div class="sm-overlay" @click.self="close">
       <section ref="panel" class="sm-dialog" role="dialog" aria-modal="true" aria-labelledby="sm-title" tabindex="-1" @keydown="keydown">
         <header class="sm-header">
-          <h2 id="sm-title">网址管理 <span>All Search Plus {{ version }}</span></h2>
+          <h2 id="sm-title">网址管理 <span>FastSearch {{ version }}</span></h2>
           <button type="button" class="sm-icon-button sm-close" aria-label="关闭网址管理" :disabled="busy" @click="close"><Close/></button>
         </header>
         <nav class="sm-tabs" role="tablist" aria-label="网址管理页面">
