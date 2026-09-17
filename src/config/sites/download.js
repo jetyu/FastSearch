@@ -1,9 +1,5 @@
 export default [
   {
-    name: 'BTSOW',
-    url: 'https://btso.pw/search/%s'
-  },
-  {
     name: '谷歌搜索',
     url: 'https://cse.google.com/?q=%s&newwindow=1&cx=006100883259189159113%3Atwgohm0sz8q'
   },
@@ -14,10 +10,6 @@ export default [
   {
     name: '海盗湾',
     url: 'https://thepiratebay.org/search/%s'
-  },
-  {
-    name: 'ED2000',
-    url: 'http://www.ed2000.com/FileList.asp?PageIndex=1&SearchWord=%s&searchMethod=ED2000'
   },
   {
     name: 'subHD字幕',

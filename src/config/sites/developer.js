@@ -2,6 +2,9 @@ export default [
   {
     nameZh: 'GitHub',
     url: 'https://github.com/search?utf8=✓&q=%s'
+  }, {
+    nameZh: 'Hugging Face',
+    url: 'https://huggingface.co/search/full-text?q=%s'
   },
   {
     nameZh: 'MDN',
@@ -23,14 +26,7 @@ export default [
     nameZh: 'Docker Hub',
     url: 'https://hub.docker.com/search?q=%s'
   },
-  {
-    nameZh: 'Hugging Face',
-    url: 'https://huggingface.co/search/full-text?q=%s'
-  },
-  {
-    nameZh: 'Maven Central',
-    url: 'https://central.sonatype.com/search?q=%s'
-  },
+
   {
     nameZh: 'GreasyFork',
     url: 'https://greasyfork.org/zh-CN/scripts?q=%s&utf8=✓',

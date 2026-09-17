@@ -9,10 +9,6 @@ export default [
     url: 'https://xueshu.baidu.com/s?wd=%s'
   },
   {
-    nameZh: '知网',
-    url: 'https://kns.cnki.net/kns8s/defaultresult/index?kw=%s'
-  },
-  {
     nameZh: 'JSTOR',
     url: 'https://www.jstor.org/action/doBasicSearch?Query=%s'
   },

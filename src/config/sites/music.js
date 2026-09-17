@@ -1,12 +1,12 @@
 export default [
   {
+    nameZh: 'QQ音乐',
+    url: 'https://y.qq.com/portal/search.html#page=1&searchid=1&remoteplace=txt.yqq.top&t=song&w=%s'
+  },
+  {
     nameZh: '网易音乐',
     url: 'https://music.163.com/#/search/m/?s=%s',
     icon: 'https://s1.music.126.net/style/favicon.ico'
-  },
-  {
-    nameZh: 'QQ音乐',
-    url: 'https://y.qq.com/portal/search.html#page=1&searchid=1&remoteplace=txt.yqq.top&t=song&w=%s'
   },
   {
     nameZh: '酷我音乐',

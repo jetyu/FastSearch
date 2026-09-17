@@ -12,18 +12,13 @@ export default [
   {
     nameZh: '闲鱼',
     url: 'https://www.goofish.com/search?q=%s'
+  }, {
+    nameZh: '亚马逊（全球）',
+    url: 'https://www.amazon.com/s?k=%s'
   },
   {
     nameZh: '1688',
     url: 'https://s.1688.com/selloffer/offer_search.htm?keywords=%s'
-  },
-  {
-    nameZh: '唯品会',
-    url: 'https://category.vip.com/suggest.php?keyword=%s'
-  },
-  {
-    nameZh: '亚马逊（全球）',
-    url: 'https://www.amazon.com/s?k=%s'
   },
   {
     nameZh: 'eBay',

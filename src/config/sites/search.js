@@ -10,30 +10,24 @@ export default [
   {
     nameZh: '必应',
     url: 'https://cn.bing.com/search?q=%s'
+  }, {
+    nameZh: '搜狗',
+    url: 'https://www.sogou.com/web?query=%s'
   },
   {
     nameZh: 'DuckDuckGo',
     url: 'https://duckduckgo.com/?q=%s'
   },
   {
-    nameZh: '搜狗',
-    url: 'https://www.sogou.com/web?query=%s'
-  },
-  {
-    nameZh: 'Yandex',
-    url: 'https://yandex.com/search/?text=%s'
-  },
-  {
     nameZh: 'ChatGPT',
     url: 'https://chatgpt.com/?q=%s'
+  }, {
+    nameZh: 'Deepseek',
+    url: 'https://chat.deepseek.com/?q=%s'
   },
   {
     nameZh: 'Grok',
     url: 'https://grok.com/?q=%s'
-  },
-  {
-    nameZh: 'Deepseek',
-    url: 'https://chat.deepseek.com/?q=%s'
   },
   {
     nameZh: 'Perplexity',

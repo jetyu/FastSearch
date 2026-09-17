@@ -32,10 +32,6 @@ export default [
     url: 'https://www.pinterest.com/search/pins/?q=%s&rs=typed&term_meta'
   },
   {
-    nameZh: 'Yandex',
-    url: 'https://yandex.com/images/search?text=%s'
-  },
-  {
     nameZh: 'Pixabay',
     url: 'https://pixabay.com/images/search/%s/',
     icon: 'https://pixabay.com/favicon-32x32.png'
