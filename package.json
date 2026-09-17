@@ -1,7 +1,7 @@
 {
   "name": "all-search-plus",
   "displayName": "All Search Plus (全搜增强版，搜索引擎快捷跳转，支持任意网站展示)",
-  "version": "1.5.21",
+  "version": "1.5.22",
   "keywords": [
     "tamperMonkey",
     "user-script",
