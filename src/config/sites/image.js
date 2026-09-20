@@ -30,13 +30,13 @@ export default [
     icon: 'https://unsplash.com/favicon.ico'
   },
   {
-    nameZh: 'Pixiv',
-    url: 'https://www.pixiv.net/search.php?word=%s',
-    icon: 'https://www.pixiv.net/favicon.ico'
-  },
-  {
     nameZh: 'Flickr',
     url: 'https://www.flickr.com/search/?q=%s',
     icon: 'https://www.flickr.com/favicon.ico'
+  },
+  {
+    nameZh: 'Emojipedia',
+    url: 'https://emojipedia.org/search?q=%s',
+    icon: 'https://emojipedia.org/favicon.ico'
   }
 ]

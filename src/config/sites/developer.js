@@ -3,7 +3,8 @@ export default [
     nameZh: 'GitHub',
     url: 'https://github.com/search?utf8=✓&q=%s',
     icon: 'https://github.com/favicon.ico'
-  }, {
+  },
+  {
     nameZh: 'Hugging Face',
     url: 'https://huggingface.co/search/full-text?q=%s',
     icon: 'https://huggingface.co/favicon.ico'
