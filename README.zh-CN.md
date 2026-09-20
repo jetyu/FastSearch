@@ -1,10 +1,10 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-## FastSearch
+## Fast Search
 
 > 搜索引擎快捷跳转，支持任意网站展示
 
-**FastSearch** 是一款适用于 Chrome、油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助工具，提供固定搜索菜单、划词搜索、全局搜索、脚本内网址管理和整份配置备份功能。项目基于 Vue 3，使用 Vite 构建。
+**Fast Search** 是一款适用于 Chrome、油猴（Tampermonkey）和脚本猫（ScriptCat）的搜索辅助工具，提供固定搜索菜单、划词搜索、全局搜索、脚本内网址管理和整份配置备份功能。项目基于 Vue 3，使用 Vite 构建。
 
 感谢searchEngineJump提供的创意和网址来源。
 同类工具推荐：
@@ -17,17 +17,17 @@
 
 在搜索结果页面中，可以通过快捷菜单切换搜索引擎并复用当前关键词；也可以选中文字后使用划词工具栏或搜索弹窗发起搜索。脚本支持网址管理、自定义分类与排序、整份配置备份与恢复、新标签页打开设置，以及自动 / 深色 / 浅色外观。
 
-### FastSearch 用户脚本安装入口
+### Fast Search 用户脚本安装入口
 
-- [Greasy Fork 安装页（推荐）](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
+- [Greasy Fork 安装页（推荐）](https://greasyfork.org/zh-CN/scripts/595932)
 - [GitHub 构建脚本：output/index.user.js](./output/index.user.js)
 
 1. 在浏览器中安装并启用油猴或脚本猫扩展。
 2. 推荐打开上方 Greasy Fork 安装页，点击 **安装此脚本**，然后在脚本管理器中确认安装。以后发布的新版本会由 Greasy Fork 自动检查更新。
 3. 也可以打开 GitHub 构建脚本，在文件页面点击 **Raw** 安装；如果没有弹出安装页面，可在脚本管理器中新建脚本，将完整文件内容（包含开头的 `// ==UserScript==` 元信息）复制进去并保存、启用。
-4. 刷新搜索结果页面，即可使用 FastSearch 菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
+4. 刷新搜索结果页面，即可使用 Fast Search 菜单。通过 **设置 → 网址管理 → 打开** 管理搜索入口；通过 **设置 → 配置备份** 导入或导出整份配置。
 
-脚本使用统一的 `@name`：`FastSearch`，`@namespace` 继续使用 `all-search-plus`，以兼容已有安装和配置。反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
+脚本使用统一的 `@name`：`Fast Search`，`@namespace` 继续使用 `fast-search`，以兼容已有安装和配置。反馈地址指向本仓库。通过 GitHub 安装时，`@downloadURL` 和 `@updateURL` 指向本仓库 `master` 分支下的 `output/index.user.js`；更新前需将新构建的脚本发布到该分支。
 
 ### Chrome 扩展安装
 
@@ -35,7 +35,7 @@
 
 1. 打开 `chrome://extensions/`，启用右上角的“开发者模式”。
 2. 点击“加载已解压的扩展程序”，选择仓库中的 `extension-dist/`。
-3. 点击浏览器工具栏中的 FastSearch 图标，或按 `Ctrl+Shift+K`（macOS 为 `Command+Shift+K`）打开搜索面板。
+3. 点击浏览器工具栏中的 Fast Search 图标，或按 `Ctrl+Shift+K`（macOS 为 `Command+Shift+K`）打开搜索面板。
 
 Chrome 版使用 `chrome.storage.local` 保存配置。用户脚本与 Chrome 扩展的存储空间相互独立，可以通过“配置备份”的导出与导入迁移配置。
 
@@ -43,9 +43,9 @@ Chrome 版使用 `chrome.storage.local` 保存配置。用户脚本与 Chrome �
 
 ## 设置入口
 
-在网页内 FastSearch 菜单点击 **设置 → 网址管理 → 打开**，进入配置对话框。
+在网页内 Fast Search 菜单点击 **设置 → 网址管理 → 打开**，进入配置对话框。
 在对话框内切换“配置”“编辑”“划词工具栏”三个 Tab。
-没有显示 FastSearch 菜单时，可在油猴 / 脚本猫菜单中选择 **FastSearch：网址管理**；Chrome 版可先点击扩展图标打开搜索面板。
+没有显示 Fast Search 菜单时，可在油猴 / 脚本猫菜单中选择 **Fast Search：网址管理**；Chrome 版可先点击扩展图标打开搜索面板。
 
 对话框提供三个 Tab：
 
@@ -148,7 +148,7 @@ corepack pnpm install --frozen-lockfile
 corepack pnpm dev:site
 ```
 
-访问终端显示的本地地址下的 `/all-search/`。独立配置网站仍然保留；日常管理网址可直接使用脚本内对话框。“新标签页打开”位于搜索页面内全搜菜单的“设置”侧栏。
+访问终端显示的本地地址下的 `/fast-search/`。独立配置网站仍然保留；日常管理网址可直接使用脚本内对话框。“新标签页打开”位于搜索页面内Fast Search 菜单的“设置”侧栏。
 
 开发油猴脚本：
 
@@ -178,9 +178,9 @@ corepack pnpm build:chrome
 
 #### 浏览器手动测试
 
-1. 在油猴或脚本猫的脚本编辑器中打开已有的全搜脚本；首次安装时新建一个脚本。
-2. 将 `output/index.user.js` 的完整内容（包含开头的 `// ==UserScript==` 元信息）复制到编辑器，替换原内容并保存、启用。同一时间只启用一个全搜版本。
-3. 打开或刷新百度、必应等搜索结果页面，在全搜菜单右侧点击“设置”。
+1. 在油猴或脚本猫的脚本编辑器中打开已有的Fast Search 脚本；首次安装时新建一个脚本。
+2. 将 `output/index.user.js` 的完整内容（包含开头的 `// ==UserScript==` 元信息）复制到编辑器，替换原内容并保存、启用。同一时间只启用一个Fast Search 版本。
+3. 打开或刷新百度、必应等搜索结果页面，在Fast Search 菜单右侧点击“设置”。
 4. 找到“新标签页打开”，切换“开启 / 关闭”。此设置自动保存，无需额外点击保存。
 5. 按下表验证。打开搜索弹窗的方法是：选中页面文字，在划词工具栏中点击“更多”图标。
 
@@ -208,7 +208,7 @@ corepack pnpm build:chrome
 7. 关闭对话框，在“设置 → 配置备份”中导出 JSON，确认文件同时包含 `sites`、`toolbar`、`settings` 和 `iconCache`。修改并保存配置后，导入该备份，确认覆盖后页面自动刷新、整份配置恢复。
 8. 在“编辑”中点击“清除网址管理配置”，先取消确认，检查原配置和草稿保留；再次点击并确认，检查菜单及编辑器恢复内置网址，刷新后仍使用内置网址，划词工具栏和其他设置保留。
 
-继续使用原有的 `__allSearch__sites` 和 `__allSearch__toolbar` 存储，保留已有配置。旧 JSON 中没有 `data.visible` 时默认显示；保存空列表 `[]` 后刷新仍为空，可通过脚本管理器菜单重新进入管理。
+继续兼容旧配置，并使用新的 `__fastSearch__sites` 和 `__fastSearch__toolbar` 存储。旧 JSON 中没有 `data.visible` 时默认显示；保存空列表 `[]` 后刷新仍为空，可通过脚本管理器菜单重新进入管理。
 写入失败或发现其他页面已修改配置时会显示错误，保留草稿；发现其他页面的修改时，先复制保留需要的草稿内容，再关闭并重新打开网址管理。
 
 自动检查：
@@ -225,4 +225,4 @@ corepack pnpm test:browser
 
 ## 来源与许可
 
-本版基于 [all-search/all-search](https://github.com/all-search/all-search) 二次修改，保留上游归属说明，并沿用 **GPL-3.0-only** 许可证，完整条款见 [LICENSE](./LICENSE)。本版问题请提交到 [jetyu/all-search_plus Issues](https://github.com/jetyu/all-search_plus/issues)。
+本版沿用 **GPL-3.0-only** 许可证，完整条款见 [LICENSE](./LICENSE)。本版问题请提交到 [jetyu/FastSearch Issues](https://github.com/jetyu/FastSearch/issues)。

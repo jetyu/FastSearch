@@ -1,10 +1,10 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-## FastSearch
+## Fast Search
 
 > Quick search engine switching with support for displaying the menu on any website.
 
-**FastSearch** is a search helper for Chrome, Tampermonkey and ScriptCat. It provides a fixed search menu, text-selection tools, global search, in-page URL management and configuration backup. It is based on Vue 3 and built with Vite.
+**Fast Search** is a search helper for Chrome, Tampermonkey and ScriptCat. It provides a fixed search menu, text-selection tools, global search, in-page URL management and configuration backup. It is based on Vue 3 and built with Vite.
 
 Thanks to searchEngineJump for the idea and URL source.
 Similar tools recommended.
@@ -17,9 +17,9 @@ Similar tools recommended.
 
 Switch search engines from a quick menu while reusing the current query, or select text to search using the selection toolbar or search popup. The script supports in-script URL management, custom categories and sorting, full configuration backup and restore, a new-tab preference, and automatic, dark, or light appearance modes.
 
-### Install the FastSearch userscript
+### Install the Fast Search userscript
 
-- [Greasy Fork installation page (recommended)](https://greasyfork.org/zh-CN/scripts/595932-all-search-plus-%E5%85%A8%E6%90%9C%E5%A2%9E%E5%BC%BA%E7%89%88-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-%E6%94%AF%E6%8C%81%E4%BB%BB%E6%84%8F%E7%BD%91%E7%AB%99%E5%B1%95%E7%A4%BA)
+- [Greasy Fork installation page (recommended)](https://greasyfork.org/zh-CN/scripts/595932)
 - [GitHub build: output/index.user.js](./output/index.user.js)
 
 1. Install and enable the Tampermonkey or ScriptCat browser extension.
@@ -27,11 +27,11 @@ Switch search engines from a quick menu while reusing the current query, or sele
 3. Alternatively, open the GitHub build and click **Raw**. If no installation page appears, create a new script in your userscript manager, replace the default contents with the complete file (including the opening `// ==UserScript==` metadata), then save and enable it.
 4. Refresh a search results page to use the menu. Open **Settings → URL management → Open** to manage search entries, or **Settings → Configuration backup** to import or export the full configuration.
 
-The script uses the `@name` value `FastSearch` and keeps the `all-search-plus` namespace for compatibility with existing installations and settings. The support link points to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
+The script uses the `@name` value `Fast Search` and keeps the `fast-search` namespace for compatibility with existing installations and settings. The support link points to this repository. For GitHub installations, `@downloadURL` and `@updateURL` point to `output/index.user.js` on this repository's `master` branch. Publish the newly built script to that branch to make an update available.
 
 ### Install the Chrome extension
 
-Run `corepack pnpm build:chrome`, open `chrome://extensions/`, enable Developer mode, choose **Load unpacked**, and select `extension-dist/`. Click the FastSearch toolbar icon or press `Ctrl+Shift+K` (`Command+Shift+K` on macOS) to open the search dialog.
+Run `corepack pnpm build:chrome`, open `chrome://extensions/`, enable Developer mode, choose **Load unpacked**, and select `extension-dist/`. Click the Fast Search toolbar icon or press `Ctrl+Shift+K` (`Command+Shift+K` on macOS) to open the search dialog.
 
 The Chrome build stores settings in `chrome.storage.local`. Use configuration backup export/import to migrate settings between the userscript and the extension.
 
@@ -41,7 +41,7 @@ When a script is published and installed through Greasy Fork, the platform remov
 
 Open **设置 → 网址管理 → 打开** in the search menu. The dialog contains Configuration, JSON Editor and Selection Toolbar tabs. Configuration and Editor share a menu draft; the selection toolbar is saved separately. Each tab provides Save and Cancel buttons.
 
-Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 → 编辑 → 清除网址管理配置** to restore the built-in menu after confirmation. If the menu is unavailable, open **FastSearch：网址管理** from your userscript manager's menu. Everyday settings work inside the script without a separate configuration website.
+Use **设置 → 配置备份** for complete JSON backups. Use **网址管理 → 编辑 → 清除网址管理配置** to restore the built-in menu after confirmation. If the menu is unavailable, open **Fast Search：网址管理** from your userscript manager's menu. Everyday settings work inside the script without a separate configuration website.
 
 ### Built-in sites in 1.5.21
 
@@ -111,4 +111,4 @@ Build the Chrome Manifest V3 extension with `corepack pnpm build:chrome`. The un
 
 ## Attribution and license
 
-This script references [All Search](https://github.com/all-search/all-search) and is released under the **GPL-3.0-only** license. See [LICENSE](./LICENSE) for the full terms. Report issues in [jetyu/all-search_plus Issues](https://github.com/jetyu/all-search_plus/issues).
+This script is released under the **GPL-3.0-only** license. See [LICENSE](./LICENSE) for the full terms. Report issues in [jetyu/FastSearch Issues](https://github.com/jetyu/FastSearch/issues).

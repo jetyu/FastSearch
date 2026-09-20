@@ -1,5 +1,5 @@
 <template>
-  <router-view class="all-search-config"/>
+  <router-view class="fast-search-config"/>
 </template>
 
 <script>

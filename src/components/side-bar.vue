@@ -13,7 +13,7 @@
       设置
     </div>
   </div>
-  <teleport to="#all-search">
+  <teleport to="#fast-search">
     <transition name="overlay" appear>
       <overlay
         v-show="visible"
@@ -27,7 +27,7 @@
             class="as-side-bar"
             @click.stop>
             <header class="header">
-              FastSearch
+              Fast Search
             </header>
             <section>
               <form-item
@@ -139,7 +139,7 @@
             <footer>
               <a class="link"
                  title="github"
-                 href="https://github.com/jetyu/all-search_plus/issues"
+                 href="https://github.com/jetyu/FastSearch/issues"
                  target="_blank">
                 反馈
               </a>

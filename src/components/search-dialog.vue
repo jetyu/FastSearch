@@ -18,6 +18,7 @@
       </div>
     </template>
     <scrollbar
+      v-if="localVisible"
       class="se-scrollbar-container"
       noresize>
       <div class="se-container">

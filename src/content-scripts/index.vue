@@ -46,7 +46,7 @@ import { getKeyword } from '../util/getKeyword'
 import { OPEN_SEARCH_EVENT } from '../platform/messages'
 
 export default {
-  name: 'all-search',
+  name: 'fast-search',
   components: {
     logo,
     asMenu,
@@ -176,7 +176,7 @@ export default {
   margin-left: $verticalWidth !important;
 }
 
-body, #all-search {
+body, #fast-search {
   --as-horizontal-height: $height;
   --as-primary-color: #1890ff;
   --as-bg-color: #ffffff;
@@ -199,11 +199,11 @@ body, #all-search {
   --as-shadow-color: rgba(0, 0, 0, .16);
 }
 
-#all-search {
+#fast-search {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-#all-search[data-as-theme="dark"] {
+#fast-search[data-as-theme="dark"] {
   --as-bg-color: #17191e;
   --as-surface-color: #20242b;
   --as-translucent-surface-color: rgba(32, 36, 43, .88);

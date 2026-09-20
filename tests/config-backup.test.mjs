@@ -21,7 +21,7 @@ async function backup (read = async () => undefined) {
 test('backup contains complete defaults and the saved menu, toolbar, settings and icons', async () => {
   const f = fixture({ sites, toolbar: [], openInNewTab: true, primaryColor: '', iconCache: { 'example.com': 'data:image/png;base64,aA==' } })
   const data = await backup(f.io.read)
-  assert.equal(data.format, 'all-search-backup')
+  assert.equal(data.format, 'fast-search-backup')
   assert.deepEqual(Object.keys(data.settings), Object.keys(settingDefaults))
   assert.equal(data.settings.openInNewTab, true)
   assert.equal(data.settings.theme, 'auto')
@@ -91,4 +91,10 @@ test('rollback failures are reported instead of claiming the previous configurat
     await write(name, value)
   }
   await assert.rejects(restoreBackup(data, f.io), /部分配置未能恢复/)
+})
+
+test('legacy backup format remains importable', async () => {
+  const data = await backup()
+  data.format = ['all', 'search', 'backup'].join('-')
+  assert.equal(normalizeBackup(data).format, 'fast-search-backup')
 })

@@ -46,7 +46,14 @@ export function checkBody () {
 
 export function getName (name) {
   if (name) {
-    return `__allSearch__${name}`
+    return `__fastSearch__${name}`
+  }
+  return null
+}
+
+export function getLegacyName (name) {
+  if (name) {
+    return ['__all', 'Search__', name].join('')
   }
   return null
 }
@@ -79,10 +86,13 @@ export function parseJson (val) {
 
 export let delSession = function (name) {
   const formatName = getName(name)
+  const legacyName = getLegacyName(name)
   if (GM_deleteValue) {
     GM_deleteValue(formatName)
+    GM_deleteValue(legacyName)
   } else {
     window.localStorage.removeItem(formatName)
+    window.localStorage.removeItem(legacyName)
   }
 }
 
@@ -92,7 +102,7 @@ export function addStyle (styleContent) {
   }
   const style = document.createElement('style')
   style.innerHTML = styleContent
-  style.class = 'all-search-style'
+  style.class = 'fast-search-style'
   const head = document.getElementsByTagName('head')[0]
   head.appendChild(style)
 }
@@ -219,12 +229,12 @@ export function addStyleContent (css, className, addToTarget, isReload = false) 
 }
 
 export function getAsRoot () {
-  return document.getElementById('all-search')
+  return document.getElementById('fast-search')
 }
 
 export function createAsRoot () {
   const el = document.createElement('div')
-  el.id = 'all-search'
+  el.id = 'fast-search'
   return el
 }
 

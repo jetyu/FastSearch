@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="toolbarVisible === 1"
+    v-if="toolbarVisible === 1 && mounted"
     v-show="visible"
     class="bar-container"
     ref="toolbarEle"
@@ -66,6 +66,7 @@ export default {
       list
     } = useToolbar('tm')
     const visible = ref(false)
+    const mounted = ref(false)
     const toolbarEle = ref(null)
     const styleObj = reactive({
       top: 0,
@@ -87,6 +88,7 @@ export default {
     let selectStart = false
 
     function changeVisible(val) {
+      if (val) mounted.value = true
       visible.value = Boolean(val)
       nextTick(() => {
         if (!val) {
@@ -164,6 +166,7 @@ export default {
       toolbarVisible,
       list,
       visible,
+      mounted,
       toolbarEle,
       style,
       selectionShort,

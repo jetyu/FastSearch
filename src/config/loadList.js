@@ -203,13 +203,5 @@ export const list = [
   },
   {
     url: /\/\/www\.startpage\.com\/sp\/search/
-  },
-  {
-    url: /\/\/all-search\.github\.io/,
-    invisible: true
-  },
-  {
-    url: /\/\/endday\.gitee\.io/,
-    invisible: true
   }
 ]

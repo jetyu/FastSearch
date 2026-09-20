@@ -3,7 +3,7 @@
        :class="className"
        @mouseenter="handleMouseEnter"
        @click="handleClick">
-    FastSearch
+    Fast Search
   </div>
 </template>
 

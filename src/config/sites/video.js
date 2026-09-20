@@ -1,19 +1,23 @@
 export default [
   {
     nameZh: 'YouTube',
-    url: 'https://www.youtube.com/results?search_query=%s'
+    url: 'https://www.youtube.com/results?search_query=%s',
+    icon: 'https://www.youtube.com/favicon.ico'
   },
   {
     nameZh: '哔哩哔哩',
-    url: 'https://search.bilibili.com/all?keyword=%s'
+    url: 'https://search.bilibili.com/all?keyword=%s',
+    icon: 'https://search.bilibili.com/favicon.ico'
   },
   {
     nameZh: '抖音',
-    url: 'https://www.douyin.com/search/%s?type=video'
+    url: 'https://www.douyin.com/search/%s?type=video',
+    icon: 'https://www.douyin.com/favicon.ico'
   },
   {
     nameZh: '腾讯视频',
-    url: 'https://v.qq.com/x/search/?q=%s'
+    url: 'https://v.qq.com/x/search/?q=%s',
+    icon: 'https://v.qq.com/favicon.ico'
   },
   {
     nameZh: '爱奇艺',

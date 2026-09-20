@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 export default createRouter({
-  history: createWebHistory('/all-search/'),
+  history: createWebHistory('/fast-search/'),
   routes: [
     /*    {
           path: '/',
           name: 'index',
           component: () => import('../views/index.vue'),
           meta: {
-            nameZh: 'FastSearch'
+            nameZh: 'Fast Search'
           }
         },*/
     {

@@ -2,9 +2,9 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
 
-test('Chrome manifest defines the FastSearch MV3 entries and packaged icons', async () => {
+test('Chrome manifest defines the Fast Search MV3 entries and packaged icons', async () => {
   const manifest = JSON.parse(await readFile(new URL('../src/manifest.json', import.meta.url), 'utf8'))
-  assert.equal(manifest.name, 'FastSearch')
+  assert.equal(manifest.name, 'Fast Search')
   assert.equal(manifest.manifest_version, 3)
   assert.equal(manifest.background.service_worker, 'background/index.js')
   assert.equal(manifest.background.type, 'module')

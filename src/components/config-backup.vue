@@ -64,6 +64,6 @@ async function importFile (event) {
 .as-config-backup .as-button + .as-button { margin-left: 12px; }
 .as-config-backup .as-button:disabled { opacity: .45; cursor: default; }
 .as-config-backup input[hidden] { display: none; }
-#all-search .as-backup-message { margin: 0 0 10px; font-size: 12px; color: #606266; line-height: 1.5; overflow-wrap: anywhere; }
-#all-search .as-backup-message.failed { color: #c45656; }
+#fast-search .as-backup-message { margin: 0 0 10px; font-size: 12px; color: #606266; line-height: 1.5; overflow-wrap: anywhere; }
+#fast-search .as-backup-message.failed { color: #c45656; }
 </style>

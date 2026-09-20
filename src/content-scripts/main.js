@@ -15,7 +15,7 @@ import {
 initTmMethods()
 
 if (globalThis.chrome?.runtime?.onMessage) {
-  chrome.runtime.onMessage.addListener(message => {
+  globalThis.chrome.runtime.onMessage.addListener(message => {
     if (message?.type === OPEN_SEARCH_MESSAGE) {
       document.dispatchEvent(new CustomEvent(OPEN_SEARCH_EVENT))
     }
@@ -30,6 +30,6 @@ if (!el) {
   app.mount(mountEL)
   if (GM_registerMenuCommand) {
     const { openManager } = useSiteManager()
-    GM_registerMenuCommand('FastSearch：网址管理', () => openManager('sites'))
+    GM_registerMenuCommand('Fast Search：网址管理', () => openManager('sites'))
   }
 }

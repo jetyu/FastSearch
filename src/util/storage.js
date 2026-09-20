@@ -1,10 +1,11 @@
 import { GM_getValue, GM_setValue, GM_deleteValue } from '$'
-import { getName, parseJson, version } from './index'
+import { getLegacyName, getName, parseJson, version } from './index'
 import store from './store'
 
 async function getStorageFn (name, fallback) {
   if (!GM_getValue) throw Error('没有找到 GM_getValue')
-  const item = await GM_getValue(getName(name))
+  let item = await GM_getValue(getName(name))
+  if (item === undefined) item = await GM_getValue(getLegacyName(name))
   if (item === undefined) {
     if (arguments.length > 1) return fallback
     throw Error('没有已保存的配置：' + name)
@@ -22,6 +23,7 @@ async function setStorageFn (name, value) {
 async function delStorageFn (name) {
   if (!GM_deleteValue) throw Error('没有找到 GM_deleteValue')
   await GM_deleteValue(getName(name))
+  await GM_deleteValue(getLegacyName(name))
   return true
 }
 

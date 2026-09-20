@@ -17,7 +17,7 @@ export function injectStyle (cssContent) {
       cssNode.id = 'as-style-common'
       cssNode.appendChild(document.createTextNode(styles))
       styles = ''
-      const asRoot = document.getElementById('all-search')
+      const asRoot = document.getElementById('fast-search')
       const container = (asRoot || document.body || document.head || document.documentElement || document)
       container.appendChild(cssNode)
       id = null

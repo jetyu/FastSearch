@@ -4,7 +4,7 @@ import pkg from '../../package.json'
 const fileName = 'index.user.js'
 export const localFileName = 'index.local.js'
 export const devFileName = 'index.dev.js'
-const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/${fileName}`
+const scriptUrl = `https://raw.githubusercontent.com/jetyu/FastSearch/master/output/${fileName}`
 
 const meta = `// @name         ${pkg.displayName}
 // @namespace    ${pkg.name}
@@ -20,7 +20,7 @@ const meta = `// @name         ${pkg.displayName}
 // @noframes
 // @include      *
 // @require      https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js
-// @require      https://unpkg.com/all-search@1.3.17/lib/popper-lite.min.js
+// @require      https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper-lite.min.js
 // @run-at       document-idle
 // @grant        GM_getValue
 // @grant        GM_setValue

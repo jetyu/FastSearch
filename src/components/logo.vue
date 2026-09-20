@@ -2,10 +2,10 @@
   <a
     v-if="!isMobile"
     class="as-title"
-    href="https://github.com/jetyu/all-search_plus"
+    href="https://github.com/jetyu/FastSearch"
     target="_blank"
-    aria-label="FastSearch"
-    title="FastSearch"
+    aria-label="Fast Search"
+    title="Fast Search"
     :class="`as-title-${mode}`"
   >
     <img class="as-title-icon" :src="iconUrl" alt="" aria-hidden="true" />

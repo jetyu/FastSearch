@@ -1,9 +1,9 @@
 <template>
-  <teleport to="#all-search">
+  <teleport to="#fast-search">
     <div class="sm-overlay" @click.self="close">
       <section ref="panel" class="sm-dialog" role="dialog" aria-modal="true" aria-labelledby="sm-title" tabindex="-1" @keydown="keydown">
         <header class="sm-header">
-          <h2 id="sm-title">网址管理 <span>FastSearch {{ version }}</span></h2>
+          <h2 id="sm-title">网址管理 <span>Fast Search {{ version }}</span></h2>
           <button type="button" class="sm-icon-button sm-close" aria-label="关闭网址管理" :disabled="busy" @click="close"><Close/></button>
         </header>
         <nav class="sm-tabs" role="tablist" aria-label="网址管理页面">
@@ -209,7 +209,7 @@ onUnmounted(() => { if (previousFocus?.isConnected) previousFocus.focus() })
 </script>
 
 <style lang="scss">
-#all-search .sm-overlay {
+#fast-search .sm-overlay {
   position: fixed; inset: 0; z-index: 1000002; display: flex; align-items: center; justify-content: center;
   padding: 24px; background: var(--as-overlay-color); color: var(--as-primary-text-color); font-size: 14px; text-align: left;
   *, *::before, *::after { box-sizing: border-box; }
@@ -297,7 +297,7 @@ onUnmounted(() => { if (previousFocus?.isConnected) previousFocus.focus() })
   }
 }
 
-#all-search[data-as-theme="dark"] .sm-overlay {
+#fast-search[data-as-theme="dark"] .sm-overlay {
   .jsoneditor { background: var(--as-surface-color); border-color: var(--as-primary-color); }
   div.jsoneditor-tree, textarea.jsoneditor-text, pre.jsoneditor-preview { background: var(--as-surface-color); color: var(--as-primary-text-color); }
   div.jsoneditor-field, div.jsoneditor-value, div.jsoneditor-readonly, div.jsoneditor td, div.jsoneditor th, pre.jsoneditor-preview { color: var(--as-primary-text-color); }

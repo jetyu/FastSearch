@@ -34,13 +34,13 @@ async function boot(page, options = {}) {
     ({ scripts, legacy, options }) => {
       if (!localStorage.getItem('seeded')) {
         localStorage.setItem('seeded', 'true')
-        if (!options.fresh) localStorage.setItem('__allSearch__sites', JSON.stringify(legacy))
-        localStorage.setItem('__allSearch__iconCache', '{}')
+        if (!options.fresh) localStorage.setItem('__fastSearch__sites', JSON.stringify(legacy))
+        localStorage.setItem('__fastSearch__iconCache', '{}')
       }
       window.GM_getValue = (key) =>
         localStorage.getItem(key) === null ? undefined : JSON.parse(localStorage.getItem(key))
       window.GM_setValue = async (key, value) => {
-        if (window.failWrite && ['__allSearch__sites', '__allSearch__toolbar'].includes(key))
+        if (window.failWrite && ['__fastSearch__sites', '__fastSearch__toolbar'].includes(key))
           throw Error('模拟写入失败')
         if (window.failOnceKey === key) {
           window.failOnceKey = ''
@@ -67,7 +67,7 @@ async function boot(page, options = {}) {
     { scripts, legacy, options }
   )
   await page.goto('https://www.baidu.com/s?wd=test')
-  await expect(page.locator('#all-search')).toBeAttached()
+  await expect(page.locator('#fast-search')).toBeAttached()
 }
 async function openManager(page, tab = '配置') {
   await page.locator('.as-setting-btn').getByText('设置', { exact: true }).click()
@@ -79,7 +79,7 @@ async function openManager(page, tab = '配置') {
   return dialog
 }
 async function stored(page, name = 'sites') {
-  return page.evaluate((name) => window.GM_getValue('__allSearch__' + name), name)
+  return page.evaluate((name) => window.GM_getValue('__fastSearch__' + name), name)
 }
 async function editJson(page, text) {
   const editor = page.locator('.ace_text-input')
@@ -93,9 +93,9 @@ test('one dialog contains three tabs; compact rows, category edits and saved men
 }, testInfo) => {
   await boot(page)
   const logo = page.locator('.as-title')
-  await expect(logo).toHaveAttribute('aria-label', 'FastSearch')
+  await expect(logo).toHaveAttribute('aria-label', 'Fast Search')
   await expect(logo.locator('.as-title-icon')).toHaveAttribute('src', /^data:image\/png;base64,/)
-  await expect(logo).not.toContainText('FastSearch')
+  await expect(logo).not.toContainText('Fast Search')
   const dialog = await openManager(page)
   await expect(dialog.getByRole('tab')).toHaveText(['配置', '编辑', '划词工具栏'])
   await expect(dialog.getByRole('tab', { name: '配置', exact: true })).toHaveAttribute('aria-selected', 'true')
@@ -236,7 +236,7 @@ test('empty lists saved from the JSON editor remain empty and can be managed aga
   await expect(page.locator('.as-menu-item-title')).toHaveCount(0)
   await page.reload()
   await expect(page.locator('.as-menu-item-title')).toHaveCount(0)
-  await page.evaluate(() => window.testCommands['FastSearch：网址管理']())
+  await page.evaluate(() => window.testCommands['Fast Search：网址管理']())
   await expect(page.getByRole('dialog', { name: /网址管理/ })).toBeVisible()
 })
 
@@ -288,13 +288,13 @@ async function exportBackup(page) {
 test('global JSON backup round-trips saved menu, toolbar, settings and icons', async ({ page }) => {
   await boot(page)
   await page.evaluate(() => {
-    window.GM_setValue('__allSearch__openInNewTab', true)
-    window.GM_setValue('__allSearch__primaryColor', '#123456')
-    window.GM_setValue('__allSearch__iconCache', { 'example.com': 'data:image/png;base64,aA==' })
+    window.GM_setValue('__fastSearch__openInNewTab', true)
+    window.GM_setValue('__fastSearch__primaryColor', '#123456')
+    window.GM_setValue('__fastSearch__iconCache', { 'example.com': 'data:image/png;base64,aA==' })
   })
   await page.locator('.as-setting-btn').getByText('设置', { exact: true }).click()
   const backup = await exportBackup(page)
-  expect(backup.format).toBe('all-search-backup')
+  expect(backup.format).toBe('fast-search-backup')
   expect(backup.sites[0].list[0].nameZh).toBe('百度')
   expect(backup.toolbar.map((item) => item.nameZh)).toEqual(['Google', '百度', 'Google翻译', 'ChatGPT'])
   expect(backup.settings.openInNewTab).toBe(true)
@@ -326,7 +326,7 @@ test('global JSON backup round-trips saved menu, toolbar, settings and icons', a
 test('appearance follows the system or an explicit dark and light preference', async ({ page }, testInfo) => {
   await page.emulateMedia({ colorScheme: 'dark' })
   await boot(page, { fresh: true })
-  const root = page.locator('#all-search')
+  const root = page.locator('#fast-search')
   await expect(root).toHaveAttribute('data-as-theme', 'dark')
 
   await page.locator('.as-setting-btn').getByText('设置', { exact: true }).click()
@@ -366,7 +366,7 @@ test('global restore rejects partial files and rolls back after a write failure'
   expect(await stored(page)).toEqual(legacy)
   backup.sites = []
   await page.evaluate(() => {
-    window.failOnceKey = '__allSearch__toolbar'
+    window.failOnceKey = '__fastSearch__toolbar'
   })
   page.once('dialog', (prompt) => prompt.accept())
   await input.setInputFiles({
@@ -386,8 +386,8 @@ test('clearing menu configuration confirms first, restores built-ins and preserv
   await boot(page)
   const toolbar = [{ nameZh: '自定义划词', url: 'https://toolbar.example.com/?q=%s' }]
   await page.evaluate(async (toolbar) => {
-    await window.GM_setValue('__allSearch__toolbar', toolbar)
-    await window.GM_setValue('__allSearch__openInNewTab', true)
+    await window.GM_setValue('__fastSearch__toolbar', toolbar)
+    await window.GM_setValue('__fastSearch__openInNewTab', true)
   }, toolbar)
   const dialog = await openManager(page)
   const clear = dialog.getByRole('button', { name: '清除网址管理配置', exact: true })
@@ -444,7 +444,7 @@ test('clearing failures and changes from another page retain the menu and JSON d
   const newer = [{ name: 'newer', nameZh: '其他页面配置', list: [] }]
   await page.evaluate(async (newer) => {
     window.failDelete = false
-    await window.GM_setValue('__allSearch__sites', newer)
+    await window.GM_setValue('__fastSearch__sites', newer)
   }, newer)
   await clear.click()
   await expect(dialog.getByRole('status')).toContainText('其他页面修改')

@@ -1,8 +1,8 @@
 {
-  "name": "FastSearch",
+  "name": "Fast Search",
   "description": "快速切换搜索引擎，支持划词搜索、全局搜索和自定义搜索入口",
   "version": "1.6.0",
-  "homepage_url": "https://github.com/jetyu/all-search_plus",
+  "homepage_url": "https://github.com/jetyu/FastSearch",
   "icons": {
     "16": "assets/fast-search-16.png",
     "32": "assets/fast-search-32.png",
@@ -10,7 +10,7 @@
     "128": "assets/fast-search-128.png"
   },
   "action": {
-    "default_title": "打开 FastSearch",
+    "default_title": "打开 Fast Search",
     "default_icon": {
       "16": "assets/fast-search-16.png",
       "32": "assets/fast-search-32.png"
@@ -22,11 +22,11 @@
         "<all_urls>"
       ],
       "js": [
-        "contentscript-loader-main-feb8feca.js"
+        "contentscript-loader-main-9bf2bc5c.js"
       ],
       "run_at": "document_idle",
       "css": [
-        "assets/main-9c324477.css"
+        "assets/main-677643bd.css"
       ]
     }
   ],
@@ -40,7 +40,7 @@
         "default": "Ctrl+Shift+K",
         "mac": "Command+Shift+K"
       },
-      "description": "打开 FastSearch 搜索面板"
+      "description": "打开 Fast Search 搜索面板"
     }
   },
   "web_accessible_resources": [
@@ -57,7 +57,7 @@
         "<all_urls>"
       ],
       "resources": [
-        "assets/main-feb8feca.js"
+        "assets/main-9bf2bc5c.js"
       ],
       "use_dynamic_url": true
     }

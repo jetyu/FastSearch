@@ -115,7 +115,7 @@ export default defineConfig(({ mode }) => {
     }
   } else if (mode === 'site') {
     return {
-      base: '/all-search',
+      base: '/fast-search',
       outputDir: 'dist/',
       resolve: {
         alias: {

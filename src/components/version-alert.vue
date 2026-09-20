@@ -3,7 +3,7 @@
     class="version-alert"
     v-show="data.notInstall"
     title="错误"
-    description="检测到您未安装或未启用 FastSearch"
+    description="检测到您未安装或未启用 Fast Search"
     type="error"
     show-icon
     :closable="false"/>

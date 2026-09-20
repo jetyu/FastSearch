@@ -3,8 +3,8 @@ import { resolve } from 'node:path'
 import pkg from '../../package.json'
 
 const fileName = 'index.user.js'
-const scriptUrl = `https://raw.githubusercontent.com/jetyu/all-search_plus/master/output/${fileName}`
-const iconBase64 = readFileSync(resolve(process.cwd(), 'src/assets/all-search.svg')).toString('base64')
+const scriptUrl = `https://raw.githubusercontent.com/jetyu/FastSearch/master/output/${fileName}`
+const iconBase64 = readFileSync(resolve(process.cwd(), 'src/assets/fast-search.svg')).toString('base64')
 
 export default {
   name: pkg.displayName,

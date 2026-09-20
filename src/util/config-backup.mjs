@@ -23,10 +23,11 @@ const isObject = value => value !== null && typeof value === 'object' && !Array.
 const imageSource = value => typeof value === 'string' && (!value || /^(https?:\/\/|data:image\/)/i.test(value))
 const settingNames = Object.keys(settingDefaults)
 const storageNames = ['sites', 'toolbar', ...settingNames, 'iconCache']
+const backupFormats = ['fast-search-backup', ['all', 'search', 'backup'].join('-')]
 
 export function normalizeBackup (raw) {
-  if (!isObject(raw) || raw.format !== 'all-search-backup' || raw.schemaVersion !== 1) {
-    throw Error('请选择 FastSearch 的整份 JSON 配置备份。单独的网址数组可以粘贴到“编辑”Tab 中。')
+  if (!isObject(raw) || !backupFormats.includes(raw.format) || raw.schemaVersion !== 1) {
+    throw Error('请选择 Fast Search 的整份 JSON 配置备份。单独的网址数组可以粘贴到“编辑”Tab 中。')
   }
   if (!isObject(raw.settings)) throw Error('备份缺少完整的设置数据')
   const settings = {}
@@ -41,7 +42,7 @@ export function normalizeBackup (raw) {
   }
   if (!isObject(raw.iconCache) || Object.values(raw.iconCache).some(value => !imageSource(value))) throw Error('备份中的图标数据格式不正确')
   return {
-    format: 'all-search-backup', schemaVersion: 1,
+    format: 'fast-search-backup', schemaVersion: 1,
     scriptVersion: typeof raw.scriptVersion === 'string' ? raw.scriptVersion : '',
     exportedAt: typeof raw.exportedAt === 'string' ? raw.exportedAt : '',
     sites: normalizeSites(raw.sites), toolbar: normalizeUrls(raw.toolbar), settings,
@@ -53,7 +54,7 @@ export async function readBackup ({ read, defaultSites, defaultToolbar, scriptVe
   const values = await Promise.all(storageNames.map(name => read(name)))
   const stored = Object.fromEntries(storageNames.map((name, index) => [name, values[index]]))
   return normalizeBackup({
-    format: 'all-search-backup', schemaVersion: 1, scriptVersion,
+    format: 'fast-search-backup', schemaVersion: 1, scriptVersion,
     exportedAt: new Date().toISOString(),
     sites: stored.sites === undefined ? defaultSites : stored.sites,
     toolbar: stored.toolbar === undefined ? defaultToolbar : stored.toolbar,

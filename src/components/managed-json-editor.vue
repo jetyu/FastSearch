@@ -16,9 +16,9 @@ let setting = false
 onMounted(() => {
   // Keep the editor's icon sprite inside the userscript instead of requesting it
   // from whichever website hosts the dialog.
-  if (!document.getElementById('all-search-jsoneditor-style')) {
+  if (!document.getElementById('fast-search-jsoneditor-style')) {
     const style = document.createElement('style')
-    style.id = 'all-search-jsoneditor-style'
+    style.id = 'fast-search-jsoneditor-style'
     style.textContent = editorStyles.replaceAll('./img/jsoneditor-icons.svg', `data:image/svg+xml,${encodeURIComponent(editorIcons)}`)
     document.head.append(style)
   }

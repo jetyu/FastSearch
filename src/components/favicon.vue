@@ -1,11 +1,14 @@
 <template>
   <div
-    v-if="favicon === 1"
+    v-if="favicon === 1 && img"
     class="as-img-icon">
     <img
       :class="{error: isError}"
       :src="img"
-      crossOrigin=""
+      alt=""
+      loading="lazy"
+      decoding="async"
+      referrerpolicy="no-referrer"
       @error="handleError"
       @load="handleLoad">
   </div>
@@ -52,14 +55,8 @@ export default {
 
     const i = ref(0)
 
-    const faviconApis = ref([
-      props.icon,
-      `https://favicon.yandex.net/favicon/v2/${encodeURI(hostname)}?size=32`,
-      `https://invisible-scarlet-centipede.faviconkit.com/${encodeURI(hostname)}`,
-      `${origin}/favicon.ico`
-    ])
-
-    const faviconApi = computed(() => faviconApis.value.filter(j => j)[i.value])
+    const faviconApis = computed(() => [props.icon, origin ? origin + '/favicon.ico' : ''].filter(Boolean))
+    const faviconApi = computed(() => faviconApis.value[i.value] || '')
 
     const { favicon } = useFavicon()
 
@@ -74,7 +71,7 @@ export default {
     }
 
     async function handleLoad (e) {
-      if (props.icon) return
+      if (props.icon || !hostname) return
       if (!isError.value && img.value && !img.value.startsWith('data:image')) {
         try {
           const base64 = getBase64Image(e.target)
@@ -91,7 +88,7 @@ export default {
     function handleError (e) {
       const src = e.currentTarget.src
       if (src === faviconApi.value) {
-        if (i.value === faviconApis.value.filter(Boolean).length - 1) {
+        if (i.value === faviconApis.value.length - 1) {
           isError.value = true
         }
         i.value++

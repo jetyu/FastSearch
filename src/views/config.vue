@@ -7,8 +7,8 @@
         id="logo"
         :underline="false"
         type="primary"
-        href="/all-search">
-        FastSearch
+        href="/fast-search">
+        Fast Search
       </el-link>
       <div class="header-bd">
         <el-menu
@@ -33,7 +33,7 @@
         </el-menu>
       </div>
       <a class="gh-btn"
-         href="https://github.com/jetyu/all-search_plus">
+         href="https://github.com/jetyu/FastSearch">
         <span class="gh-icon"/>
       </a>
     </el-header>

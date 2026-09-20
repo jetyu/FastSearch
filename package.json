@@ -1,6 +1,6 @@
 {
-  "name": "all-search-plus",
-  "displayName": "FastSearch",
+  "name": "fast-search",
+  "displayName": "Fast Search",
   "version": "1.6.0",
   "keywords": [
     "tamperMonkey",
@@ -12,14 +12,14 @@
   ],
   "description": "快速切换搜索引擎，支持划词搜索、全局搜索和自定义搜索入口",
   "author": "jetyu ",
-  "homepage": "https://github.com/jetyu/all-search_plus",
+  "homepage": "https://github.com/jetyu/FastSearch",
   "bugs": {
-    "url": "https://github.com/jetyu/all-search_plus/issues"
+    "url": "https://github.com/jetyu/FastSearch/issues"
   },
   "license": "GPL-3.0-only",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jetyu/all-search_plus.git"
+    "url": "git+https://github.com/jetyu/FastSearch.git"
   },
   "files": [
     "dist",
