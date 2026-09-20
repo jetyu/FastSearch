@@ -25,9 +25,9 @@ async function boot(page, options = {}) {
   await page.route('**/*', (route) =>
     route.request().resourceType() === 'document'
       ? route.fulfill({
-          contentType: 'text/html; charset=utf-8',
-          body: '<!doctype html><html><head><meta charset="utf-8"></head><body><input id="kw" value="测试"><p>用于划词搜索的文字</p></body></html>'
-        })
+        contentType: 'text/html; charset=utf-8',
+        body: '<!doctype html><html><head><meta charset="utf-8"></head><body><input id="kw" value="测试"><p>用于划词搜索的文字</p></body></html>'
+      })
       : route.abort()
   )
   await page.addInitScript(
@@ -97,7 +97,7 @@ test('one dialog contains three tabs; compact rows, category edits and saved men
   await expect(logo.locator('.as-title-icon')).toHaveAttribute('src', /^data:image\/png;base64,/)
   await expect(logo).not.toContainText('Fast Search')
   const dialog = await openManager(page)
-  await expect(dialog.getByRole('tab')).toHaveText(['配置', '编辑', '划词工具栏'])
+  await expect(dialog.getByRole('tab')).toHaveText(['配置', '编辑', '划词搜索'])
   await expect(dialog.getByRole('tab', { name: '配置', exact: true })).toHaveAttribute('aria-selected', 'true')
   const first = dialog.getByLabel('网址名称', { exact: true }).first()
   const second = dialog.getByLabel('搜索网址', { exact: true }).first()
@@ -205,12 +205,12 @@ test('toolbar tab has independent drafts and storage; close protects unsaved men
   page
 }, testInfo) => {
   await boot(page)
-  const dialog = await openManager(page, '划词工具栏')
-  await expect(dialog.getByRole('tab', { name: '划词工具栏' })).toHaveAttribute('aria-selected', 'true')
+  const dialog = await openManager(page, '划词搜索')
+  await expect(dialog.getByRole('tab', { name: '划词搜索' })).toHaveAttribute('aria-selected', 'true')
   await dialog.getByLabel('网址名称', { exact: true }).first().fill('划词测试')
   await dialog.getByRole('tab', { name: '配置', exact: true }).click()
   await dialog.getByLabel('分类名称', { exact: true }).fill('菜单草稿')
-  await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
+  await dialog.getByRole('tab', { name: '划词搜索', exact: true }).click()
   await expect(dialog.getByLabel('网址名称', { exact: true }).first()).toHaveValue('划词测试')
   await dialog.getByRole('button', { name: '保存', exact: true }).click()
   await expect(dialog.getByRole('status')).toContainText('保存成功')
@@ -258,7 +258,7 @@ test('cancel discards the active draft, including invalid JSON, while retaining 
   await boot(page)
   const dialog = await openManager(page)
   await dialog.getByLabel('分类名称', { exact: true }).fill('菜单草稿')
-  await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
+  await dialog.getByRole('tab', { name: '划词搜索', exact: true }).click()
   await dialog.getByLabel('网址名称', { exact: true }).first().fill('划词草稿')
   await dialog.getByRole('button', { name: '取消', exact: true }).click()
   await expect(dialog.getByLabel('网址名称', { exact: true }).first()).toHaveValue('Google')
@@ -392,7 +392,7 @@ test('clearing menu configuration confirms first, restores built-ins and preserv
   const dialog = await openManager(page)
   const clear = dialog.getByRole('button', { name: '清除网址管理配置', exact: true })
   await expect(clear).toHaveCount(0)
-  await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
+  await dialog.getByRole('tab', { name: '划词搜索', exact: true }).click()
   await expect(clear).toHaveCount(0)
   await dialog.getByLabel('网址名称', { exact: true }).first().fill('保留划词草稿')
   await dialog.getByRole('tab', { name: '编辑', exact: true }).click()
@@ -416,7 +416,7 @@ test('clearing menu configuration confirms first, restores built-ins and preserv
   await expect(dialog.locator('.ace_content')).not.toContainText('invalid draft')
   await expect(page.locator('.as-menu-item-title', { hasText: '视频' })).toHaveCount(1)
   await page.screenshot({ path: testInfo.outputPath('clear-menu-desktop.png') })
-  await dialog.getByRole('tab', { name: '划词工具栏', exact: true }).click()
+  await dialog.getByRole('tab', { name: '划词搜索', exact: true }).click()
   await expect(dialog.getByLabel('网址名称', { exact: true }).first()).toHaveValue('保留划词草稿')
   await page.reload()
   expect(await stored(page)).toBeUndefined()

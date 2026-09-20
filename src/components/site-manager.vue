@@ -52,7 +52,7 @@
         <footer class="sm-footer">
           <div class="sm-feedback" role="status" aria-live="polite" :class="{ 'sm-error': failed }">
             <span v-if="message">{{ message }}</span>
-            <span class="sm-help">{{ activeDirty ? '有未保存的修改' : '配置已加载' }}{{ tab === 'toolbar' ? ' · 划词工具栏' : ' · 搜索菜单' }}{{ !activeDirty && dirty ? ' · 其他 Tab 尚未保存' : '' }}</span>
+            <span class="sm-help">{{ activeDirty ? '有未保存的修改' : '配置已加载' }}{{ tab === 'toolbar' ? ' · 划词搜索' : ' · 搜索菜单' }}{{ !activeDirty && dirty ? ' · 其他 Tab 尚未保存' : '' }}</span>
           </div>
           <div class="sm-footer-actions">
             <button type="button" :disabled="busy" @click="cancel">取消</button>
@@ -78,7 +78,7 @@ import { version } from '../util/index'
 const { reloadSites, saveSites, clearSites } = useSites()
 const { reloadToolbar, saveToolbar } = useToolbar()
 const { managerVisible, managerTab } = useSiteManager()
-const tabs = [{ name: 'sites', label: '配置' }, { name: 'edit', label: '编辑' }, { name: 'toolbar', label: '划词工具栏' }]
+const tabs = [{ name: 'sites', label: '配置' }, { name: 'edit', label: '编辑' }, { name: 'toolbar', label: '划词搜索' }]
 const tab = ref(managerTab.value)
 const panel = ref(null)
 const previousFocus = document.activeElement

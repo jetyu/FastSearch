@@ -28,7 +28,7 @@
           </el-menu-item>
           <el-menu-item
             index="/config/toolbar">
-            划词工具栏
+            划词搜索
           </el-menu-item>
         </el-menu>
       </div>

@@ -44,7 +44,7 @@
               </form-item>
               <form-item
                 label-width="84"
-                label="划词工具栏">
+                label="划词搜索">
                 <as-radio
                   :label="1"
                   v-model="toolbarVisible">显示

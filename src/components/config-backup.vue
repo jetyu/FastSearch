@@ -38,7 +38,7 @@ async function exportFile () {
     link.download = `fast-search-backup-${backup.exportedAt.slice(0, 10)}.json`
     link.click()
     setTimeout(() => URL.revokeObjectURL(url), 1000)
-    message.value = '已导出完整备份：菜单、划词工具栏、设置和图标。'
+    message.value = '已导出完整备份：菜单、划词搜索、设置和图标。'
   } catch (err) { showError(err) } finally { busy.value = false }
 }
 async function importFile (event) {
