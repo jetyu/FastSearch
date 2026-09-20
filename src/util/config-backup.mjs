@@ -1,7 +1,7 @@
 import { cloneData, normalizeSites, normalizeUrls } from './site-data.mjs'
 
 export const settingDefaults = Object.freeze({
-  openInNewTab: false,
+  openInNewTab: true,
   theme: 'auto',
   showToolbar: 1,
   mode: 'horizontal',

@@ -2,7 +2,7 @@ import useConfig from './useConfig'
 
 const openInNewTab = useConfig({
   name: 'openInNewTab',
-  defaultVal: false
+  defaultVal: true
 })
 
 export default function useOpenInNewTab () {

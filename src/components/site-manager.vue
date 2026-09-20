@@ -9,13 +9,13 @@
         <nav class="sm-tabs" role="tablist" aria-label="网址管理页面">
           <button v-for="item in tabs" :id="`sm-tab-${item.name}`" :key="item.name" type="button" role="tab" :aria-selected="tab === item.name" :aria-controls="`sm-page-${item.name}`" :tabindex="tab === item.name ? 0 : -1" :disabled="busy" @click="switchTab(item.name)" @keydown.left.prevent="stepTab(-1)" @keydown.right.prevent="stepTab(1)">{{ item.label }}</button>
         </nav>
-        <div :id="`sm-page-${tab}`" class="sm-body" :class="{ 'sm-body-json': tab === 'edit' }" role="tabpanel" :aria-labelledby="`sm-tab-${tab}`">
+        <div :id="`sm-page-${tab}`" class="sm-body" role="tabpanel" :aria-labelledby="`sm-tab-${tab}`">
           <p v-if="!loaded" class="sm-help">{{ busy ? '正在读取配置…' : '配置读取失败，请关闭后重新打开重试。' }}</p>
           <fieldset :disabled="busy || !loaded" :inert="busy || !loaded ? '' : null">
             <template v-if="tab === 'sites'">
               <div class="sm-category-tabs" aria-label="网址分类">
                 <div class="sm-category-group">
-                  <button v-for="category in menuDraft" :key="category.name" type="button" :aria-pressed="activeName === category.name" @click="activeName = category.name">{{ category.nameZh || '未命名' }}</button>
+                  <button v-for="category in menuDraft" :key="category.name" type="button" :class="{ 'sm-category-hidden': !category.data.visible }" :aria-pressed="activeName === category.name" @click="activeName = category.name">{{ category.nameZh || '未命名' }}</button>
                 </div>
                 <button type="button" class="sm-icon-button sm-add-category" aria-label="添加分类" title="添加分类" @click="addCategory"><Plus/></button>
               </div>
@@ -36,13 +36,6 @@
               <p v-else class="sm-empty">暂无分类，点击右上角 ＋ 添加分类。</p>
               <p class="sm-help">拖动网址左侧手柄调整顺序，地址中的 %s 代表搜索关键词。</p>
             </template>
-            <template v-else-if="tab === 'edit' && loaded">
-              <div class="sm-editor-actions">
-                <span class="sm-help">清除后恢复内置网址，确认后立即生效。</span>
-                <button type="button" class="sm-plain-danger" :disabled="busy" @click="clearMenuConfig">清除网址管理配置</button>
-              </div>
-              <managed-json-editor v-model="jsonText" @error="showError"/>
-            </template>
             <template v-else-if="tab === 'toolbar'">
               <managed-url-list v-model="toolbarDraft" :disabled="busy || !loaded" @error="showError"/>
               <p class="sm-help">拖动调整划词搜索入口的顺序，点击眼睛图标显示或隐藏。</p>
@@ -52,11 +45,12 @@
         <footer class="sm-footer">
           <div class="sm-feedback" role="status" aria-live="polite" :class="{ 'sm-error': failed }">
             <span v-if="message">{{ message }}</span>
-            <span class="sm-help">{{ activeDirty ? '有未保存的修改' : '配置已加载' }}{{ tab === 'toolbar' ? ' · 划词搜索' : ' · 搜索菜单' }}{{ !activeDirty && dirty ? ' · 其他 Tab 尚未保存' : '' }}</span>
+            <span class="sm-help">{{ dirty ? '有未保存的修改' : '配置已加载' }}</span>
           </div>
           <div class="sm-footer-actions">
+            <button type="button" class="sm-plain-danger sm-reset-all" :disabled="busy || !menuLoaded || !toolbarLoaded" @click="clearMenuConfig">重置全部网址配置</button>
             <button type="button" :disabled="busy" @click="cancel">取消</button>
-            <button type="button" class="sm-success" :disabled="busy || !loaded || !activeDirty" @click="save">{{ busy ? '处理中…' : '保存' }}</button>
+            <button type="button" class="sm-success" :disabled="busy || !menuLoaded || !toolbarLoaded || !dirty" @click="save">{{ busy ? '处理中…' : '保存' }}</button>
           </div>
         </footer>
       </section>
@@ -71,14 +65,13 @@ import useSites from './useSites'
 import useToolbar from './useToolbar'
 import useSiteManager from './useSiteManager'
 import managedUrlList from './managed-url-list.vue'
-import managedJsonEditor from './managed-json-editor.vue'
-import { cloneData, normalizeSites } from '../util/site-data.mjs'
+import { cloneData } from '../util/site-data.mjs'
 import { version } from '../util/index'
 
 const { reloadSites, saveSites, clearSites } = useSites()
-const { reloadToolbar, saveToolbar } = useToolbar()
+const { reloadToolbar, saveToolbar, clearToolbar } = useToolbar()
 const { managerVisible, managerTab } = useSiteManager()
-const tabs = [{ name: 'sites', label: '配置' }, { name: 'edit', label: '编辑' }, { name: 'toolbar', label: '划词搜索' }]
+const tabs = [{ name: 'sites', label: '配置' }, { name: 'toolbar', label: '划词搜索' }]
 const tab = ref(managerTab.value)
 const panel = ref(null)
 const previousFocus = document.activeElement
@@ -86,7 +79,6 @@ const menuDraft = ref([])
 const toolbarDraft = ref([])
 const menuOriginal = ref('[]')
 const toolbarOriginal = ref('[]')
-const jsonText = ref('[]')
 const activeName = ref('')
 const busy = ref(false)
 const menuLoaded = ref(false)
@@ -97,10 +89,9 @@ const activeIndex = computed(() => menuDraft.value.findIndex(item => item.name =
 const activeCategory = computed(() => menuDraft.value[activeIndex.value])
 const personalCategories = computed(() => menuDraft.value.filter(item => item.name.startsWith('personal') && item.name !== activeName.value))
 const loaded = computed(() => tab.value === 'toolbar' ? toolbarLoaded.value : menuLoaded.value)
-const menuDirty = computed(() => menuLoaded.value && (JSON.stringify(menuDraft.value) !== menuOriginal.value || (tab.value === 'edit' && jsonText.value !== JSON.stringify(menuDraft.value, null, 2))))
+const menuDirty = computed(() => menuLoaded.value && JSON.stringify(menuDraft.value) !== menuOriginal.value)
 const toolbarDirty = computed(() => toolbarLoaded.value && JSON.stringify(toolbarDraft.value) !== toolbarOriginal.value)
 const dirty = computed(() => menuDirty.value || toolbarDirty.value)
-const activeDirty = computed(() => tab.value === 'toolbar' ? toolbarDirty.value : menuDirty.value)
 
 function showError (err) { failed.value = true; message.value = err.message || String(err) }
 function info (text) { failed.value = false; message.value = text }
@@ -110,7 +101,6 @@ function selectCategory () {
 function syncMenu (value) {
   menuDraft.value = cloneData(value)
   menuOriginal.value = JSON.stringify(value)
-  jsonText.value = JSON.stringify(value, null, 2)
   selectCategory()
   menuLoaded.value = true
 }
@@ -133,10 +123,6 @@ async function load () {
 function discard () { return !dirty.value || window.confirm('有未保存的修改，确定放弃吗？') }
 function switchTab (name) {
   if (busy.value || name === tab.value) return
-  if (tab.value === 'edit' && menuLoaded.value) {
-    try { menuDraft.value = normalizeSites(JSON.parse(jsonText.value)); selectCategory() } catch (err) { showError(err); return }
-  }
-  if (name === 'edit') jsonText.value = JSON.stringify(menuDraft.value, null, 2)
   tab.value = name
   info('')
 }
@@ -147,30 +133,27 @@ async function stepTab (offset) {
   panel.value.querySelector(`[id="sm-tab-${tab.value}"]`).focus()
 }
 async function save () {
-  if (busy.value || !loaded.value) return
+  if (busy.value || !menuLoaded.value || !toolbarLoaded.value) return
   busy.value = true
   info('')
   try {
-    if (tab.value === 'toolbar') syncToolbar(await saveToolbar(toolbarDraft.value))
-    else syncMenu(await saveSites(tab.value === 'edit' ? JSON.parse(jsonText.value) : menuDraft.value))
-    info('保存成功，当前页面已生效；其他已打开页面请刷新。')
+    if (menuDirty.value) syncMenu(await saveSites(menuDraft.value))
+    if (toolbarDirty.value) syncToolbar(await saveToolbar(toolbarDraft.value))
+    managerVisible.value = false
   } catch (err) { showError(err) } finally { busy.value = false }
 }
 function cancel () {
-  if (busy.value) return
-  if (!loaded.value) { close(); return }
-  if (tab.value === 'toolbar') syncToolbar(JSON.parse(toolbarOriginal.value))
-  else syncMenu(JSON.parse(menuOriginal.value))
-  info('已取消当前修改，恢复为上次保存的内容。')
+  if (!busy.value) managerVisible.value = false
 }
 async function clearMenuConfig () {
-  if (busy.value || !menuLoaded.value) return
-  if (!window.confirm('将清除已保存的网址管理配置及当前菜单草稿，并恢复内置网址。确认后立即生效，确定清除吗？')) return
+  if (busy.value || !menuLoaded.value || !toolbarLoaded.value) return
+  if (!window.confirm('将重置所有分类网址和划词搜索入口，删除自定义网址并恢复内置配置。确认后立即生效，确定重置吗？')) return
   busy.value = true
   info('')
   try {
     syncMenu(await clearSites())
-    info('网址管理配置已清除，已恢复内置网址；其他已打开页面请刷新。')
+    syncToolbar(await clearToolbar())
+    managerVisible.value = false
   } catch (err) { showError(err) } finally { busy.value = false }
 }
 function addCategory () {
@@ -241,6 +224,8 @@ onUnmounted(() => { if (previousFocus?.isConnected) previousFocus.focus() })
   .sm-category-tabs { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
   .sm-category-group { flex: 1; display: flex; flex-wrap: wrap; gap: 0; }
   .sm-category-group button { border-radius: 0; margin-left: -1px; height: 40px; padding: 12px 19px; }
+  .sm-category-group button.sm-category-hidden { color: var(--as-muted-text-color); background: var(--as-muted-background-color); }
+  .sm-category-group button.sm-category-hidden[aria-pressed="true"] { border-color: var(--as-control-border-color); background: var(--as-muted-background-color); }
   .sm-category-group button:first-child { margin-left: 0; border-radius: 4px 0 0 4px; }
   .sm-category-group button:last-child { border-radius: 0 4px 4px 0; }
   .sm-category-group button[aria-pressed="true"] { color: white; border-color: var(--as-primary-color); background: var(--as-primary-color); z-index: 1; }
@@ -271,9 +256,7 @@ onUnmounted(() => { if (previousFocus?.isConnected) previousFocus.focus() })
   .sm-feedback { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 14px; line-height: 1.5; margin-bottom: 10px; min-height: 18px; font-size: 13px; }
   .sm-error { color: #f56c6c; }
   .sm-footer-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
-  .sm-body-json { display: flex; padding: 16px 24px; fieldset { width: 100%; display: flex; flex-direction: column; min-height: 0; } }
-  .sm-editor-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .sm-json-editor { flex: 1; width: 100%; min-height: 280px; text-align: left; }
+  .sm-reset-all { margin-right: auto; }
   @media (max-width: 700px) {
     padding: 8px;
     .sm-dialog { height: calc(100dvh - 16px); }
@@ -297,22 +280,4 @@ onUnmounted(() => { if (previousFocus?.isConnected) previousFocus.focus() })
   }
 }
 
-#fast-search[data-as-theme="dark"] .sm-overlay {
-  .jsoneditor { background: var(--as-surface-color); border-color: var(--as-primary-color); }
-  div.jsoneditor-tree, textarea.jsoneditor-text, pre.jsoneditor-preview { background: var(--as-surface-color); color: var(--as-primary-text-color); }
-  div.jsoneditor-field, div.jsoneditor-value, div.jsoneditor-readonly, div.jsoneditor td, div.jsoneditor th, pre.jsoneditor-preview { color: var(--as-primary-text-color); }
-  div.jsoneditor-value.jsoneditor-string { color: #8fca8f; }
-  div.jsoneditor-value.jsoneditor-number { color: #ff8a78; }
-  div.jsoneditor-value.jsoneditor-boolean { color: #f5b85c; }
-  div.jsoneditor-value.jsoneditor-null { color: #78a9ff; }
-  tr.jsoneditor-highlight, tr.jsoneditor-selected { background-color: var(--as-secondary-background-color); }
-  .ace-jsoneditor { background-color: var(--as-surface-color); color: var(--as-primary-text-color); }
-  .ace-jsoneditor .ace_gutter { background: var(--as-bg-color); color: var(--as-muted-text-color); }
-  .ace-jsoneditor .ace_marker-layer .ace_active-line, .ace-jsoneditor .ace_gutter-active-line { background: var(--as-secondary-background-color); }
-  .ace-jsoneditor .ace_marker-layer .ace_selection { background: #31547a; }
-  .ace-jsoneditor .ace_cursor { color: var(--as-primary-text-color); }
-  .ace-jsoneditor .ace_string { color: #8fca8f; }
-  .ace-jsoneditor .ace_constant.ace_numeric { color: #ff8a78; }
-  .ace-jsoneditor .ace_variable { color: #7dcfff; }
-}
 </style>

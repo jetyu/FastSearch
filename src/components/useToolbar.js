@@ -12,6 +12,7 @@ export default function useToolbar (type) {
     error: store.error,
     list: computed(() => type === 'tm' ? store.list.value.filter(item => item.data.visible) : store.list.value),
     reloadToolbar: store.reload,
-    saveToolbar: store.save
+    saveToolbar: store.save,
+    clearToolbar: store.clear
   }
 }
