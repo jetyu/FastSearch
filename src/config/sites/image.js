@@ -20,26 +20,6 @@ export default [
     icon: 'https://www.sogou.com/favicon.ico'
   },
   {
-    nameZh: 'Pixiv',
-    url: 'https://www.pixiv.net/search.php?word=%s',
-    icon: 'https://www.pixiv.net/favicon.ico'
-  },
-  {
-    nameZh: 'Flickr',
-    url: 'https://www.flickr.com/search/?q=%s',
-    icon: 'https://www.flickr.com/favicon.ico'
-  },
-  {
-    nameZh: '花瓣',
-    url: 'https://huaban.com/search/?q=%s',
-    icon: 'https://huaban.com/favicon.ico'
-  },
-  {
-    nameZh: 'Pinterest',
-    url: 'https://www.pinterest.com/search/pins/?q=%s&rs=typed&term_meta',
-    icon: 'https://www.pinterest.com/favicon.ico'
-  },
-  {
     nameZh: 'Pixabay',
     url: 'https://pixabay.com/images/search/%s/',
     icon: 'https://pixabay.com/favicon-32x32.png'
@@ -48,5 +28,15 @@ export default [
     nameZh: 'Unsplash',
     url: 'https://unsplash.com/s/photos/%s',
     icon: 'https://unsplash.com/favicon.ico'
+  },
+  {
+    nameZh: 'Pixiv',
+    url: 'https://www.pixiv.net/search.php?word=%s',
+    icon: 'https://www.pixiv.net/favicon.ico'
+  },
+  {
+    nameZh: 'Flickr',
+    url: 'https://www.flickr.com/search/?q=%s',
+    icon: 'https://www.flickr.com/favicon.ico'
   }
 ]

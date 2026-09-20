@@ -16,12 +16,6 @@ export default [
   },
   {
     nameZh: 'Springer',
-    url: 'https://link.springer.com/search?query=%s',
-    icon: 'https://link.springer.com/favicon.ico'
-  },
-  {
-    nameZh: '国家图书馆',
-    url: 'https://find.nlc.cn/search/doSearch?query=%s&secQuery=&actualQuery=%s&searchType=2&docType=%E5%85%A8%E9%83%A8&isGroup=isGroup&targetFieldLog=%E5%85%A8%E9%83%A8%E5%AD%97%E6%AE%B5&orderBy=RELATIVE',
-    icon: 'https://find.nlc.cn/favicon.ico'
+    url: 'https://link.springer.com/search?query=%s'
   }
 ]

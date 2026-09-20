@@ -10,7 +10,7 @@ export default [
     icon: 'https://www.xiaohongshu.com/favicon.ico'
   },
   {
-    nameZh: 'SOV2EX',
+    nameZh: 'V2EX',
     url: 'https://www.sov2ex.com/?q=%s',
     icon: 'https://www.sov2ex.com/assets/favicon/favicon-32x32.png'
   },
@@ -20,14 +20,13 @@ export default [
     icon: 'https://www.douban.com/favicon.ico'
   },
   {
-    nameZh: '百度贴吧',
-    url: 'https://tieba.baidu.com/f?kw=%s&ie=utf-8',
-    icon: 'https://tieba.baidu.com/favicon.ico'
-  },
-  {
     nameZh: '微信',
     url: 'https://weixin.sogou.com/weixin?ie=utf8&type=2&query=%s',
     icon: 'https://weixin.sogou.com/favicon.ico'
+  }, {
+    nameZh: '百度贴吧',
+    url: 'https://tieba.baidu.com/f?kw=%s&ie=utf-8',
+    icon: 'https://tieba.baidu.com/favicon.ico'
   },
   {
     nameZh: '新浪微博',

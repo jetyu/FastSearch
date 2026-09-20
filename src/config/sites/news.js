@@ -26,8 +26,7 @@ export default [
   },
   {
     nameZh: 'BBC',
-    url: 'https://www.bbc.co.uk/search?q=%s',
-    icon: 'https://www.bbc.co.uk/favicon.ico'
+    url: 'https://www.bbc.co.uk/search?q=%s'
   },
   {
     nameZh: '美联社',

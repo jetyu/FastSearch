@@ -27,7 +27,8 @@ export default [
     nameZh: 'ChatGPT',
     url: 'https://chatgpt.com/?q=%s',
     icon: 'https://chatgpt.com/favicon.ico'
-  }, {
+  },
+  {
     nameZh: 'Deepseek',
     url: 'https://chat.deepseek.com/?q=%s',
     icon: 'https://deepseek.com/favicon.ico'
