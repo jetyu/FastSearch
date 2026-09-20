@@ -37,7 +37,8 @@ export default [
     nameZh: '德国之声',
     url: 'https://www.dw.com/search/en?searchNavigationId=9097&languageCode=en&item=%s',
     icon: 'https://www.dw.com/favicon.ico'
-  }, {
+  },
+  {
     nameZh: 'NHK',
     url: 'https://www3.nhk.or.jp/nhkworld/en/search/?q=%s',
     icon: 'https://www3.nhk.or.jp/favicon.ico'

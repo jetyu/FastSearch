@@ -18,15 +18,5 @@ export default [
     nameZh: '亚马逊（全球）',
     url: 'https://www.amazon.com/s?k=%s',
     icon: 'https://www.amazon.com/favicon.ico'
-  },
-  {
-    nameZh: '1688',
-    url: 'https://s.1688.com/selloffer/offer_search.htm?keywords=%s',
-    icon: 'https://s.1688.com/favicon.ico'
-  },
-  {
-    nameZh: 'eBay',
-    url: 'https://www.ebay.com/sch/i.html?_nkw=%s',
-    icon: 'https://www.ebay.com/favicon.ico'
   }
 ]

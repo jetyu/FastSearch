@@ -15,7 +15,7 @@ export default [
     icon: 'https://www.runoob.com/favicon.ico'
   },
   {
-    nameZh: '掘金',
+    nameZh: '稀土掘金',
     url: 'https://juejin.cn/search?query=%s',
     icon: 'https://juejin.cn/favicon.ico'
   },
