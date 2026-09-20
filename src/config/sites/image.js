@@ -17,7 +17,7 @@ export default [
   {
     nameZh: '搜狗图片',
     url: 'https://pic.sogou.com/pics?query=%s',
-    icon: 'https:/www.sogou.com/favicon.ico'
+    icon: 'https://www.sogou.com/favicon.ico'
   },
   {
     nameZh: 'Pixiv',

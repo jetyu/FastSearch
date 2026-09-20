@@ -21,6 +21,7 @@ export default {
   updateURL: scriptUrl,
   downloadURL: scriptUrl,
   match: ['*://*/*'],
+  connect: ['*'],
   noframes: true,
   'run-at': 'document-idle'
 }

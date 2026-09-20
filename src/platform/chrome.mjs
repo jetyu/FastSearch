@@ -22,3 +22,4 @@ export async function GM_deleteValue (name) {
 // them, so the Chrome build can safely expose an unavailable value.
 export const GM_getResourceText = undefined
 export const GM_registerMenuCommand = undefined
+export const GM_xmlhttpRequest = undefined

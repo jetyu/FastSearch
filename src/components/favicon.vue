@@ -1,107 +1,67 @@
 <template>
-  <div
-    v-if="favicon === 1 && img"
-    class="as-img-icon">
+  <div v-if="favicon === 1" class="as-img-icon">
     <img
-      :class="{error: isError}"
+      v-if="img"
       :src="img"
       alt=""
       loading="lazy"
       decoding="async"
       referrerpolicy="no-referrer"
       @error="handleError"
-      @load="handleLoad">
+    />
   </div>
 </template>
 
 <script>
-import { computed, reactive, ref } from 'vue'
+import { ref, watch } from 'vue'
 import parseUrl from '../util/parseUrl'
 import useFavicon from './useFavicon'
-import { getStorage, setStorage } from '../util/storage'
-
-const iconCache = reactive({})
-getStorage('iconCache', {}).then(iconData => {
-  Object.assign(iconCache, iconData)
-}).catch(() => {})
+import { getIconSource, getLegacyIcon, iconCacheVersion } from './iconCache'
 
 export default {
   name: 'favicon',
   props: {
-    url: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: String,
-      default: ''
-    }
+    url: { type: String, default: '' },
+    icon: { type: String, default: '' }
   },
-  setup (props) {
-    const isError = ref(false)
-
-    const { hostname, origin } = parseUrl(props.url)
-    const img = computed(() => {
-      if (props.icon && i.value === 0 && !isError.value) {
-        return props.icon
-      } else if (iconCache[hostname]) {
-        return iconCache[hostname]
-      } else if (!isError.value) {
-        return faviconApi.value
-      } else {
-        return ''
-      }
-    })
-
-    const i = ref(0)
-
-    const faviconApis = computed(() => [props.icon, origin ? origin + '/favicon.ico' : ''].filter(Boolean))
-    const faviconApi = computed(() => faviconApis.value[i.value] || '')
-
+  setup(props) {
+    const img = ref('')
     const { favicon } = useFavicon()
+    let candidates = []
+    let index = 0
+    let run = 0
 
-    function getBase64Image (image) {
-      const canvas = document.createElement('canvas')
-      canvas.width = image.width
-      canvas.height = image.height
-      let context = canvas.getContext('2d')
-      context.drawImage(image, 0, 0, image.width, image.height)
-      // 得到图片的base64编码数据
-      return canvas.toDataURL('image/png', 1)
-    }
-
-    async function handleLoad (e) {
-      if (props.icon || !hostname) return
-      if (!isError.value && img.value && !img.value.startsWith('data:image')) {
-        try {
-          const base64 = getBase64Image(e.target)
-          if (base64) {
-            iconCache[hostname] = base64
-            await setStorage('iconCache', iconCache)
-          }
-        } catch {
-          // Some cross-origin images cannot be read by canvas.
-        }
+    async function showNext(currentRun) {
+      const source = candidates[index++]
+      if (!source) {
+        if (currentRun === run) img.value = ''
+        return
       }
+      const resolved = source.startsWith('data:image/') ? source : await getIconSource(source)
+      if (currentRun === run) img.value = resolved
     }
 
-    function handleError (e) {
-      const src = e.currentTarget.src
-      if (src === faviconApi.value) {
-        if (i.value === faviconApis.value.length - 1) {
-          isError.value = true
-        }
-        i.value++
-      }
+    function handleError(event) {
+      if (event.currentTarget.getAttribute('src') === img.value) showNext(run)
     }
 
-    return {
-      img,
-      favicon,
-      handleLoad,
-      handleError,
-      isError
-    }
+    watch(
+      [() => props.icon, () => props.url, favicon, iconCacheVersion],
+      async () => {
+        const currentRun = ++run
+        img.value = ''
+        if (favicon.value !== 1) return
+        const { hostname, origin } = parseUrl(props.url)
+        const legacyIcon = hostname ? await getLegacyIcon(hostname) : ''
+        if (currentRun !== run) return
+        candidates = [...new Set([props.icon, legacyIcon, origin ? origin + '/favicon.ico' : ''].filter(Boolean))]
+        index = 0
+        showNext(currentRun)
+      },
+      { immediate: true }
+    )
+
+    return { img, favicon, handleError }
   }
 }
 </script>
@@ -117,41 +77,6 @@ export default {
     height: 100%;
     border: none;
     vertical-align: top;
-  }
-
-  img.error {
-    display: inline-block;
-    transform: scale(1);
-    content: '';
-    color: transparent;
-  }
-
-  img.error {
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: #f5f5f5 no-repeat center / 50% 50%;
-    }
-
-    &::after {
-      content: attr(alt);
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      line-height: 2;
-      background-color: rgba(0, 0, 0, .5);
-      color: white;
-      font-size: 12px;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
   }
 }
 </style>

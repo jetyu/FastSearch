@@ -1,7 +1,7 @@
 (function () {
             (async () => {
                   await import(
-                    chrome.runtime.getURL("assets/main-0b72c3e9.js")
+                    chrome.runtime.getURL("assets/main-4af8be35.js")
                   );
                 })().catch(console.error);
             })();
