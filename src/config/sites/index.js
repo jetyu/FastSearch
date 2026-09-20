@@ -19,6 +19,16 @@ const list = [
     list: search
   },
   {
+    nameZh: '社交',
+    name: 'social',
+    list: social
+  },
+  {
+    nameZh: '百科',
+    name: 'knowledge',
+    list: knowledge
+  },
+  {
     nameZh: '翻译',
     name: 'translate',
     list: translate
@@ -27,6 +37,11 @@ const list = [
     nameZh: '地图',
     name: 'map',
     list: map
+  },
+  {
+    nameZh: '图片',
+    name: 'image',
+    list: image
   },
   {
     nameZh: '视频',
@@ -52,21 +67,6 @@ const list = [
     nameZh: '新闻',
     name: 'news',
     list: news
-  },
-  {
-    nameZh: '社交',
-    name: 'social',
-    list: social
-  },
-  {
-    nameZh: '百科',
-    name: 'knowledge',
-    list: knowledge
-  },
-  {
-    nameZh: '图片',
-    name: 'image',
-    list: image
   },
   {
     nameZh: '网盘',

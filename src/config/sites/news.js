@@ -29,11 +29,6 @@ export default [
     url: 'https://www.bbc.co.uk/search?q=%s'
   },
   {
-    nameZh: '美联社',
-    url: 'https://apnews.com/search?q=%s',
-    icon: 'https://apnews.com/favicon.ico'
-  },
-  {
     nameZh: '德国之声',
     url: 'https://www.dw.com/search/en?searchNavigationId=9097&languageCode=en&item=%s',
     icon: 'https://www.dw.com/favicon.ico'
