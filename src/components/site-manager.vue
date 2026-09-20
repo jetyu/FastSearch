@@ -49,7 +49,6 @@
           </div>
           <div class="sm-footer-actions">
             <button type="button" class="sm-plain-danger sm-reset-all" :disabled="busy || !menuLoaded || !toolbarLoaded" @click="clearMenuConfig">重置全部网址配置</button>
-            <button type="button" :disabled="busy" @click="cancel">取消</button>
             <button type="button" class="sm-success" :disabled="busy || !menuLoaded || !toolbarLoaded || !dirty" @click="save">{{ busy ? '处理中…' : '保存' }}</button>
           </div>
         </footer>
@@ -142,9 +141,6 @@ async function save () {
     managerVisible.value = false
   } catch (err) { showError(err) } finally { busy.value = false }
 }
-function cancel () {
-  if (!busy.value) managerVisible.value = false
-}
 async function clearMenuConfig () {
   if (busy.value || !menuLoaded.value || !toolbarLoaded.value) return
   if (!window.confirm('将重置所有分类网址和划词搜索入口，删除自定义网址并恢复内置配置。确认后立即生效，确定重置吗？')) return
@@ -153,7 +149,7 @@ async function clearMenuConfig () {
   try {
     syncMenu(await clearSites())
     syncToolbar(await clearToolbar())
-    managerVisible.value = false
+    info('全部网址配置已恢复为内置默认值。')
   } catch (err) { showError(err) } finally { busy.value = false }
 }
 function addCategory () {
