@@ -33,10 +33,9 @@ export default [
     url: 'https://hub.docker.com/search?q=%s',
     icon: 'https://hub.docker.com/favicon.ico'
   },
-
   {
     nameZh: 'GreasyFork',
     url: 'https://greasyfork.org/zh-CN/scripts?q=%s&utf8=✓',
-    icon: 'https://greasyfork.org/packs/media/images/blacklogo96-b2384000fca45aa17e45eb417cbcbb59.png'
+    icon: 'https://greasyfork.org/favicon.ico'
   }
 ]

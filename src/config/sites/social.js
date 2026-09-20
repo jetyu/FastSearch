@@ -12,7 +12,7 @@ export default [
   {
     nameZh: 'SOV2EX',
     url: 'https://www.sov2ex.com/?q=%s',
-    icon: 'https://www.sov2ex.com/favicon.ico'
+    icon: 'https://www.sov2ex.com/assets/favicon/favicon-32x32.png'
   },
   {
     nameZh: '豆瓣',

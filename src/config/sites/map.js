@@ -2,7 +2,7 @@ export default [
   {
     nameZh: '高德地图',
     url: 'https://uri.amap.com/search?keyword=%s',
-    icon: 'https://uri.amap.com/favicon.ico'
+    icon: 'https://www.amap.com/favicon.ico'
   },
   {
     nameZh: '谷歌地图',

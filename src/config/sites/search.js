@@ -30,12 +30,12 @@ export default [
   }, {
     nameZh: 'Deepseek',
     url: 'https://chat.deepseek.com/?q=%s',
-    icon: 'https://chat.deepseek.com/favicon.ico'
+    icon: 'https://deepseek.com/favicon.ico'
   },
   {
     nameZh: 'Grok',
     url: 'https://grok.com/?q=%s',
-    icon: 'https://grok.com/favicon.ico'
+    icon: 'https://grok.com/images/favicon.svg'
   },
   {
     nameZh: 'Perplexity',
@@ -45,6 +45,6 @@ export default [
   {
     nameZh: 'Claude',
     url: 'https://claude.ai/new?q=%s',
-    icon: 'https://claude.ai/favicon.ico'
+    icon: 'https://claude.com/favicon.ico'
   }
 ]

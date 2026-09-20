@@ -7,7 +7,7 @@ export default [
   {
     nameZh: '哔哩哔哩',
     url: 'https://search.bilibili.com/all?keyword=%s',
-    icon: 'https://search.bilibili.com/favicon.ico'
+    icon: 'https://www.bilibili.com/favicon.ico'
   },
   {
     nameZh: '抖音',
