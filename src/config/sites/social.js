@@ -1,5 +1,10 @@
 export default [
   {
+    nameZh: 'V2EX',
+    url: 'https://www.sov2ex.com/?q=%s',
+    icon: 'https://www.v2ex.com/favicon.ico'
+  },
+  {
     nameZh: '知乎',
     url: 'https://www.zhihu.com/search?q=%s&type=content',
     icon: 'https://www.zhihu.com/favicon.ico'
@@ -8,11 +13,6 @@ export default [
     nameZh: '小红书',
     url: 'https://www.xiaohongshu.com/search_result?keyword=%s&source=web_search_result_notes',
     icon: 'https://www.xiaohongshu.com/favicon.ico'
-  },
-  {
-    nameZh: 'V2EX',
-    url: 'https://www.sov2ex.com/?q=%s',
-    icon: 'https://www.v2ex.com/favicon.ico'
   },
   {
     nameZh: '豆瓣',

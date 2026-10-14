@@ -34,9 +34,9 @@ const list = [
     list: translate
   },
   {
-    nameZh: '地图',
-    name: 'map',
-    list: map
+    nameZh: '视频',
+    name: 'video',
+    list: video
   },
   {
     nameZh: '图片',
@@ -44,14 +44,14 @@ const list = [
     list: image
   },
   {
-    nameZh: '视频',
-    name: 'video',
-    list: video
-  },
-  {
     nameZh: '购物',
     name: 'shopping',
     list: shopping
+  },
+  {
+    nameZh: '地图',
+    name: 'map',
+    list: map
   },
   {
     nameZh: '音乐',
