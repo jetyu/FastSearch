@@ -1,7 +1,7 @@
 export default [
   {
     nameZh: 'V2EX',
-    url: 'https://www.sov2ex.com/?q=%s',
+    url: 'https://www.google.com/search?q=site%3Av2ex.com+%s',
     icon: 'https://www.v2ex.com/favicon.ico'
   },
   {
